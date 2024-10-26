@@ -1,27 +1,3 @@
-// import 'package:get/get.dart';
-
-// class RootController extends GetxController {
-//   //TODO: Implement RootController
-
-//   final count = 0.obs;
-//   @override
-//   void onInit() {
-//     super.onInit();
-//   }
-
-//   @override
-//   void onReady() {
-//     super.onReady();
-//   }
-
-//   @override
-//   void onClose() {
-//     super.onClose();
-//   }
-
-//   void increment() => count.value++;
-// }
-
 import 'package:get/get.dart';
 import 'package:iitf_flutter_tab/app/constants/strings.dart';
 import 'package:iitf_flutter_tab/app/data/local/user_preference/user_prefrence_view_model.dart';
@@ -48,7 +24,7 @@ class RootController extends GetxController {
     // Utils.snackBar('root_', "Loading...................");
 
     _isLoading.value = true;
-    Future.delayed(const Duration(seconds: 1)).then((value) async {
+    Future.delayed(const Duration(seconds: 2)).then((value) async {
       final token = await userPreference.getUser();
 
       if (token != null) {

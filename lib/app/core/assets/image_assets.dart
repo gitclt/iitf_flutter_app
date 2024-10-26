@@ -1,10 +1,10 @@
 class ImageAssets {
   static const String splashScreen = 'assets/images/Splash Screen.png';
-  static const String messageIcon = 'assets/icons/message.svg';
+  // static const String messageIcon = 'assets/icons/message.svg';
   static const String mainLogo = 'assets/images/main_logo.png';
-  static const String appbarIcon = 'assets/svg_icon/expand_screen.svg';
-  static const String reportIcon = 'assets/svg_icon/file_chart.svg';
-  static const String sideExpand = 'assets/svg_icon/side_expand.svg';
+  // static const String appbarIcon = 'assets/svg_icon/expand_screen.svg';
+  // static const String reportIcon = 'assets/svg_icon/file_chart.svg';
+  // static const String sideExpand = 'assets/svg_icon/side_expand.svg';
 
   // user
   static const String changePassword = 'assets/images/main_logo.png';
@@ -12,15 +12,13 @@ class ImageAssets {
 
 class SvgAssets {
   // user
-  static const String changePassword = 'assets/svg_icons/change_password.svg';
-  static const String sidemenu = 'assets/svg_icons/sidemenu.svg';
-  static const String sortIcon = 'assets/svg_icons/sort.svg';
+  static const String appbarIcon = 'assets/svg/appbar.svg';
+  static const String approvedIcon = 'assets/svg/approved_order.svg';
+  static const String preorderIcon = 'assets/svg/home_preorder.svg';
+   static const String productIcon = 'assets/svg/home_product.svg';
+  static const String ratingIcon = 'assets/svg/home_rating.svg';
+   static const String orderHomeIcon = 'assets/svg/order_value.svg';
+ 
 
-  // sidemenu icons
-  static const String dashboard = 'assets/svg_icons/home.svg';
-  static const String employees = 'assets/svg_icons/users.svg';
-  static const String customers = 'assets/svg_icons/customers.svg';
-  static const String sales = 'assets/svg_icons/sales.svg';
-  static const String settings = 'assets/svg_icons/settings.svg';
-  static const String product = 'assets/svg_icons/product.svg';
+  
 }

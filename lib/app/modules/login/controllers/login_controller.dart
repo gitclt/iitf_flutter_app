@@ -10,7 +10,7 @@ import 'package:iitf_flutter_tab/app/routes/app_pages.dart';
 import 'package:iitf_flutter_tab/app/utils/utils.dart';
 
 class LoginController extends GetxController {
-   final formkey1 = GlobalKey<FormState>();
+    final formkey1 = GlobalKey<FormState>(); 
   final _useapi = ProfileRepository();
   final emailController = TextEditingController(text: '').obs;
   final passwordController = TextEditingController(text: '').obs;
@@ -20,6 +20,7 @@ class LoginController extends GetxController {
   final isLoading = false.obs;
   final isVisiblePassword = false.obs;
   final rememberMe = false.obs;
+   String type = 'admin';
  
 
   void login() async {
@@ -31,7 +32,7 @@ class LoginController extends GetxController {
       String password =
           passwordController.value.text.trim().replaceAll('&', 'amp;');
       String temp =
-          "username=${emailController.value.text.trim()}&password=$password";
+          "username=${emailController.value.text.trim()}&password=$password&type=$type";
 
       List<int> encDataByte =
           utf8.encode(temp); // Convert string to UTF-8 bytes

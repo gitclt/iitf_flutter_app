@@ -1,28 +1,3 @@
-// import 'package:flutter/material.dart';
-
-// import 'package:get/get.dart';
-
-// import '../controllers/root_controller.dart';
-
-// class RootView extends GetView<RootController> {
-//   const RootView({super.key});
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: const Text('RootView'),
-//         centerTitle: true,
-//       ),
-//       body: const Center(
-//         child: Text(
-//           'RootView is working',
-//           style: TextStyle(fontSize: 20),
-//         ),
-//       ),
-//     );
-//   }
-// }
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iitf_flutter_tab/app/constants/colors.dart';
@@ -60,17 +35,14 @@ class RootView extends GetView<RootController> {
     return Scaffold(
         body: Column(
       children: [
-        // SizedBox(
-        //   height: 50,
-        //   width: 50,
-        //   child: Image.asset(
-        //     ImageAssets.mainLogo,
-        //   ),
-        // ),
-        Text(
-          "Login",
-          style: TextStyle(color: AppColor.black, fontSize: 20),
-        )
+        SizedBox(
+          // height: 150,
+          // width: 150,
+          child: Image.asset(
+            ImageAssets.splashScreen,
+          ),
+        ),
+       
       ],
     ));
   }

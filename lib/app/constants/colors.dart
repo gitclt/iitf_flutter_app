@@ -30,4 +30,8 @@ class AppColor {
   static const Color tabTextColor = Color(0xFF666666);
   static const appointTextColor = Color(0xFFDD1D2E);
   static const boxBorderColor = Color(0xFFE9ECEF);
+   static const Color cardColor1 = Color(0xFFFFE2E5);
+  static const cardColor2 = Color(0xFFDCFCE7);
+  static const cardColor3 = Color(0xFFF3E8FF);
+
 }
