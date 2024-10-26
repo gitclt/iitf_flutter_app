@@ -1,11 +1,10 @@
-
 import 'package:flutter/material.dart';
 import 'package:iitf_flutter_tab/app/constants/strings.dart';
 
 class AppColor {
   static Color primary = isStaging == true
-      ? const Color(0xffAF601A)
-      : const Color(0xFFff0000); //0xff51CDF1 //8874a3
+      ? const Color(0xff317750)
+      : const Color(0xFF317750); //0xff51CDF1 //8874a3
   static Color background = Colors.white;
   static Color secondaryBackground = const Color(0xffF4F6FF);
   static const Color textGrayColor = Color(0xff666666);

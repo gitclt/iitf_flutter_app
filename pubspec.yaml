@@ -13,6 +13,7 @@ dependencies:
   flutter:
     sdk: flutter
   get: ^4.6.6
+  dartz:
   flutter_svg: ^2.0.10+1
   http: ^1.2.2
   intl: ^0.19.0

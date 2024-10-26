@@ -1,5 +1,5 @@
 class ImageAssets {
-  static const String splashScreen = 'assets/images/splash_screen.jpg';
+  static const String splashScreen = 'assets/images/Splash Screen.png';
   static const String messageIcon = 'assets/icons/message.svg';
   static const String mainLogo = 'assets/images/main_logo.png';
   static const String appbarIcon = 'assets/svg_icon/expand_screen.svg';
