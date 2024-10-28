@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iitf_flutter_tab/app/constants/colors.dart';
-import 'package:iitf_flutter_tab/app/modules/login/controllers/login_controller.dart';
 
 class LoginTextFeild extends StatelessWidget {
   final String label;

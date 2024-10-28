@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:iitf_flutter_tab/app/common_widgets/appbar/home_appbar.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/card/home_card.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/container/home_container.dart';
 import 'package:iitf_flutter_tab/app/constants/colors.dart';
@@ -15,9 +16,10 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('HomeView'),
-          centerTitle: true,
+        appBar: CommonAppBar(
+          ontap: () {
+            Get.rootDelegate.toNamed(Routes.profile);
+          },
         ),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -34,11 +36,11 @@ class HomeView extends GetView<HomeController> {
                     count: '120',
                   ),
                   SizedBox(
-                    width: size.width * 0.05,
+                    width: size.width * 0.02,
                   ),
                   const HomeContainer(
-                    label: 'Approved Orders:',
-                    count: '525',
+                    label: 'Order Value :',
+                    count: ' ₹5000.00',
                     icon: SvgAssets.orderHomeIcon,
                   )
                 ],
