@@ -7,13 +7,13 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback ontap;
 
   const CommonAppBar({super.key, required this.ontap})
-      : preferredSize = const Size.fromHeight(120.0);
+      : preferredSize = const Size.fromHeight(90.0);
 
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Container(
-      height: 120.0, // Set the container height to 120
+      // height: 120.0, // Set the container height to 120
       decoration: const BoxDecoration(
         color: Colors.white,
         boxShadow: [
@@ -32,9 +32,9 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
-              height: size.height * 0.035,
-            ),
+            // SizedBox(
+            //   height: size.height * 0.035,
+            // ),
             const Text(
               "Welcome",
               style: TextStyle(
