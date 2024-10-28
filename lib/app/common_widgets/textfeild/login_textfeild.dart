@@ -4,20 +4,20 @@ import 'package:iitf_flutter_tab/app/constants/colors.dart';
 
 class LoginTextFeild extends StatelessWidget {
   final String label;
+  final double width;
   final TextEditingController? textController;
   const LoginTextFeild({
     super.key,
     // required this.controller,
-    required this.label, this.textController,
+    required this.label,
+    this.textController, required this.width,
   });
-
-  
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
+    // var size = MediaQuery.of(context).size;
     return SizedBox(
-      width: size.width * 1,
+      width: width,
       child: TextFormField(
         validator: (value) {
           if (value!.isEmpty) {

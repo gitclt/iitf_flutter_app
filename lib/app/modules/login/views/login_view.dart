@@ -35,6 +35,7 @@ class LoginView extends GetView<LoginController> {
                   height: size.height * 0.02,
                 ),
                 LoginTextFeild(
+                  width: size.width * 1,
                   textController: controller.emailController.value,
                   label: 'username',
                 ),
@@ -42,6 +43,7 @@ class LoginView extends GetView<LoginController> {
                   height: size.height * 0.02,
                 ),
                 LoginTextFeild(
+                  width: size.width * 1,
                   textController: controller.passwordController.value,
                   label: 'password',
                 ),
