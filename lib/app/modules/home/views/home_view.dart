@@ -5,6 +5,7 @@ import 'package:iitf_flutter_tab/app/common_widgets/card/home_card.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/container/home_container.dart';
 import 'package:iitf_flutter_tab/app/constants/colors.dart';
 import 'package:iitf_flutter_tab/app/core/assets/image_assets.dart';
+import 'package:iitf_flutter_tab/app/routes/app_pages.dart';
 
 import '../controllers/home_controller.dart';
 
@@ -45,8 +46,10 @@ class HomeView extends GetView<HomeController> {
               SizedBox(
                 height: size.height * 0.035,
               ),
-            HomeCard(
-                ontap: (){},
+              HomeCard(
+                ontap: () {
+                  Get.rootDelegate.toNamed(Routes.preorder);
+                },
                 imagepath: SvgAssets.preorderIcon,
                 tittle: 'Pre orders',
                 subtitle: '+8% from yesterday',
@@ -56,8 +59,10 @@ class HomeView extends GetView<HomeController> {
               SizedBox(
                 height: size.height * 0.035,
               ),
-             HomeCard(
-               ontap: () {},
+              HomeCard(
+                ontap: () {
+                  Get.rootDelegate.toNamed(Routes.product);
+                },
                 imagepath: SvgAssets.productIcon,
                 tittle: 'Products',
                 subtitle: '+8% from yesterday',
@@ -67,8 +72,10 @@ class HomeView extends GetView<HomeController> {
               SizedBox(
                 height: size.height * 0.035,
               ),
-               HomeCard(
-                 ontap: () {},
+              HomeCard(
+                ontap: () {
+                  Get.rootDelegate.toNamed(Routes.rating);
+                },
                 imagepath: SvgAssets.ratingIcon,
                 tittle: 'Rating',
                 subtitle: '+8% from yesterday',
