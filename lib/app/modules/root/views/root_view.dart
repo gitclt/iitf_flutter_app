@@ -35,14 +35,13 @@ class RootView extends GetView<RootController> {
     return Scaffold(
         body: Column(
       children: [
-        SizedBox(
+        Expanded(
           // height: 150,
           // width: 150,
           child: Image.asset(
             ImageAssets.splashScreen,
           ),
         ),
-       
       ],
     ));
   }
