@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/appbar/common_appbar.dart';
-import 'package:iitf_flutter_tab/app/common_widgets/button/common_button.dart';
+import 'package:iitf_flutter_tab/app/common_widgets/button/add_button.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/drop_down/drop_down3_widget.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/text/text_widget.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/textfeild/add_new_widget.dart';
@@ -54,6 +54,7 @@ class ProductAdd extends GetView<ProductController> {
                 },
               ),
               AddTextFieldWidget(
+                hintText: 'Enter Name',
                 width: width,
                 label: 'Product Name',
                 visible: true,
@@ -66,6 +67,7 @@ class ProductAdd extends GetView<ProductController> {
               ),
               AddTextFieldWidget(
                 width: width,
+                hintText: 'Enter Code',
                 label: 'code',
                 visible: true,
                 validator: (value) {
@@ -87,6 +89,7 @@ class ProductAdd extends GetView<ProductController> {
                 },
               ),
               AddTextFieldWidget(
+                hintText: 'Enter Price',
                 width: width,
                 label: 'Price',
                 visible: true,
@@ -98,6 +101,7 @@ class ProductAdd extends GetView<ProductController> {
                 },
               ),
               AddTextFieldWidget(
+                hintText: "Enter Offer Price",
                 width: width,
                 label: 'Offer Price',
                 visible: true,
@@ -110,11 +114,12 @@ class ProductAdd extends GetView<ProductController> {
               ),
               AddTextFieldWidget(
                 width: width,
-                label: 'Stall Email',
+                hintText: 'Enter Stall ID',
+                label: 'Stall ID',
                 visible: true,
                 validator: (value) {
                   if (value!.isEmpty) {
-                    return 'Enter Email';
+                    return 'Enter ID';
                   }
                   return null;
                 },
@@ -138,6 +143,23 @@ class ProductAdd extends GetView<ProductController> {
                   ],
                 ),
               ),
+              Row(
+                children: [
+                  AddTextFieldWidget(
+                    maxLengthLimit: 5,
+                    minLines: 5,
+                    hintText: "Enter Description",
+                    label: ' Description',
+                    visible: true,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Enter Description';
+                      }
+                      return null;
+                    },
+                  ),
+                ],
+              ),
               SizedBox(
                 height: size.height * 0.03,
               ),
@@ -145,7 +167,8 @@ class ProductAdd extends GetView<ProductController> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  CommonButton(
+                  AddButton(
+                    width: size.width * 0.3,
                     label: "ADD PRODUCT",
                     onClick: () {},
                   )
@@ -158,152 +181,3 @@ class ProductAdd extends GetView<ProductController> {
     );
   }
 }
-
-
-//   @override
-//   Widget build(BuildContext context) {
-//     var size = MediaQuery.of(context).size;
-//     return Form(
-//       key: controller.formkey,
-//       child: Wrap(
-//         spacing: 50,
-//         runSpacing: 20,
-//         children: [
-//           DropDown3Widget(
-//             label: 'Product Category',
-//             hint: '--Select Product Category--',
-//             selectedItem:
-//                 // controller.sCat.id == null ? null :
-//                 controller.sdCat,
-//             items: controller.catDropList,
-//             onChanged: (data) async {
-//               if (data == null) return;
-//               controller.sdCat = data;
-//             },
-//             validator: (value) {
-//               if (value == null) {
-//                 return 'Select Product Category';
-//               }
-//               return null;
-//             },
-//           ),
-
-//           AddTextFieldWidget(
-//             // textController: controller.artnoController,
-//             label: 'Product Name',
-//             visible: true,
-//             validator: (value) {
-//               if (value!.isEmpty) {
-//                 return 'Product Name';
-//               }
-//               return null;
-//             },
-//           ),
-
-//           AddTextFieldWidget(
-//             // textController: controller.nameController,
-//             label: 'code',
-//             visible: true,
-//             validator: (value) {
-//               if (value!.isEmpty) {
-//                 return 'Enter code';
-//               }
-//               return null;
-//             },
-//           ),
-//           AddTextFieldWidget(
-//             // textController: controller.artnoController,
-//             label: 'Image',
-//             visible: true,
-//             validator: (value) {
-//               if (value!.isEmpty) {
-//                 return 'Image';
-//               }
-//               return null;
-//             },
-//           ),
-//           AddTextFieldWidget(
-//             // textController: controller.nameController,
-//             label: 'Price',
-//             visible: true,
-//             validator: (value) {
-//               if (value!.isEmpty) {
-//                 return 'Enter Price';
-//               }
-//               return null;
-//             },
-//           ),
-//           AddTextFieldWidget(
-//             // textController: controller.nameController,
-//             label: 'Offer Price',
-//             visible: true,
-//             validator: (value) {
-//               if (value!.isEmpty) {
-//                 return 'Enter Offer Price';
-//               }
-//               return null;
-//             },
-//           ),
-
-//           AddTextFieldWidget(
-//             // textController: controller.nameController,
-//             label: 'Stall Email',
-//             visible: true,
-//             validator: (value) {
-//               if (value!.isEmpty) {
-//                 return 'Enter Email';
-//               }
-//               return null;
-//             },
-//           ),
-//           // Obx(() => 
-//           SizedBox(
-//                 width: size.width * .8,
-//                 height: size.height * 0.075,
-//                 child: Row(
-//                   children: [
-//                     Checkbox(
-//                       activeColor: AppColor.primary,
-//                       value: controller.isVisible.value,
-//                       onChanged: (value) {
-//                         // controller.launchCheckbox();
-//                       },
-//                     ),
-//                     const SizedBox(
-//                       width: 5,
-//                     ),
-//                     const Text('Visibility')
-//                   ],
-//                 ),
-//               // )
-//               ),
-//           SizedBox(
-//             height: size.height * 0.03,
-//           ),
-//           // Row(
-//           //   crossAxisAlignment: CrossAxisAlignment.end,
-//           //   mainAxisAlignment: MainAxisAlignment.end,
-//           //   children: [
-//           //     CommonButton(
-//           //       isLoading: controller.isLoading.value,
-//           //       width: Responsive.isDesktop(context)
-//           //           ? size.width * .1
-//           //           : size.width * 0.25,
-//           //       onClick: () {
-//           //         if (controller.formkey.currentState!.validate()) {
-//           //           if (controller.editId == '') {
-//           //             controller.addProduct();
-//           //           } else {
-//           //             controller.editProduct();
-//           //           }
-//           //         }
-//           //       },
-//           //       label: controller.editId == '' ? 'Next' : 'Update',
-//           //     ),
-//           //   ],
-//           // ),
-//         ],
-//       ),
-//     );
-//   }
-// }

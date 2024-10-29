@@ -90,6 +90,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/appbar/common_appbar.dart';
+import 'package:iitf_flutter_tab/app/common_widgets/button/add_button.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/button/common_button.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/container/home_container.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/svg_icons/svg_widget.dart';
@@ -108,7 +109,7 @@ class RatingView extends GetView<RatingController> {
     return Scaffold(
       appBar: CommonAppBar(
         ontap: () {
-           Get.back();
+          Get.back();
         },
       ),
       body: Padding(
@@ -224,12 +225,18 @@ class RatingView extends GetView<RatingController> {
               SizedBox(
                 height: size.height * 0.02,
               ),
-              CommonButton(
-                onClick: () {
-                  // Validate and submit the form if needed
-                },
-                label: 'Submit'.tr,
-              ).paddingSymmetric(horizontal: 300, vertical: 10),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  AddButton(
+                    width: size.width * 0.3,
+                    onClick: () {
+                      // Validate and submit the form if needed
+                    },
+                    label: 'SUBMIT',
+                  ),
+                ],
+              )
             ],
           ),
         ),

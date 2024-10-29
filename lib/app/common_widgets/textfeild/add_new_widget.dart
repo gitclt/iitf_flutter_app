@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -73,7 +72,7 @@ class AddTextFieldWidget extends StatelessWidget {
         ],
       ),
       SizedBox(
-          width: width ??  size.width * .8,
+          width: width ?? size.width * 0.9,
           height: height ?? size.height * 0.075,
           child: TextFormField(
             //  initialValue: initialValue,

@@ -1,8 +1,10 @@
 import 'package:get/get.dart';
-import 'package:iitf_flutter_tab/app/modules/product/views/add_product.dart';
+import 'package:iitf_flutter_tab/app/modules/category/views/category_add.dart';
 
 import '../modules/Dashboard/bindings/dashboard_binding.dart';
 import '../modules/Dashboard/views/dashboard_view.dart';
+import '../modules/category/bindings/category_binding.dart';
+import '../modules/category/views/category_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/login/bindings/login_binding.dart';
@@ -10,6 +12,7 @@ import '../modules/login/views/login_view.dart';
 import '../modules/preorders/bindings/preorders_binding.dart';
 import '../modules/preorders/views/preorders_view.dart';
 import '../modules/product/bindings/product_binding.dart';
+import '../modules/product/views/add_product.dart';
 import '../modules/product/views/product_view.dart';
 import '../modules/profile/bindings/profile_binding.dart';
 import '../modules/profile/views/profile_view.dart';
@@ -52,10 +55,10 @@ class AppPages {
             binding: PreordersBinding(),
           ),
           GetPage(
-              name: _Paths.product,
-              page: () => const ProductView(),
-              binding: ProductBinding(),
-              ),
+            name: _Paths.product,
+            page: () => const ProductView(),
+            binding: ProductBinding(),
+          ),
           GetPage(
             name: _Paths.productAdd,
             page: () => const ProductAdd(),
@@ -70,6 +73,16 @@ class AppPages {
             name: _Paths.profile,
             page: () => const ProfileView(),
             binding: ProfileBinding(),
+          ),
+          GetPage(
+            name: _Paths.category,
+            page: () => const CategoryView(),
+            binding: CategoryBinding(),
+          ),
+            GetPage(
+            name: _Paths.categoryAdd,
+            page: () => const CategoryAdd(),
+            binding: CategoryBinding(),
           ),
         ]),
   ];

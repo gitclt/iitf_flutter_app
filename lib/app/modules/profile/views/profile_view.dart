@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/appbar/common_appbar.dart';
-import 'package:iitf_flutter_tab/app/common_widgets/button/common_button.dart';
+import 'package:iitf_flutter_tab/app/common_widgets/button/add_button.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/svg_icons/svg_widget.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/text/text_widget.dart';
 import 'package:iitf_flutter_tab/app/constants/colors.dart';
@@ -14,6 +14,7 @@ class ProfileView extends GetView<ProfileController> {
   const ProfileView({super.key});
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
     const height = SizedBox(
       height: 20,
     );
@@ -23,7 +24,7 @@ class ProfileView extends GetView<ProfileController> {
     return Scaffold(
         appBar: CommonAppBar(
           ontap: () {
-              Get.back();
+            Get.back();
           },
         ),
         body: Padding(
@@ -94,7 +95,8 @@ class ProfileView extends GetView<ProfileController> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  CommonButton(
+                  AddButton(
+                    width: size.width * 0.3,
                     label: 'LOGOUT',
                     onClick: () {},
                   )

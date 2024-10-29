@@ -77,7 +77,7 @@ class HomeView extends GetView<HomeController> {
               ),
               HomeCard(
                 ontap: () {
-                  Get.rootDelegate.toNamed(Routes.rating);
+                  Get.rootDelegate.toNamed(Routes.category);
                 },
                 imagepath: SvgAssets.categoryIcon,
                 tittle: 'Category',

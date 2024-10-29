@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iitf_flutter_tab/app/constants/colors.dart';
 
 class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
@@ -25,18 +26,18 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       child: AppBar(
         leading: IconButton(
-          icon:const Icon(Icons.arrow_back),
+          icon: const Icon(
+            Icons.arrow_back,
+            color: AppColor.blackColor,
+          ),
           onPressed: ontap,
         ),
         title: const Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-         
-          ],
+          children: [],
         ),
-        backgroundColor: Colors
-            .transparent, 
-        elevation: 0, 
+        backgroundColor: Colors.transparent,
+        elevation: 0,
       ),
     );
   }
