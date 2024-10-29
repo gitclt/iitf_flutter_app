@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/button/approve_button.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/svg_icons/svg_widget.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/text/text_widget.dart';
@@ -57,8 +58,8 @@ class OrderContainer extends StatelessWidget {
                   Visibility(
                     visible: type == 'pending' ? false : true,
                     child: Container(
-                      padding:
-                          const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 5, vertical: 10),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8),
                         border: Border.all(
@@ -107,6 +108,6 @@ class OrderContainer extends StatelessWidget {
           )
         ],
       ),
-    );
+    ).paddingOnly(bottom: 10);
   }
 }

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/svg_icons/svg_widget.dart';
 
-class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
+class HomeAppbar extends StatelessWidget implements PreferredSizeWidget {
   @override
   final Size preferredSize;
   final VoidCallback ontap;
 
-  const CommonAppBar({super.key, required this.ontap})
+  const HomeAppbar({super.key, required this.ontap})
       : preferredSize = const Size.fromHeight(90.0);
 
   @override

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/appbar/home_appbar.dart';
+
 import 'package:iitf_flutter_tab/app/common_widgets/card/home_card.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/container/home_container.dart';
 import 'package:iitf_flutter_tab/app/constants/colors.dart';
@@ -16,7 +17,7 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
-        appBar: CommonAppBar(
+        appBar: HomeAppbar(
           ontap: () {
             Get.rootDelegate.toNamed(Routes.profile);
           },
@@ -78,11 +79,24 @@ class HomeView extends GetView<HomeController> {
                 ontap: () {
                   Get.rootDelegate.toNamed(Routes.rating);
                 },
+                imagepath: SvgAssets.categoryIcon,
+                tittle: 'Category',
+                subtitle: '+8% from yesterday',
+                count: '18',
+                color: AppColor.cardColor3,
+              ),
+              SizedBox(
+                height: size.height * 0.035,
+              ),
+              HomeCard(
+                ontap: () {
+                  Get.rootDelegate.toNamed(Routes.rating);
+                },
                 imagepath: SvgAssets.ratingIcon,
                 tittle: 'Rating',
                 subtitle: '+8% from yesterday',
                 count: '81',
-                color: AppColor.cardColor3,
+                color: AppColor.cardColor4,
               ),
             ],
           ),

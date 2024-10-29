@@ -17,7 +17,8 @@ class HomeContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Container(
-      padding: const EdgeInsets.only(right: 80, left: 12, bottom: 20, top: 20),
+      padding: EdgeInsets.only(
+          right: size.width * 0.1, left: 12, bottom: 20, top: 20),
       decoration: BoxDecoration(
           boxShadow: const [
             BoxShadow(

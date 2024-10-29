@@ -89,14 +89,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
-import 'package:iitf_flutter_tab/app/common_widgets/appbar/home_appbar.dart';
+import 'package:iitf_flutter_tab/app/common_widgets/appbar/common_appbar.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/button/common_button.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/container/home_container.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/svg_icons/svg_widget.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/textfeild/login_textfeild.dart';
 import 'package:iitf_flutter_tab/app/constants/colors.dart';
 import 'package:iitf_flutter_tab/app/core/assets/image_assets.dart';
-import 'package:iitf_flutter_tab/app/routes/app_pages.dart';
 
 import '../controllers/rating_controller.dart';
 
@@ -109,7 +108,7 @@ class RatingView extends GetView<RatingController> {
     return Scaffold(
       appBar: CommonAppBar(
         ontap: () {
-          Get.rootDelegate.toNamed(Routes.profile);
+           Get.back();
         },
       ),
       body: Padding(

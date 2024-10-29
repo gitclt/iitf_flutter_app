@@ -24,7 +24,7 @@ class RootController extends GetxController {
     // Utils.snackBar('root_', "Loading...................");
 
     _isLoading.value = true;
-    Future.delayed(const Duration(seconds: 2)).then((value) async {
+    Future.delayed(const Duration(seconds: 1)).then((value) async {
       final token = await userPreference.getUser();
 
       if (token != null) {

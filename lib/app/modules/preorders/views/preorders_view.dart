@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:iitf_flutter_tab/app/common_widgets/appbar/home_appbar.dart';
+import 'package:iitf_flutter_tab/app/common_widgets/appbar/common_appbar.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/svg_icons/svg_widget.dart';
 import 'package:iitf_flutter_tab/app/constants/colors.dart';
 import 'package:iitf_flutter_tab/app/core/assets/image_assets.dart';
 import 'package:iitf_flutter_tab/app/modules/preorders/views/widget/approve_tab.dart';
 import 'package:iitf_flutter_tab/app/modules/preorders/views/widget/pending_tab.dart';
 import 'package:iitf_flutter_tab/app/modules/preorders/views/widget/reject_tab.dart';
-import 'package:iitf_flutter_tab/app/routes/app_pages.dart';
+
 
 import '../controllers/preorders_controller.dart';
 
@@ -20,7 +20,7 @@ class PreordersView extends GetView<PreordersController> {
     return Scaffold(
       appBar: CommonAppBar(
         ontap: () {
-          Get.rootDelegate.toNamed(Routes.profile);
+          Get.back();
         },
       ),
       body: Padding(
@@ -42,16 +42,20 @@ class PreordersView extends GetView<PreordersController> {
                 ),
               ],
             ),
-            TabBar(
-              controller: controller.tabcontroller,
-              tabs: const [
-                Tab(text: "Pending Order"),
-                Tab(text: "Approved Order"),
-                Tab(text: "Rejected Order"),
-              ],
-              indicatorColor: AppColor.primary,
-              labelColor: Colors.black,
-              unselectedLabelColor: Colors.grey,
+            Align(
+              alignment: Alignment.centerLeft,
+              child: TabBar(
+                controller: controller.tabcontroller,
+                tabs: const [
+                  Tab(text: "Pending Order"),
+                  Tab(text: "Approved Order"),
+                  Tab(text: "Rejected Order"),
+                ],
+                indicatorColor: AppColor.primary,
+                isScrollable: true,
+                labelColor: Colors.black,
+                unselectedLabelColor: Colors.grey,
+              ),
             ),
             Expanded(
               child: TabBarView(
@@ -59,9 +63,6 @@ class PreordersView extends GetView<PreordersController> {
                 children: const [PendingTab(), ApproveTab(), RejectTab()],
               ),
             ),
-
-
-            
           ],
         ),
       ),

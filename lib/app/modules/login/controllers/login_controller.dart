@@ -10,18 +10,17 @@ import 'package:iitf_flutter_tab/app/routes/app_pages.dart';
 import 'package:iitf_flutter_tab/app/utils/utils.dart';
 
 class LoginController extends GetxController {
-    final formkey1 = GlobalKey<FormState>(); 
+  final formkey1 = GlobalKey<FormState>();
   final _useapi = ProfileRepository();
-  final emailController = TextEditingController(text: '9800675643').obs;
-  final passwordController = TextEditingController(text: 'abc123').obs;
+  final emailController = TextEditingController(text: 'admin').obs;
+  final passwordController = TextEditingController(text: '123').obs;
   final _api = LoginRepository();
   final apiServices = NetworkApiServices();
   UserPreference userPreference = UserPreference();
   final isLoading = false.obs;
   final isVisiblePassword = false.obs;
   final rememberMe = false.obs;
-   String type = 'admin';
- 
+  String type = 'admin';
 
   void login() async {
     isLoading(true);
@@ -45,11 +44,10 @@ class LoginController extends GetxController {
         Utils.snackBar('Login', failure.message);
       }, (sucess) async {
         if (sucess.data != null) {
-           await userPreference.addToken(sucess.data ?? '');
+          await userPreference.addToken(sucess.data ?? '');
 
           if (sucess.data != null) {
-            final res =
-                await _useapi.getProfileView(sucess.data!.toString());
+            final res = await _useapi.getProfileView(sucess.data!.toString());
 
             res.fold(
               (failure) {

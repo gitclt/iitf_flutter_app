@@ -34,5 +34,6 @@ class AppColor {
   static const boxBorderColor = Color(0xFFE9ECEF);
   static const Color cardColor1 = Color(0xFFFA5A7D);
   static const cardColor2 = Color(0xFF3CD856);
-  static const cardColor3 = Color(0xFFBF83FF);
+  static const cardColor3 = Color(0xFFD4C744);
+  static const cardColor4 = Color(0xFFBF83FF);
 }

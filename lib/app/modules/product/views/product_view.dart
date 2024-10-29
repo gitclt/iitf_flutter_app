@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:iitf_flutter_tab/app/common_widgets/appbar/home_appbar.dart';
+import 'package:iitf_flutter_tab/app/common_widgets/appbar/common_appbar.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/card/product_card.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/svg_icons/svg_widget.dart';
 import 'package:iitf_flutter_tab/app/constants/colors.dart';
@@ -18,7 +18,7 @@ class ProductView extends GetView<ProductController> {
     return Scaffold(
       appBar: CommonAppBar(
         ontap: () {
-          Get.rootDelegate.toNamed(Routes.profile);
+            Get.back();
         },
       ),
       body: Padding(

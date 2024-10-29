@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:iitf_flutter_tab/app/common_widgets/appbar/home_appbar.dart';
+import 'package:iitf_flutter_tab/app/common_widgets/appbar/common_appbar.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/button/common_button.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/svg_icons/svg_widget.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/text/text_widget.dart';
@@ -22,7 +22,9 @@ class ProfileView extends GetView<ProfileController> {
     );
     return Scaffold(
         appBar: CommonAppBar(
-          ontap: () {},
+          ontap: () {
+              Get.back();
+          },
         ),
         body: Padding(
           padding: const EdgeInsets.all(20),

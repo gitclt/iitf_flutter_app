@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:iitf_flutter_tab/app/common_widgets/appbar/home_appbar.dart';
+import 'package:iitf_flutter_tab/app/common_widgets/appbar/common_appbar.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/button/common_button.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/drop_down/drop_down3_widget.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/text/text_widget.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/textfeild/add_new_widget.dart';
 import 'package:iitf_flutter_tab/app/constants/colors.dart';
-import 'package:iitf_flutter_tab/app/routes/app_pages.dart';
 
 import '../controllers/product_controller.dart';
 
@@ -21,7 +20,7 @@ class ProductAdd extends GetView<ProductController> {
       backgroundColor: AppColor.scaffoldBgColor,
       appBar: CommonAppBar(
         ontap: () {
-          Get.rootDelegate.toNamed(Routes.profile);
+          Get.back();
         },
       ),
       body: Padding(
