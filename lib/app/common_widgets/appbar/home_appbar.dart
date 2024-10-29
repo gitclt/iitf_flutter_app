@@ -11,7 +11,7 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
+    // var size = MediaQuery.of(context).size;
     return Container(
       // height: 120.0, // Set the container height to 120
       decoration: const BoxDecoration(
@@ -29,20 +29,20 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
           icon: svgWidget('assets/svg/Profile.svg'),
           onPressed: ontap,
         ),
-        title: Column(
+        title: const Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // SizedBox(
             //   height: size.height * 0.035,
             // ),
-            const Text(
+            Text(
               "Welcome",
               style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w400,
                   color: Colors.black),
             ),
-            const Text(
+            Text(
               "Stall 01",
               style: TextStyle(
                   fontSize: 24,

@@ -9,6 +9,7 @@ abstract class Routes {
   static const login = _Paths.login;
   static const preorder = _Paths.preorder;
   static const product = _Paths.product;
+  static const productAdd = _Paths.productAdd;
   static const rating = _Paths.rating;
   static const profile = _Paths.profile;
 }
@@ -21,6 +22,7 @@ abstract class _Paths {
   static const login = '/login';
   static const preorder = '/preorders';
   static const product = '/product';
+  static const productAdd = '/product-add';
   static const rating = '/rating';
   static const profile = '/profile';
 }

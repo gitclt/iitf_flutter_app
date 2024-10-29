@@ -114,126 +114,128 @@ class RatingView extends GetView<RatingController> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(15),
-        child: Column(
-          children: [
-            Column(
-              children: [
-                Row(
-                  children: [
-                    svgWidget(
-                      size: size.height * 0.05,
-                      SvgAssets.ratingIcon,
-                    ),
-                    SizedBox(
-                      width: size.width * 0.01,
-                    ),
-                    const Text(
-                      'Rating',
-                      style:
-                          TextStyle(fontWeight: FontWeight.w500, fontSize: 32),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: size.height * 0.03,
-                ),
-                Row(
-                  children: [
-                    const HomeContainer(
-                      icon: SvgAssets.approvedIcon,
-                      label: 'Department : ',
-                      count: 'Agriculture',
-                    ),
-                    SizedBox(
-                      width: size.width * 0.02,
-                    ),
-                    const HomeContainer(
-                      label: 'Stall ',
-                      count: ': Stall 01',
-                      icon: SvgAssets.orderHomeIcon,
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: size.height * 0.02,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    LoginTextFeild(
-                      width: size.width * 0.45,
-                      label: 'Customer',
-                    ),
-                    LoginTextFeild(
-                      width: size.width * 0.45,
-                      label: 'Phone',
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: size.height * 0.02,
-                ),
-                const Text(
-                  'Rate us Now',
-                  style: TextStyle(fontWeight: FontWeight.w500, fontSize: 32),
-                ),
-                SizedBox(
-                  height: size.height * 0.01,
-                ),
-                // Adding the 5-star rating widget
-                RatingBar.builder(
-                  initialRating: 0,
-                  minRating: 1,
-                  direction: Axis.horizontal,
-                  allowHalfRating: true,
-                  itemCount: 5,
-                  itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
-                  itemBuilder: (context, _) => Icon(
-                    Icons.star,
-                    color: AppColor.primary,
+        child: SingleChildScrollView(
+          physics: const ScrollPhysics(),
+          child: Column(
+            children: [
+              // Column(
+              //   children: [
+              Row(
+                children: [
+                  svgWidget(
+                    size: size.height * 0.05,
+                    SvgAssets.ratingIcon,
                   ),
-                  onRatingUpdate: (rating) {
-                    // Handle rating changes if needed, e.g., update controller
-                    //  controller.updateRating(rating);
-                  },
+                  SizedBox(
+                    width: size.width * 0.01,
+                  ),
+                  const Text(
+                    'Rating',
+                    style: TextStyle(fontWeight: FontWeight.w500, fontSize: 32),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: size.height * 0.03,
+              ),
+              Row(
+                children: [
+                  const HomeContainer(
+                    icon: SvgAssets.approvedIcon,
+                    label: 'Department : ',
+                    count: 'Agriculture',
+                  ),
+                  SizedBox(
+                    width: size.width * 0.02,
+                  ),
+                  const HomeContainer(
+                    label: 'Stall ',
+                    count: ': Stall 01',
+                    icon: SvgAssets.orderHomeIcon,
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: size.height * 0.02,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  LoginTextFeild(
+                    width: size.width * 0.45,
+                    label: 'Customer',
+                  ),
+                  LoginTextFeild(
+                    width: size.width * 0.45,
+                    label: 'Phone',
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: size.height * 0.02,
+              ),
+              const Text(
+                'Rate us Now',
+                style: TextStyle(fontWeight: FontWeight.w500, fontSize: 32),
+              ),
+              SizedBox(
+                height: size.height * 0.01,
+              ),
+              // Adding the 5-star rating widget
+              RatingBar.builder(
+                initialRating: 0,
+                minRating: 1,
+                direction: Axis.horizontal,
+                allowHalfRating: true,
+                itemCount: 5,
+                itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
+                itemBuilder: (context, _) => Icon(
+                  Icons.star,
+                  color: AppColor.primary,
                 ),
-                SizedBox(
-                  height: size.height * 0.02,
-                ),
-                TextFormField(
-                  decoration: InputDecoration(
-                    hintText: 'Write your experience',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(4),
-                      borderSide: const BorderSide(
-                        color: Color(0xFFDDDDDD),
-                        width: 1,
-                      ),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(4),
-                      borderSide: const BorderSide(
-                        color: Color(0xFFDDDDDD),
-                        width: 1,
-                      ),
+                onRatingUpdate: (rating) {
+                  // Handle rating changes if needed, e.g., update controller
+                  //  controller.updateRating(rating);
+                },
+              ),
+              SizedBox(
+                height: size.height * 0.02,
+              ),
+              TextFormField(
+                decoration: InputDecoration(
+                  hintText: 'Write your experience',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(4),
+                    borderSide: const BorderSide(
+                      color: Color(0xFFDDDDDD),
+                      width: 1,
                     ),
                   ),
-                  maxLines: 5, // Sets the maximum number of lines
-                  minLines: 5,
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(4),
+                    borderSide: const BorderSide(
+                      color: Color(0xFFDDDDDD),
+                      width: 1,
+                    ),
+                  ),
                 ),
-                SizedBox(
-                  height: size.height * 0.02,
-                ),
-                CommonButton(
-                  onClick: () {
-                    // Validate and submit the form if needed
-                  },
-                  label: 'Submit'.tr,
-                ).paddingSymmetric(horizontal: 300, vertical: 10),
-              ],
-            ),
-          ],
+                maxLines: 5, // Sets the maximum number of lines
+                minLines: 5,
+              ),
+              SizedBox(
+                height: size.height * 0.02,
+              ),
+              CommonButton(
+                onClick: () {
+                  // Validate and submit the form if needed
+                },
+                label: 'Submit'.tr,
+              ).paddingSymmetric(horizontal: 300, vertical: 10),
+            ],
+          ),
         ),
+        //   ],
+        // ),
       ),
     );
   }

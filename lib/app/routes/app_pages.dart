@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:iitf_flutter_tab/app/modules/product/views/add_product.dart';
 
 import '../modules/Dashboard/bindings/dashboard_binding.dart';
 import '../modules/Dashboard/views/dashboard_view.dart';
@@ -50,9 +51,14 @@ class AppPages {
             page: () => const PreordersView(),
             binding: PreordersBinding(),
           ),
-            GetPage(
-            name: _Paths.product,
-            page: () => const ProductView(),
+          GetPage(
+              name: _Paths.product,
+              page: () => const ProductView(),
+              binding: ProductBinding(),
+              ),
+          GetPage(
+            name: _Paths.productAdd,
+            page: () => const ProductAdd(),
             binding: ProductBinding(),
           ),
           GetPage(
@@ -66,6 +72,5 @@ class AppPages {
             binding: ProfileBinding(),
           ),
         ]),
-  
   ];
 }
