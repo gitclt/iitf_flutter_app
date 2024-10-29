@@ -26,22 +26,34 @@ class CategoryAdd extends GetView<CategoryController> {
               const SizedBox(
                 height: 25,
               ),
-              AddTextFieldWidget(
-                hintText: 'Enter Name',
-                label: 'Category Name',
-                visible: true,
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Enter Name';
-                  }
-                  return null;
-                },
+              Form(
+                key: controller.formkey,
+                child: AddTextFieldWidget(
+                  hintText: 'Enter Name',
+                  label: 'Category Name',
+                  textController: controller.nameController,
+                  visible: true,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Enter Name';
+                    }
+                    return null;
+                  },
+                ),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   AddButton(
-                    onClick: () {},
+                    onClick: () {
+                      if (controller.formkey.currentState!.validate()) {
+                        if (controller.editId == '') {
+                          controller.add();
+                        } else {
+                          // controller.edit();
+                        }
+                      }
+                    },
                     label: 'Add Category',
                     width: size.width * 0.2,
                   ),

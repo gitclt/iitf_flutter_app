@@ -23,7 +23,7 @@ class CategoryView extends GetView<CategoryController> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),
-        child: Wrap(
+        child: Column(
           children: [
             Row(
               children: [
@@ -42,9 +42,23 @@ class CategoryView extends GetView<CategoryController> {
             ).paddingOnly(
               bottom: 20,
             ),
-            const CategoryCard(),
-            CategoryCard(),
-            CategoryCard(),
+            Expanded(
+              child: GridView.builder(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 4, // Number of columns
+                    crossAxisSpacing: 4,
+                    mainAxisSpacing: 1,
+
+                    childAspectRatio:
+                        10 / 4, // Adjust the aspect ratio as needed
+                  ),
+                  itemCount: controller.data.length,
+                  itemBuilder: (context, index) {
+                    return CategoryCard(
+                      name: controller.data[index].category ?? '',
+                    );
+                  }),
+            )
           ],
         ),
       ),
@@ -60,21 +74,23 @@ class CategoryView extends GetView<CategoryController> {
 }
 
 class CategoryCard extends StatelessWidget {
+  final String name;
   const CategoryCard({
     super.key,
+    required this.name,
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(6),
       child: Container(
         padding: const EdgeInsets.all(15),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           border: Border.all(color: AppColor.boxBorderColor, width: 2),
         ),
-        child: boldText('Category 01'),
+        child: boldText(name, fontSize: 18),
       ),
     );
   }

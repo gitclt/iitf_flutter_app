@@ -54,7 +54,7 @@ class ProductView extends GetView<ProductController> {
                   ),
                   itemCount: 5,
                   itemBuilder: (context, index) {
-                    return ProductCard(
+                    return const ProductCard(
                       name: "Rope",
                       type: 'Cultural',
                       discription:

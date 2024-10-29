@@ -1,23 +1,66 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:iitf_flutter_tab/app/data/model/product_category/category_model.dart';
+import 'package:iitf_flutter_tab/app/domain/entity/status.dart';
+import 'package:iitf_flutter_tab/app/domain/repositories/product_category/category_response.dart';
+import 'package:iitf_flutter_tab/app/routes/app_pages.dart';
+import 'package:iitf_flutter_tab/app/utils/utils.dart';
 
 class CategoryController extends GetxController {
-  //TODO: Implement CategoryController
-
-  final count = 0.obs;
+   final rxRequestStatus = Status.completed.obs;
+  RxString error = ''.obs;
+  final _repo = ProCategoryRepository();
+  RxList<Category> data = <Category>[].obs;
+  final formkey = GlobalKey<FormState>();
+  TextEditingController nameController = TextEditingController();
+  RxBool isLoading = false.obs;
+  String editId = '';
   @override
   void onInit() {
+    get();
     super.onInit();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+  void setRxRequestStatus(Status value) => rxRequestStatus.value = value;
+  void setError(String value) => error.value = value;
+  void get() async {
+    setRxRequestStatus(Status.loading);
+    data.clear();
+    final res = await _repo.getProCategoryList();
+    res.fold((failure) {
+      setRxRequestStatus(Status.completed);
+      setError(error.toString());
+    }, (resData) {
+      setRxRequestStatus(Status.completed);
+      if (resData.data != null) {
+        data.addAll(resData.data!);
+      }
+    });
   }
 
-  @override
-  void onClose() {
-    super.onClose();
-  }
+  
+  //add
 
-  void increment() => count.value++;
+  void add() async {
+    isLoading(true);
+    final res = await _repo.addProCategory(nameController.text);
+    res.fold(
+      (failure) {
+        isLoading(false);
+        Utils.snackBar('Error', failure.message);
+        setError(error.toString());
+      },
+      (resData) {
+        if (resData.status!) {
+          isLoading(false);
+          Get.rootDelegate.toNamed(Routes.category);
+          Utils.snackBar('Sucess', resData.message ?? '', type: 'success');
+
+          get();
+
+          // clrValue();
+        }
+      },
+    );
+  }
 }
