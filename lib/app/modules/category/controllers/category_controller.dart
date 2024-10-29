@@ -7,7 +7,7 @@ import 'package:iitf_flutter_tab/app/routes/app_pages.dart';
 import 'package:iitf_flutter_tab/app/utils/utils.dart';
 
 class CategoryController extends GetxController {
-   final rxRequestStatus = Status.completed.obs;
+  final rxRequestStatus = Status.completed.obs;
   RxString error = ''.obs;
   final _repo = ProCategoryRepository();
   RxList<Category> data = <Category>[].obs;
@@ -38,7 +38,6 @@ class CategoryController extends GetxController {
     });
   }
 
-  
   //add
 
   void add() async {
@@ -63,12 +62,14 @@ class CategoryController extends GetxController {
       },
     );
   }
-   //edit
+
+  //edit
   void editClick(Category data) async {
     nameController = TextEditingController(text: data.category);
     editId = data.id.toString();
     Get.rootDelegate.toNamed(Routes.categoryAdd);
   }
+
   edit() async {
     isLoading(true);
     final res =
@@ -86,12 +87,13 @@ class CategoryController extends GetxController {
           Utils.snackBar('Sucess', resData.message ?? '', type: 'success');
 
           get();
-          Get.rootDelegate.toNamed(Routes.category);
-          // clrValue();
+
+          clear();
         }
       },
     );
   }
+
   //delete
   void delete() async {
     final res = await _repo.deleteProCategory(id: editId);
@@ -99,6 +101,7 @@ class CategoryController extends GetxController {
       Utils.snackBar('Category Error', failure.message);
       setError(error.toString());
     }, (resData) {
+      Get.rootDelegate.toNamed(Routes.category);
       Utils.snackBar('Category', resData.message!);
       get();
     });
