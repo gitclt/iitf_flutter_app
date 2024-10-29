@@ -43,7 +43,8 @@ class CategoryView extends GetView<CategoryController> {
               bottom: 20,
             ),
             Expanded(
-              child: GridView.builder(
+                child: Obx(
+              () => GridView.builder(
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 4, // Number of columns
                     crossAxisSpacing: 4,
@@ -55,16 +56,20 @@ class CategoryView extends GetView<CategoryController> {
                   itemCount: controller.data.length,
                   itemBuilder: (context, index) {
                     return CategoryCard(
+                      ontap: () {
+                        controller.editClick(controller.data[index]);
+                      },
                       name: controller.data[index].category ?? '',
                     );
                   }),
-            )
+            ))
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppColor.primary,
         onPressed: () {
+          controller.clear();
           Get.rootDelegate.toNamed(Routes.categoryAdd);
         },
         child: const Icon(Icons.add),
@@ -75,22 +80,27 @@ class CategoryView extends GetView<CategoryController> {
 
 class CategoryCard extends StatelessWidget {
   final String name;
+  final VoidCallback ontap;
   const CategoryCard({
     super.key,
     required this.name,
+    required this.ontap,
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(6),
-      child: Container(
-        padding: const EdgeInsets.all(15),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: AppColor.boxBorderColor, width: 2),
+      child: InkWell(
+        onTap: ontap,
+        child: Container(
+          padding: const EdgeInsets.all(15),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(color: AppColor.boxBorderColor, width: 2),
+          ),
+          child: boldText(name, fontSize: 18),
         ),
-        child: boldText(name, fontSize: 18),
       ),
     );
   }

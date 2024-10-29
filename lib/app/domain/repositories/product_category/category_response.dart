@@ -53,50 +53,50 @@ class ProCategoryRepository {
     }
   }
 
-  // //edit
+  //edit
 
-  // Future<Either<Failure, ApiModel>> editProCategory({
-  //   required String id,
-  //   required String name,
-  // }) async {
-  //   try {
-  //     var body = json.encode({
-  //       "id": id,
-  //       "name": name,
-  //     });
-  //     dynamic response = await _apiServices
-  //         .putApi(body, CategoryUrl.proCategoryEditApi, isJson: true);
+  Future<Either<Failure, ApiModel>> editProCategory({
+    required String id,
+    required String name,
+  }) async {
+    try {
+      var body = json.encode({
+        "id": id,
+        "name": name,
+      });
+      dynamic response = await _apiServices
+          .putApi(body, CategoryUrl.proCategoryEditApi, isJson: true);
 
-  //     if (response != null && response["status"] == true) {
-  //       ApiModel res = ApiModel.fromJson(response);
+      if (response != null && response["status"] == true) {
+        ApiModel res = ApiModel.fromJson(response);
 
-  //       return Right(res);
-  //     } else {
-  //       return Left(Failure(response["message"].toString()));
-  //     }
-  //   } catch (e) {
-  //     return Left(Failure(e.toString()));
-  //   }
-  // }
+        return Right(res);
+      } else {
+        return Left(Failure(response["message"].toString()));
+      }
+    } catch (e) {
+      return Left(Failure(e.toString()));
+    }
+  }
 
-  // //delete
-  // Future<Either<Failure, ApiModel>> deleteProCategory({
-  //   required String id,
-  // }) async {
-  //   var body = {"id": id};
-  //   try {
-  //     dynamic response =
-  //         await _apiServices.deleteApi(body, CategoryUrl.proCategoryDeleteApi);
+  //delete
+  Future<Either<Failure, ApiModel>> deleteProCategory({
+    required String id,
+  }) async {
+    var body = {"id": id};
+    try {
+      dynamic response =
+          await _apiServices.deleteApi(body, CategoryUrl.proCategoryDeleteApi);
 
-  //     if (response != null && response["status"] == true) {
-  //       ApiModel res = ApiModel.fromJson(response);
+      if (response != null && response["status"] == true) {
+        ApiModel res = ApiModel.fromJson(response);
 
-  //       return Right(res);
-  //     } else {
-  //       return Left(Failure(response["message"].toString()));
-  //     }
-  //   } catch (e) {
-  //     return Left(Failure(e.toString()));
-  //   }
-  // }
+        return Right(res);
+      } else {
+        return Left(Failure(response["message"].toString()));
+      }
+    } catch (e) {
+      return Left(Failure(e.toString()));
+    }
+  }
 }

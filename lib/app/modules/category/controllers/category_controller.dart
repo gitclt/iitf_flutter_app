@@ -63,4 +63,49 @@ class CategoryController extends GetxController {
       },
     );
   }
+   //edit
+  void editClick(Category data) async {
+    nameController = TextEditingController(text: data.category);
+    editId = data.id.toString();
+    Get.rootDelegate.toNamed(Routes.categoryAdd);
+  }
+  edit() async {
+    isLoading(true);
+    final res =
+        await _repo.editProCategory(id: editId, name: nameController.text);
+    res.fold(
+      (failure) {
+        isLoading(false);
+        Utils.snackBar('Error', failure.message);
+        setError(error.toString());
+      },
+      (resData) {
+        if (resData.status!) {
+          isLoading(false);
+          Get.rootDelegate.toNamed(Routes.category);
+          Utils.snackBar('Sucess', resData.message ?? '', type: 'success');
+
+          get();
+          Get.rootDelegate.toNamed(Routes.category);
+          // clrValue();
+        }
+      },
+    );
+  }
+  //delete
+  void delete() async {
+    final res = await _repo.deleteProCategory(id: editId);
+    res.fold((failure) {
+      Utils.snackBar('Category Error', failure.message);
+      setError(error.toString());
+    }, (resData) {
+      Utils.snackBar('Category', resData.message!);
+      get();
+    });
+  }
+
+  clear() {
+    editId = '';
+    nameController.clear();
+  }
 }
