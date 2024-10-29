@@ -6,7 +6,7 @@ import 'package:iitf_flutter_tab/app/constants/colors.dart';
 class ApproveTab extends StatelessWidget {
   const ApproveTab({super.key});
 
-    @override
+  @override
   Widget build(BuildContext context) {
     return Column(
       children: [
@@ -29,6 +29,14 @@ class ApproveTab extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return const OrderContainer(
                     type: 'approve',
+                    itemname: "Rope",
+                    discription: "cultural",
+                    qty: '01',
+                    price: '220.00',
+                    offerprice: '180.00',
+                    date: '24/10/24',
+                    name: 'Rajesh',
+                    phone: '1234567890',
                   );
                 }))
       ],

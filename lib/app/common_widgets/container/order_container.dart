@@ -8,9 +8,10 @@ import 'package:iitf_flutter_tab/app/core/assets/image_assets.dart';
 
 class OrderContainer extends StatelessWidget {
   final String type;
+  final String itemname, qty, price, offerprice, date, name, phone,discription;
   const OrderContainer({
     super.key,
-    required this.type,
+    required this.type, required this.itemname, required this.qty, required this.price, required this.offerprice, required this.date, required this.name, required this.phone, required this.discription,
   });
 
   @override
@@ -32,28 +33,28 @@ class OrderContainer extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              boldText("Rope", fontSize: 18),
+              boldText(itemname, fontSize: 18),
               height,
-              colorText("culture", 14),
+              colorText(discription, 14),
               height,
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   svgWidget(SvgAssets.qtyIcon),
                   width,
-                  greyText('Qty : 01'),
+                  greyText('Qty : $qty'),
                   const VerticalDivider(),
                   svgWidget(SvgAssets.priceIcon),
                   width,
-                  greyText('Total Price : 220.00'),
+                  greyText('Total Price : $price'),
                   const VerticalDivider(),
                   svgWidget(SvgAssets.offerIcon),
                   width,
-                  greyText('Offer Price : 180.00'),
+                  greyText('Offer Price : $offerprice'),
                   const VerticalDivider(),
                   svgWidget(SvgAssets.dateIcon),
                   width,
-                  greyText('Date : 24/10/24'),
+                  greyText('Date : $date'),
                   const VerticalDivider(),
                   Visibility(
                     visible: type == 'pending' ? false : true,
@@ -82,11 +83,11 @@ class OrderContainer extends StatelessWidget {
                 children: [
                   svgWidget(SvgAssets.personIcon),
                   width,
-                  greyText('Name : Rajesh'),
+                  greyText('Name : $name'),
                   const VerticalDivider(),
                   svgWidget(SvgAssets.callIcon),
                   width,
-                  greyText('Phone : 1234 567 890'),
+                  greyText('Phone : $phone'),
                 ],
               ),
               height,

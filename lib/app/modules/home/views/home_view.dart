@@ -23,7 +23,7 @@ class HomeView extends GetView<HomeController> {
           },
         ),
         body: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(20),
           child: Column(
             children: [
               SizedBox(

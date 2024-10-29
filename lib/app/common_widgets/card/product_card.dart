@@ -6,8 +6,13 @@ import 'package:iitf_flutter_tab/app/constants/colors.dart';
 import 'package:iitf_flutter_tab/app/core/assets/image_assets.dart';
 
 class ProductCard extends StatelessWidget {
+  final String name, price, discription, type;
   const ProductCard({
     super.key,
+    required this.name,
+    required this.price,
+    required this.discription,
+    required this.type,
   });
 
   @override
@@ -23,7 +28,7 @@ class ProductCard extends StatelessWidget {
         children: [
           Container(
             width: double.infinity,
-            height: width * .9,
+            height: width * .4,
             decoration: const BoxDecoration(color: AppColor.boxBorderColor),
             child: Center(child: svgWidget(SvgAssets.productIcon)),
           ),
@@ -35,21 +40,19 @@ class ProductCard extends StatelessWidget {
                 SizedBox(
                   height: size.height * 0.01,
                 ),
-                boldText('Rope', fontSize: 20),
+                boldText(name, fontSize: 20),
                 SizedBox(
                   height: size.height * 0.01,
                 ),
-                colorText('Cugfj', 12),
+                colorText(type, 12),
                 SizedBox(
                   height: size.height * 0.01,
                 ),
-                colorText(
-                    'Lorem Ipsum has been the industrys standard dummy text ever\n since the 1500s, when an unknown printer took a galley',
-                    12),
+                colorText(discription, 12),
                 SizedBox(
                   height: size.height * 0.01,
                 ),
-                boldText("250",
+                boldText(price,
                     fontSize: 20,
                     color: AppColor.primary,
                     fontWeight: FontWeight.w700),

@@ -21,27 +21,32 @@ class CategoryView extends GetView<CategoryController> {
           Get.back();
         },
       ),
-      body: Wrap(
-        children: [
-          Row(
-            children: [
-              svgWidget(
-                size: size.height * 0.05,
-                SvgAssets.categoryIcon,
-              ),
-              SizedBox(
-                width: size.width * 0.01,
-              ),
-              const Text(
-                'Product Category',
-                style: TextStyle(fontWeight: FontWeight.w500, fontSize: 32),
-              ),
-            ],
-          ),
-          const CategoryCard(),
-          CategoryCard(),
-          CategoryCard(),
-        ],
+      body: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Wrap(
+          children: [
+            Row(
+              children: [
+                svgWidget(
+                  size: size.height * 0.05,
+                  SvgAssets.categoryIcon,
+                ),
+                SizedBox(
+                  width: size.width * 0.01,
+                ),
+                const Text(
+                  'Product Category',
+                  style: TextStyle(fontWeight: FontWeight.w500, fontSize: 32),
+                ),
+              ],
+            ).paddingOnly(
+              bottom: 20,
+            ),
+            const CategoryCard(),
+            CategoryCard(),
+            CategoryCard(),
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppColor.primary,

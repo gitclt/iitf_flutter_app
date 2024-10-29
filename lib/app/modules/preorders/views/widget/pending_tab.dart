@@ -31,6 +31,14 @@ class PendingTab extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return const OrderContainer(
                     type: 'pending',
+                    itemname: "Rope",
+                    discription: "cultural",
+                    qty: '01',
+                    price: '220.00',
+                    offerprice: '180.00',
+                    date: '24/10/24',
+                    name: 'Rajesh',
+                    phone: '1234567890',
                   );
                 }))
       ],

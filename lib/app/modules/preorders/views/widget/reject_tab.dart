@@ -29,6 +29,14 @@ class RejectTab extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return const OrderContainer(
                     type: 'reject',
+                                        itemname: "Rope",
+                    discription: "cultural",
+                    qty: '01',
+                    price: '220.00',
+                    offerprice: '180.00',
+                    date: '24/10/24',
+                    name: 'Rajesh',
+                    phone: '1234567890',
                   );
                 }))
       ],

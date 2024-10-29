@@ -17,8 +17,10 @@ class HomeContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Container(
-      padding: EdgeInsets.only(
-          right: size.width * 0.1, left: 12, bottom: 20, top: 20),
+      width: size.width * 0.45,
+      height: size.height * 0.1,
+      // padding: EdgeInsets.only(
+      //     right: size.width * 0.05, left: 12, bottom: 20, top: 20),
       decoration: BoxDecoration(
           boxShadow: const [
             BoxShadow(
@@ -33,6 +35,9 @@ class HomeContainer extends StatelessWidget {
           border: Border.all(color: AppColor.boxBorderColor)),
       child: Row(
         children: [
+          SizedBox(
+            width: size.width * 0.02,
+          ),
           svgWidget(icon),
           SizedBox(
             width: size.width * 0.008,

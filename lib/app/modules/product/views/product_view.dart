@@ -18,7 +18,7 @@ class ProductView extends GetView<ProductController> {
     return Scaffold(
       appBar: CommonAppBar(
         ontap: () {
-            Get.back();
+          Get.back();
         },
       ),
       body: Padding(
@@ -43,10 +43,25 @@ class ProductView extends GetView<ProductController> {
             SizedBox(
               height: size.height * 0.03,
             ),
-            const Wrap(
-              children: [
-                ProductCard(),
-              ],
+            Expanded(
+              child: GridView.builder(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3, // Number of columns
+                    crossAxisSpacing: 8.0,
+                    mainAxisSpacing: 8.0,
+                    childAspectRatio:
+                        3 / 4, // Adjust the aspect ratio as needed
+                  ),
+                  itemCount: 5,
+                  itemBuilder: (context, index) {
+                    return ProductCard(
+                      name: "Rope",
+                      type: 'Cultural',
+                      discription:
+                          'Lorem Ipsumhas been the industrys standard dummy text ever\n since the 1500s, when an unknown printer took a galley',
+                      price: '2500',
+                    );
+                  }),
             )
           ],
         ),
