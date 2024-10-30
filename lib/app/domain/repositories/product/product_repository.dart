@@ -42,19 +42,18 @@ class ProductRepository {
       String? imagedata}) async {
     try {
       var body = json.encode({
-        {
-          "name": name,
-          "cat_id": cadId,
-          "code": code,
-          "image": image,
-          "price": price,
-          "offer_price": offerPrice,
-          "stall_id": stallid,
-          "description": description,
-          "visibility": visible,
-          "image_data": imagedata
-        }
+        "name": name,
+        "cat_id": cadId,
+        "code": code,
+        if (image != '') "image": image,
+        "price": price,
+        "offer_price": offerPrice,
+        "stall_id": stallid,
+        "description": description,
+        "visibility": visible,
+        if (imagedata != null) "image_data": imagedata
       });
+
       dynamic response = await _apiServices
           .postApi(body, ProductUrl.productAddApi, isJson: true);
 
@@ -66,6 +65,7 @@ class ProductRepository {
         return Left(Failure(response["message"].toString()));
       }
     } catch (e) {
+      print(e);
       return Left(Failure(e.toString()));
     }
   }
