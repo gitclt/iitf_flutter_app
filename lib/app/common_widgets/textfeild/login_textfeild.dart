@@ -19,6 +19,7 @@ class LoginTextFeild extends StatelessWidget {
     return SizedBox(
       width: width,
       child: TextFormField(
+        
         validator: (value) {
           if (value!.isEmpty) {
             return 'Enter $label';
