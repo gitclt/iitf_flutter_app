@@ -38,7 +38,7 @@ class HomeModel {
 
 class HomeResponse {
   int? productCount;
-  int? stallCount;
+  int? ratingCount;
   int? orderCount;
   int? approvedOrderCount;
   int? orderValue;
@@ -46,7 +46,7 @@ class HomeResponse {
 
   HomeResponse({
     this.productCount,
-    this.stallCount,
+    this.ratingCount,
     this.orderCount,
     this.approvedOrderCount,
     this.orderValue,
@@ -55,7 +55,7 @@ class HomeResponse {
 
   factory HomeResponse.fromJson(Map<String, dynamic> json) => HomeResponse(
         productCount: json["productCount"],
-        stallCount: json["stallCount"],
+        ratingCount: json["ratingCount"],
         orderCount: json["orderCount"],
         approvedOrderCount: json["approved_order_Count"],
         orderValue: json["orderValue"],
@@ -64,7 +64,7 @@ class HomeResponse {
 
   Map<String, dynamic> toJson() => {
         "productCount": productCount,
-        "stallCount": stallCount,
+        "ratingCount": ratingCount,
         "orderCount": orderCount,
         "approved_order_Count": approvedOrderCount,
         "orderValue": orderValue,
