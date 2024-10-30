@@ -12,7 +12,7 @@ import 'package:iitf_flutter_tab/app/utils/utils.dart';
 class LoginController extends GetxController {
   final formkey1 = GlobalKey<FormState>();
   final _useapi = ProfileRepository();
-  final emailController = TextEditingController(text: 'admin').obs;
+  final emailController = TextEditingController(text: '9089765434').obs;
   final passwordController = TextEditingController(text: '123').obs;
   final _api = LoginRepository();
   final apiServices = NetworkApiServices();
@@ -20,7 +20,7 @@ class LoginController extends GetxController {
   final isLoading = false.obs;
   final isVisiblePassword = false.obs;
   final rememberMe = false.obs;
-  String type = 'admin';
+  String type = 'stall';
 
   void login() async {
     isLoading(true);
