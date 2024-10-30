@@ -165,46 +165,7 @@ class ProductController extends GetxController {
     }
   }
 
-// // Function to pick image and generate a unique name
-//   void pickImage(int imageIndex) async {
-//     String dateFormat = DateFormat('yyyy-MM-dd').format(DateTime.now());
 
-//     // Generate a unique identifier using the current timestamp
-//     String uniqueId = DateTime.now().millisecondsSinceEpoch.toString();
-
-//     if (GetPlatform.isWeb) {
-//       FilePickerResult? result = await FilePicker.platform.pickFiles(
-//         type: FileType.image,
-//         allowMultiple: false,
-//       );
-
-//       if (result != null) {
-//         PlatformFile file = result.files.single;
-
-//         // Update the specific image's state based on the imageIndex
-
-//         pickedFileBytes1.value = file.bytes;
-//         pickedFilePath1.value = file.name;
-//         imageName1 = "$dateFormat-$uniqueId.${file.name.split('.').last}";
-//         encodedData1.value = base64Encode(pickedFileBytes1.value!);
-//       }
-//     } else {
-//       FilePickerResult? result = await FilePicker.platform.pickFiles(
-//         type: FileType.image,
-//         allowMultiple: false,
-//       );
-
-//       if (result != null) {
-//         // Update the specific image's state based on the imageIndex
-
-//         pickedFilePath1.value = result.files.single.path!;
-//         var pickedImageBytes1 = await File(pickedFilePath1.value).readAsBytes();
-//         imageName1 =
-//             "$dateFormat-$uniqueId.${pickedFilePath1.value.split('.').last}";
-//         encodedData1.value = base64Encode(pickedImageBytes1);
-//       }
-//     }
-//   }
 
   //delete
   void delete() async {
