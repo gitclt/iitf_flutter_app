@@ -43,25 +43,82 @@ class ProductView extends GetView<ProductController> {
             SizedBox(
               height: size.height * 0.03,
             ),
-            Expanded(
-              child: GridView.builder(
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3, // Number of columns
-                    crossAxisSpacing: 8.0,
-                    mainAxisSpacing: 8.0,
-                    childAspectRatio:
-                        3 / 4, // Adjust the aspect ratio as needed
-                  ),
-                  itemCount: 5,
-                  itemBuilder: (context, index) {
-                    return const ProductCard(
-                      name: "Rope",
-                      type: 'Cultural',
-                      discription:
-                          'Lorem Ipsumhas been the industrys standard dummy text ever\n since the 1500s, when an unknown printer took a galley',
-                      price: '2500',
-                    );
-                  }),
+            Obx(
+              () => Expanded(
+                child: GridView.builder(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3, // Number of columns
+                      crossAxisSpacing: 8.0,
+                      mainAxisSpacing: 8.0,
+                      childAspectRatio:
+                          3 / 4, // Adjust the aspect ratio as needed
+                    ),
+                    itemCount: controller.data.length,
+                    itemBuilder: (context, index) {
+                      final iteam = controller.data[index];
+                      return ProductCard(
+                        image: Obx(() => Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  controller.data.isNotEmpty
+                                      ? Container(
+                                          padding: const EdgeInsets.all(10),
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(4),
+                                            border: Border.all(
+                                                color: AppColor.boxBorderColor),
+                                          ),
+                                          child: Image.network(
+                                            errorBuilder: (context, exception,
+                                                    stackTrack) =>
+                                                Column(
+                                              children: [
+                                                Center(
+                                                  child: Icon(
+                                                    Icons.error,
+                                                    color: AppColor.primary,
+                                                  ),
+                                                ),
+                                                const SizedBox(
+                                                  height: 5,
+                                                ),
+                                                const Text(
+                                                  'Image not found',
+                                                  style:
+                                                      TextStyle(fontSize: 10),
+                                                ),
+                                              ],
+                                            ),
+                                            iteam.imageurl ??
+                                                '', // Load from network
+                                            width: 100,
+                                            height: 100,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        )
+                                      : Container(
+                                          padding: const EdgeInsets.all(10),
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(4),
+                                            border: Border.all(
+                                                color: AppColor.boxBorderColor),
+                                          ),
+                                          child: svgWidget(
+                                              SvgAssets.productIcon,
+                                              size: 100), // Placeholder
+                                        ),
+                                ])),
+                        name: iteam.name ?? '',
+                        type: iteam.category ?? '',
+                        discription: iteam.description ?? '',
+                        price: iteam.price.toString(),
+                      );
+                    }),
+              ),
             )
           ],
         ),

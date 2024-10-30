@@ -26,7 +26,7 @@ class ProductAdd extends GetView<ProductController> {
       body: Padding(
         padding: const EdgeInsets.all(15),
         child: Form(
-          // key: controller.formkey,
+          key: controller.formkey,
           child: Wrap(
             spacing: 20,
             runSpacing: 0,
@@ -40,8 +40,9 @@ class ProductAdd extends GetView<ProductController> {
                 width: width,
                 label: 'Product Category',
                 hint: '--Select Product Category--',
-                selectedItem: controller.sdCat,
-                items: controller.catDropList,
+                selectedItem:
+                    controller.sdCat.id == null ? null : controller.sdCat,
+                items: controller.categoryDropList,
                 onChanged: (data) async {
                   if (data == null) return;
                   controller.sdCat = data;
@@ -54,6 +55,7 @@ class ProductAdd extends GetView<ProductController> {
                 },
               ),
               AddTextFieldWidget(
+                textController: controller.nameController,
                 hintText: 'Enter Name',
                 width: width,
                 label: 'Product Name',
@@ -66,6 +68,7 @@ class ProductAdd extends GetView<ProductController> {
                 },
               ),
               AddTextFieldWidget(
+                textController: controller.codeController,
                 width: width,
                 hintText: 'Enter Code',
                 label: 'code',
@@ -77,18 +80,27 @@ class ProductAdd extends GetView<ProductController> {
                   return null;
                 },
               ),
+              Obx(() => AddTextFieldWidget(
+                    suffixIcon: const Icon(Icons.upload),
+                    onTap: () {
+                      controller.pickImage();
+                    },
+                    readonly: true,
+                    hintText: controller.imageName.value.isNotEmpty
+                        ? controller.imageName.value
+                        : 'Image',
+                    width: width,
+                    label: 'Image',
+                    visible: true,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Image';
+                      }
+                      return null;
+                    },
+                  )),
               AddTextFieldWidget(
-                width: width,
-                label: 'Image',
-                visible: true,
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Image';
-                  }
-                  return null;
-                },
-              ),
-              AddTextFieldWidget(
+                textController: controller.priceController,
                 hintText: 'Enter Price',
                 width: width,
                 label: 'Price',
@@ -101,6 +113,7 @@ class ProductAdd extends GetView<ProductController> {
                 },
               ),
               AddTextFieldWidget(
+                textController: controller.offerController,
                 hintText: "Enter Offer Price",
                 width: width,
                 label: 'Offer Price',
@@ -112,18 +125,7 @@ class ProductAdd extends GetView<ProductController> {
                   return null;
                 },
               ),
-              AddTextFieldWidget(
-                width: width,
-                hintText: 'Enter Stall ID',
-                label: 'Stall ID',
-                visible: true,
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Enter ID';
-                  }
-                  return null;
-                },
-              ),
+             
               SizedBox(
                 width: width,
                 height: size.height * 0.075,
@@ -146,6 +148,7 @@ class ProductAdd extends GetView<ProductController> {
               Row(
                 children: [
                   AddTextFieldWidget(
+                    textController: controller.descriptionController,
                     maxLengthLimit: 5,
                     minLines: 5,
                     hintText: "Enter Description",
@@ -170,7 +173,11 @@ class ProductAdd extends GetView<ProductController> {
                   AddButton(
                     width: size.width * 0.3,
                     label: "ADD PRODUCT",
-                    onClick: () {},
+                    onClick: () {
+                      if (controller.formkey.currentState!.validate()) {
+                        controller.add();
+                      }
+                    },
                   )
                 ],
               )

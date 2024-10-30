@@ -119,7 +119,7 @@ class HomeView extends GetView<HomeController> {
                     count: controller.isLoading.value == true
                         ? ''
                         : controller.data.isNotEmpty
-                            ? controller.data.first.stallCount.toString()
+                            ? controller.data.first.ratingCount.toString()
                             : '0',
                     color: AppColor.cardColor4,
                   ),

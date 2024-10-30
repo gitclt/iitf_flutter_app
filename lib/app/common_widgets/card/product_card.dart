@@ -7,12 +7,13 @@ import 'package:iitf_flutter_tab/app/core/assets/image_assets.dart';
 
 class ProductCard extends StatelessWidget {
   final String name, price, discription, type;
+  final Widget image;
   const ProductCard({
     super.key,
     required this.name,
     required this.price,
     required this.discription,
-    required this.type,
+    required this.type, required this.image,
   });
 
   @override
@@ -30,7 +31,9 @@ class ProductCard extends StatelessWidget {
             width: double.infinity,
             height: width * .4,
             decoration: const BoxDecoration(color: AppColor.boxBorderColor),
-            child: Center(child: svgWidget(SvgAssets.productIcon)),
+            child: Center(child: image
+                // svgWidget(SvgAssets.productIcon)
+                ),
           ),
           Padding(
             padding: const EdgeInsets.all(15),
