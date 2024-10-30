@@ -29,12 +29,29 @@ class ProductRepository {
   }
 
   //add
-  Future<Either<Failure, ApiModel>> addProduct(
-    String name,
-  ) async {
+  Future<Either<Failure, ApiModel>> addProduct({
+    String? name,
+    int? cadId,
+    String? code,
+    String? image,
+    String? price,
+    String? offerPrice,
+    String? stallid,String? description,String? visible,imagedata
+  }) async {
     try {
       var body = json.encode({
-        "name": name,
+        {
+          "name": name,
+          "cat_id": cadId,
+          "code":code ,
+          "image": image,
+          "price": price,
+          "offer_price": offerPrice,
+          "stall_id": stallid,
+          "description": description,
+          "visibility": visible,
+          "image_data": imagedata
+        }
       });
       dynamic response = await _apiServices
           .postApi(body, ProductUrl.productAddApi, isJson: true);
