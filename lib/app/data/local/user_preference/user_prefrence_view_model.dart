@@ -10,8 +10,8 @@ class UserPreference {
     // List<Branch> branch,
     // List<Privilage> privilages,
   ) async {
-   
     LocalStorageKey.userName = userData.name ?? 'Error';
+    LocalStorageKey.stallId = userData.stallId.toString();
     // LocalStorageKey.roleName = userData.rolename ?? 'Error';
     // LocalStorageKey.empId = userData.employeeId ?? 'Error';
     // LocalStorageKey.userBranch = branch;

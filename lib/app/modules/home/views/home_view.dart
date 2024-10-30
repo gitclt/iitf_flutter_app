@@ -23,83 +23,108 @@ class HomeView extends GetView<HomeController> {
           },
         ),
         body: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            children: [
-              SizedBox(
-                height: size.height * 0.035,
-              ),
-              Row(
+            padding: const EdgeInsets.all(20),
+            child: Obx(
+              () => Column(
                 children: [
-                  const HomeContainer(
-                    icon: SvgAssets.approvedIcon,
-                    label: 'Approved Orders:',
-                    count: '120',
+                  SizedBox(
+                    height: size.height * 0.035,
+                  ),
+                  Row(
+                    children: [
+                      HomeContainer(
+                          icon: SvgAssets.approvedIcon,
+                          label: 'Approved Orders:',
+                          count: controller.isLoading.value == true
+                              ? ''
+                              : controller.data.isNotEmpty
+                                  ? controller.data.first.approvedOrderCount
+                                      .toString()
+                                  : '0'),
+                      SizedBox(
+                        width: size.width * 0.02,
+                      ),
+                      HomeContainer(
+                        label: 'Order Value :',
+                        count: controller.isLoading.value == true
+                            ? ''
+                            : controller.data.isNotEmpty
+                                ? controller.data.first.orderValue.toString()
+                                : '0',
+                        icon: SvgAssets.orderHomeIcon,
+                      )
+                    ],
                   ),
                   SizedBox(
-                    width: size.width * 0.02,
+                    height: size.height * 0.035,
                   ),
-                  const HomeContainer(
-                    label: 'Order Value :',
-                    count: ' ₹5000.00',
-                    icon: SvgAssets.orderHomeIcon,
-                  )
+                  HomeCard(
+                    ontap: () {
+                      Get.rootDelegate.toNamed(Routes.preorder);
+                    },
+                    imagepath: SvgAssets.preorderIcon,
+                    tittle: 'Pre orders',
+                    subtitle: '+8% from yesterday',
+                    count: controller.isLoading.value == true
+                        ? ''
+                        : controller.data.isNotEmpty
+                            ? controller.data.first.orderCount.toString()
+                            : '0',
+                    color: AppColor.cardColor1,
+                  ),
+                  SizedBox(
+                    height: size.height * 0.035,
+                  ),
+                  HomeCard(
+                    ontap: () {
+                      Get.rootDelegate.toNamed(Routes.product);
+                    },
+                    imagepath: SvgAssets.productIcon,
+                    tittle: 'Products',
+                    subtitle: '+8% from yesterday',
+                    count: controller.isLoading.value == true
+                        ? ''
+                        : controller.data.isNotEmpty
+                            ? controller.data.first.productCount.toString()
+                            : '0',
+                    color: AppColor.cardColor2,
+                  ),
+                  SizedBox(
+                    height: size.height * 0.035,
+                  ),
+                  HomeCard(
+                    ontap: () {
+                      Get.rootDelegate.toNamed(Routes.category);
+                    },
+                    imagepath: SvgAssets.categoryIcon,
+                    tittle: 'Category',
+                    subtitle: '+8% from yesterday',
+                    count: controller.isLoading.value == true
+                        ? ''
+                        : controller.data.isNotEmpty
+                            ? controller.data.first.categoryCount.toString()
+                            : '0',
+                    color: AppColor.cardColor3,
+                  ),
+                  SizedBox(
+                    height: size.height * 0.035,
+                  ),
+                  HomeCard(
+                    ontap: () {
+                      Get.rootDelegate.toNamed(Routes.rating);
+                    },
+                    imagepath: SvgAssets.ratingIcon,
+                    tittle: 'Rating',
+                    subtitle: '+8% from yesterday',
+                    count: controller.isLoading.value == true
+                        ? ''
+                        : controller.data.isNotEmpty
+                            ? controller.data.first.categoryCount.toString()
+                            : '0',
+                    color: AppColor.cardColor4,
+                  ),
                 ],
               ),
-              SizedBox(
-                height: size.height * 0.035,
-              ),
-              HomeCard(
-                ontap: () {
-                  Get.rootDelegate.toNamed(Routes.preorder);
-                },
-                imagepath: SvgAssets.preorderIcon,
-                tittle: 'Pre orders',
-                subtitle: '+8% from yesterday',
-                count: '240',
-                color: AppColor.cardColor1,
-              ),
-              SizedBox(
-                height: size.height * 0.035,
-              ),
-              HomeCard(
-                ontap: () {
-                  Get.rootDelegate.toNamed(Routes.product);
-                },
-                imagepath: SvgAssets.productIcon,
-                tittle: 'Products',
-                subtitle: '+8% from yesterday',
-                count: '20',
-                color: AppColor.cardColor2,
-              ),
-              SizedBox(
-                height: size.height * 0.035,
-              ),
-              HomeCard(
-                ontap: () {
-                  Get.rootDelegate.toNamed(Routes.category);
-                },
-                imagepath: SvgAssets.categoryIcon,
-                tittle: 'Category',
-                subtitle: '+8% from yesterday',
-                count: '18',
-                color: AppColor.cardColor3,
-              ),
-              SizedBox(
-                height: size.height * 0.035,
-              ),
-              HomeCard(
-                ontap: () {
-                  Get.rootDelegate.toNamed(Routes.rating);
-                },
-                imagepath: SvgAssets.ratingIcon,
-                tittle: 'Rating',
-                subtitle: '+8% from yesterday',
-                count: '81',
-                color: AppColor.cardColor4,
-              ),
-            ],
-          ),
-        ));
+            )));
   }
 }

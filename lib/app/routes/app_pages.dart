@@ -1,8 +1,7 @@
 import 'package:get/get.dart';
 import 'package:iitf_flutter_tab/app/modules/category/views/category_add.dart';
 
-import '../modules/Dashboard/bindings/dashboard_binding.dart';
-import '../modules/Dashboard/views/dashboard_view.dart';
+
 import '../modules/category/bindings/category_binding.dart';
 import '../modules/category/views/category_view.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -39,11 +38,11 @@ class AppPages {
             page: () => const LoginView(),
             binding: LoginBinding(),
           ),
-          GetPage(
-            name: _Paths.dashboard,
-            page: () => const DashboardView(),
-            binding: DashboardBinding(),
-          ),
+          // GetPage(
+          //   name: _Paths.dashboard,
+          //   page: () => const DashboardView(),
+          //   binding: DashboardBinding(),
+          // ),
           GetPage(
             name: _Paths.home,
             page: () => const HomeView(),

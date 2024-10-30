@@ -3,7 +3,7 @@ part of 'app_pages.dart';
 
 abstract class Routes {
   Routes._();
-  static const dashboard = _Paths.dashboard;
+  // static const dashboard = _Paths.dashboard;
   static const root = _Paths.root;
   static const home = _Paths.home;
   static const login = _Paths.login;
@@ -18,7 +18,7 @@ abstract class Routes {
 
 abstract class _Paths {
   _Paths._();
-  static const dashboard = '/dashboard';
+  // static const dashboard = '/dashboard';
   static const root = '/';
   static const home = '/home';
   static const login = '/login';
@@ -29,5 +29,4 @@ abstract class _Paths {
   static const profile = '/profile';
   static const category = '/category';
   static const categoryAdd = '/category-add';
-
 }

@@ -45,7 +45,7 @@ class RootController extends GetxController {
                 )
                     .then(
                   (s) {
-                    if (LocalStorageKey.userName.isNotEmpty) {
+                    if (LocalStorageKey.stallId.isNotEmpty) {
                       Get.rootDelegate.offNamed(Routes.home);
                     } else {
                       gotoLogin();

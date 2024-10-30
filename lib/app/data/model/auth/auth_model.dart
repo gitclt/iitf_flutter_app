@@ -35,9 +35,16 @@ class AuthModel {
 
 
 
-// UserResponse userResponseFromJson(String str) => UserResponse.fromJson(json.decode(str));
 
-// String userResponseToJson(UserResponse data) => json.encode(data.toJson());
+// To parse this JSON data, do
+//
+//     final userResponse = userResponseFromJson(jsonString);
+
+
+
+UserResponse userResponseFromJson(String str) => UserResponse.fromJson(json.decode(str));
+
+String userResponseToJson(UserResponse data) => json.encode(data.toJson());
 
 class UserResponse {
     bool? status;
@@ -64,41 +71,45 @@ class UserResponse {
 }
 
 class UserData {
-    int? id;
+    int? stallId;
     String? name;
     String? mobile;
-    String? address;
+    dynamic address;
     int? departmentId;
     String? department;
-    String? description;
+    dynamic description;
+    dynamic rating;
 
     UserData({
-        this.id,
+        this.stallId,
         this.name,
         this.mobile,
         this.address,
         this.departmentId,
         this.department,
         this.description,
+        this.rating,
     });
 
     factory UserData.fromJson(Map<String, dynamic> json) => UserData(
-        id: json["id"],
+        stallId: json["stall_id"],
         name: json["name"],
         mobile: json["mobile"],
         address: json["address"],
         departmentId: json["department_id"],
         department: json["department"],
         description: json["description"],
+        rating: json["rating"],
     );
 
     Map<String, dynamic> toJson() => {
-        "id": id,
+        "stall_id": stallId,
         "name": name,
         "mobile": mobile,
         "address": address,
         "department_id": departmentId,
         "department": department,
         "description": description,
+        "rating": rating,
     };
 }
