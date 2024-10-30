@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/svg_icons/svg_widget.dart';
+import 'package:iitf_flutter_tab/app/constants/strings.dart';
 
 class HomeAppbar extends StatelessWidget implements PreferredSizeWidget {
   @override
@@ -29,13 +30,13 @@ class HomeAppbar extends StatelessWidget implements PreferredSizeWidget {
           icon: svgWidget('assets/svg/Profile.svg'),
           onPressed: ontap,
         ),
-        title: const Column(
+        title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // SizedBox(
             //   height: size.height * 0.035,
             // ),
-            Text(
+            const Text(
               "Welcome",
               style: TextStyle(
                   fontSize: 14,
@@ -43,8 +44,8 @@ class HomeAppbar extends StatelessWidget implements PreferredSizeWidget {
                   color: Colors.black),
             ),
             Text(
-              "Stall 01",
-              style: TextStyle(
+              LocalStorageKey.stallName,
+              style: const TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.w600,
                   color: Colors.black),

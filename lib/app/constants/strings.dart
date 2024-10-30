@@ -10,10 +10,13 @@ class LocalStorageKey {
   static String token = "USER_TOKEN";
   static String type = "USER_TYPE";
   static String stallId = "STALL_ID";
-  // static String roleName = "ROLE_NAME";
+  static String stallName = "STALL_NAME";
   static String userName = "USER_NAME";
-  static String empId = "EMP_ID";
+  static String address  = "ADDRESS";
+   static String phone = "PHONE";
+  static String department = "DEPARTMENT";
+   static String websiteAddress = "WEBSITE";
+    static String rating = "RATING";
+ 
 
-  // static List<Branch> userBranch = [];
-  // static List<Privilage> privilage = [];
 }

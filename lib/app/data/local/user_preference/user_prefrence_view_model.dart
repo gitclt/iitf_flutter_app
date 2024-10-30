@@ -12,10 +12,12 @@ class UserPreference {
   ) async {
     LocalStorageKey.userName = userData.name ?? 'Error';
     LocalStorageKey.stallId = userData.stallId.toString();
-    // LocalStorageKey.roleName = userData.rolename ?? 'Error';
-    // LocalStorageKey.empId = userData.employeeId ?? 'Error';
-    // LocalStorageKey.userBranch = branch;
-    // LocalStorageKey.privilage = privilages;
+    LocalStorageKey.stallName = userData.stallId.toString();
+    LocalStorageKey.address = userData.address ?? 'Error';
+    LocalStorageKey.phone = userData.mobile ?? 'Error';
+    LocalStorageKey.websiteAddress = userData.address ?? 'Error';
+    LocalStorageKey.department = userData.department ?? 'Error';
+
     return true;
   }
 

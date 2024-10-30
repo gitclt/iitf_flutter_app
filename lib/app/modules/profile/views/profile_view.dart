@@ -6,6 +6,7 @@ import 'package:iitf_flutter_tab/app/common_widgets/button/add_button.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/svg_icons/svg_widget.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/text/text_widget.dart';
 import 'package:iitf_flutter_tab/app/constants/colors.dart';
+import 'package:iitf_flutter_tab/app/constants/strings.dart';
 import 'package:iitf_flutter_tab/app/core/assets/image_assets.dart';
 
 import '../controllers/profile_controller.dart';
@@ -46,7 +47,7 @@ class ProfileView extends GetView<ProfileController> {
                       const SizedBox(
                         width: 15,
                       ),
-                      colorText('Stall1', 20),
+                      colorText(LocalStorageKey.stallName, 20),
                       const Spacer(),
                       const Icon(Icons.edit)
                     ],
@@ -54,7 +55,7 @@ class ProfileView extends GetView<ProfileController> {
                 ),
               ),
               height,
-              const Row(
+              Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -63,15 +64,15 @@ class ProfileView extends GetView<ProfileController> {
                     children: [
                       ProfileText(
                         tittle: 'Shop Name',
-                        subtitle: 'ABC Shop',
+                        subtitle: LocalStorageKey.userName,
                       ),
                       ProfileText(
                         tittle: 'Phone',
-                        subtitle: '1234567890',
+                        subtitle: LocalStorageKey.phone,
                       ),
                       ProfileText(
                         tittle: 'WebSite Address',
-                        subtitle: 'ABC.com',
+                        subtitle: LocalStorageKey.websiteAddress,
                       ),
                     ],
                   ),
@@ -81,11 +82,11 @@ class ProfileView extends GetView<ProfileController> {
                     children: [
                       ProfileText(
                         tittle: 'Address',
-                        subtitle: 'ABC Kerala,India',
+                        subtitle: LocalStorageKey.address,
                       ),
                       ProfileText(
                         tittle: 'Department',
-                        subtitle: 'Agriculture',
+                        subtitle: LocalStorageKey.department,
                       ),
                     ],
                   )
