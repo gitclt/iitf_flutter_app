@@ -9,19 +9,19 @@ import 'package:iitf_flutter_tab/app/data/network/network_api_services.dart';
 class RatingRepository {
   final _apiServices = NetworkApiServices();
   //add
-  Future<Either<Failure, ApiModel>> addRating({
-    String? name,
-     String? stallid,
+  Future<Either<Failure, ApiModel>> addRating(
+      {String? name,
+      String? stallid,
       String? ratingvalue,
-       String? phone,
-       String? discription
-  }) async {
+      String? phone,
+      String? discription}) async {
     try {
       var body = json.encode({
         "stall_id": stallid,
         "rating_value": ratingvalue,
         "name": name,
-        "mobile": phone
+        "mobile": phone,
+        "description": discription
       });
       dynamic response = await _apiServices
           .postApi(body, RatingUrl.ratingAddApi, isJson: true);

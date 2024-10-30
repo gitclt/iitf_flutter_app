@@ -1,16 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:iitf_flutter_tab/app/constants/colors.dart';
 
 class LoginTextFeild extends StatelessWidget {
   final String label;
   final double width;
+  final TextInputType keyboard;
+  final bool? inputFormat;
+  final int? maxLengthLimit;
   final TextEditingController? textController;
   const LoginTextFeild({
     super.key,
     // required this.controller,
     required this.label,
-    this.textController, required this.width,
+    this.textController,
+    this.maxLengthLimit,
+    this.inputFormat,
+    required this.width,
+    this.keyboard = TextInputType.text,
   });
 
   @override
@@ -19,7 +27,13 @@ class LoginTextFeild extends StatelessWidget {
     return SizedBox(
       width: width,
       child: TextFormField(
-        
+        keyboardType: keyboard,
+        inputFormatters: inputFormat == null
+            ? null
+            : [
+                FilteringTextInputFormatter.allow(RegExp(r'^\d*\.?\d*')),
+                LengthLimitingTextInputFormatter(maxLengthLimit)
+              ],
         validator: (value) {
           if (value!.isEmpty) {
             return 'Enter $label';

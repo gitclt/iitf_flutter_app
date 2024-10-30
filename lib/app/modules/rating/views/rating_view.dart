@@ -87,6 +87,9 @@ class RatingView extends GetView<RatingController> {
                         textController: controller.phoneController,
                         width: size.width * 0.45,
                         label: 'Phone',
+                        keyboard: TextInputType.number,
+                        inputFormat: true,
+                        maxLengthLimit: 10,
                       ),
                     ],
                   ),
@@ -122,6 +125,7 @@ class RatingView extends GetView<RatingController> {
                   ),
                   TextFormField(
                     controller: controller.descriptionController,
+
                     decoration: InputDecoration(
                       hintText: 'Write your experience',
                       border: OutlineInputBorder(
@@ -158,6 +162,7 @@ class RatingView extends GetView<RatingController> {
                                 'Please provide a rating before submitting.');
                           } else if (controller.formkey.currentState!
                               .validate()) {
+                            FocusScope.of(context).requestFocus(FocusNode());
                             controller.add();
                           }
                           // Validate and submit the form if needed
