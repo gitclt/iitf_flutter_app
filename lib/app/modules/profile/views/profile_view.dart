@@ -8,6 +8,7 @@ import 'package:iitf_flutter_tab/app/common_widgets/text/text_widget.dart';
 import 'package:iitf_flutter_tab/app/constants/colors.dart';
 import 'package:iitf_flutter_tab/app/constants/strings.dart';
 import 'package:iitf_flutter_tab/app/core/assets/image_assets.dart';
+import 'package:iitf_flutter_tab/app/data/local/user_preference/user_prefrence_view_model.dart';
 
 import '../controllers/profile_controller.dart';
 
@@ -99,7 +100,10 @@ class ProfileView extends GetView<ProfileController> {
                   AddButton(
                     width: size.width * 0.3,
                     label: 'LOGOUT',
-                    onClick: () {},
+                    onClick: () {
+                      UserPreference().removeUser();
+                      UserPreference().goToSplash();
+                    },
                   )
                 ],
               )

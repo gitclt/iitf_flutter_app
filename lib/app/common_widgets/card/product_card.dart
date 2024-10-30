@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iitf_flutter_tab/app/common_widgets/svg_icons/svg_widget.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/text/text_widget.dart';
 import 'package:iitf_flutter_tab/app/constants/colors.dart';
-import 'package:iitf_flutter_tab/app/core/assets/image_assets.dart';
 
 class ProductCard extends StatelessWidget {
   final String name, price, discription, type;
@@ -13,7 +11,8 @@ class ProductCard extends StatelessWidget {
     required this.name,
     required this.price,
     required this.discription,
-    required this.type, required this.image,
+    required this.type,
+    required this.image,
   });
 
   @override

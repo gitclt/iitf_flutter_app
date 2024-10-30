@@ -1,9 +1,8 @@
 import 'dart:convert';
-import 'dart:io';
 import 'dart:typed_data';
-
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:iitf_flutter_tab/app/constants/strings.dart';
 import 'package:iitf_flutter_tab/app/data/model/product/product_model.dart';
 import 'package:iitf_flutter_tab/app/domain/entity/dropdown_entity.dart';
 import 'package:iitf_flutter_tab/app/domain/entity/status.dart';
@@ -11,12 +10,11 @@ import 'package:iitf_flutter_tab/app/domain/repositories/product/product_reposit
 import 'package:iitf_flutter_tab/app/domain/repositories/product_category/category_response.dart';
 import 'package:iitf_flutter_tab/app/routes/app_pages.dart';
 import 'package:iitf_flutter_tab/app/utils/utils.dart';
-import 'package:file_picker/file_picker.dart';
-import 'package:intl/intl.dart';
+import 'package:image_picker/image_picker.dart';
 
 class ProductController extends GetxController {
   final formkey = GlobalKey<FormState>();
-  var isVisible = false.obs;
+  var isVisible = true.obs;
   //  DropDownModel sdCat = DropDownModel();
   // RxList<DropDownModel> catDropList = <DropDownModel>[].obs;
   final rxRequestStatus = Status.completed.obs;
@@ -30,7 +28,7 @@ class ProductController extends GetxController {
   // final formkey = GlobalKey<FormState>();
   // var pickedFileBytes1 = Rxn<Uint8List>();
   // var encodedData1 = ''.obs;
-  String imageName1 = '';
+
   TextEditingController nameController = TextEditingController();
   TextEditingController codeController = TextEditingController();
   TextEditingController priceController = TextEditingController();
@@ -68,12 +66,13 @@ class ProductController extends GetxController {
   void add() async {
     isLoading(true);
     final res = await _repo.addProduct(
-        cadId: int.tryParse('${sdCat.id}'),
+        cadId: int.tryParse(sdCat.id!),
         name: nameController.text,
         code: codeController.text,
-        image: imageName1,
-        imagedata: encodedData.value,
+        image: imageName.value,
+        imagedata: encodedData,
         price: priceController.text,
+        stallid: LocalStorageKey.stallId,
         offerPrice: offerController.text,
         description: descriptionController.text,
         visible: '1');
@@ -145,27 +144,26 @@ class ProductController extends GetxController {
     );
   }
 
-   RxString imageName = ''.obs; // Observable for the file name
-  Rxn<Uint8List?> pickedFileBytes = Rxn<Uint8List?>(); // For file bytes
-  RxString encodedData = ''.obs; // For Base64 encoded data
+  RxString imageName = ''.obs; // Observable for the file name
+  Uint8List? pickedFileBytes; // For file bytes
+  String? encodedData; // For Base64 encoded data
 
   // Function to pick an image and set the name
   Future<void> pickImage() async {
-    FilePickerResult? result =
-        await FilePicker.platform.pickFiles(type: FileType.image);
+    final ImagePicker picker = ImagePicker();
+// Pick an image.
+    final XFile? image = await picker.pickImage(source: ImageSource.gallery);
 
-    if (result != null && result.files.single.bytes != null) {
+    if (image != null) {
       // Set the image name and encode data to Base64
-      imageName.value = result.files.single.name;
-      pickedFileBytes.value = result.files.single.bytes;
-      encodedData.value = base64Encode(pickedFileBytes.value!);
+      imageName.value = image.name;
+      pickedFileBytes = await image.readAsBytes();
+      encodedData = base64Encode(pickedFileBytes!);
     } else {
       // Reset image name if no file selected
       imageName.value = '';
     }
   }
-
-
 
   //delete
   void delete() async {
@@ -183,5 +181,8 @@ class ProductController extends GetxController {
   clear() {
     editId = '';
     nameController.clear();
+    imageName.value = ''; // Observable for the file name
+    pickedFileBytes = null; // For file bytes
+    encodedData = null; // For Base64 encoded data
   }
 }

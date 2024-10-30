@@ -29,21 +29,23 @@ class ProductRepository {
   }
 
   //add
-  Future<Either<Failure, ApiModel>> addProduct({
-    String? name,
-    int? cadId,
-    String? code,
-    String? image,
-    String? price,
-    String? offerPrice,
-    String? stallid,String? description,String? visible,imagedata
-  }) async {
+  Future<Either<Failure, ApiModel>> addProduct(
+      {String? name,
+      int? cadId,
+      String? code,
+      String? image,
+      String? price,
+      String? offerPrice,
+      String? stallid,
+      String? description,
+      String? visible,
+      String? imagedata}) async {
     try {
       var body = json.encode({
         {
           "name": name,
           "cat_id": cadId,
-          "code":code ,
+          "code": code,
           "image": image,
           "price": price,
           "offer_price": offerPrice,

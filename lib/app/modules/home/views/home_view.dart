@@ -41,9 +41,7 @@ class HomeView extends GetView<HomeController> {
                                   ? controller.data.first.approvedOrderCount
                                       .toString()
                                   : '0'),
-                      SizedBox(
-                        width: size.width * 0.02,
-                      ),
+                      const Spacer(),
                       HomeContainer(
                         label: 'Order Value :',
                         count: controller.isLoading.value == true

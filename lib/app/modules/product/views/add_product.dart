@@ -15,7 +15,7 @@ class ProductAdd extends GetView<ProductController> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    final width = size.width * 0.45;
+    final width = size.width * 0.46;
     return Scaffold(
       backgroundColor: AppColor.scaffoldBgColor,
       appBar: CommonAppBar(
@@ -92,12 +92,6 @@ class ProductAdd extends GetView<ProductController> {
                     width: width,
                     label: 'Image',
                     visible: true,
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return 'Image';
-                      }
-                      return null;
-                    },
                   )),
               AddTextFieldWidget(
                 textController: controller.priceController,
@@ -125,7 +119,6 @@ class ProductAdd extends GetView<ProductController> {
                   return null;
                 },
               ),
-             
               SizedBox(
                 width: width,
                 height: size.height * 0.075,
@@ -148,6 +141,7 @@ class ProductAdd extends GetView<ProductController> {
               Row(
                 children: [
                   AddTextFieldWidget(
+                    width: size.width * .95,
                     textController: controller.descriptionController,
                     maxLengthLimit: 5,
                     minLines: 5,
