@@ -52,7 +52,7 @@ class ProductController extends GetxController {
   void get() async {
     setRxRequestStatus(Status.loading);
     data.clear();
-    final res = await _repo.getProductList();
+    final res = await _repo.getProductList(stallid: LocalStorageKey.stallId);
     res.fold((failure) {
       setRxRequestStatus(Status.completed);
       setError(error.toString());
@@ -103,7 +103,7 @@ class ProductController extends GetxController {
   void getCat() async {
     isCatLoading(true);
     categoryDropList.clear();
-    final res = await catrepo.getProCategoryList();
+    final res = await catrepo.getProCategoryList(stallid: LocalStorageKey.stallId);
     res.fold((failure) {
       isCatLoading(false);
       Utils.snackBar('Error', failure.message);

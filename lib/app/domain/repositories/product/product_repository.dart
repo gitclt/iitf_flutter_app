@@ -10,10 +10,10 @@ import 'package:iitf_flutter_tab/app/data/network/network_api_services.dart';
 class ProductRepository {
   final _apiServices = NetworkApiServices();
 //view
-  Future<Either<Failure, ProductModel>> getProductList() async {
+  Future<Either<Failure, ProductModel>> getProductList({required String stallid}) async {
     try {
       dynamic response = await _apiServices.getApi(
-        ProductUrl.productListApi,
+        '${ProductUrl.productListApi}?stall_id=$stallid',
       );
 
       if (response != null && response["status"] == true) {

@@ -1,5 +1,3 @@
-
-
 import 'dart:convert';
 
 import 'package:dartz/dartz.dart';
@@ -12,10 +10,11 @@ import 'package:iitf_flutter_tab/app/data/network/network_api_services.dart';
 class ProCategoryRepository {
   final _apiServices = NetworkApiServices();
 //view
-  Future<Either<Failure, CategoryModel>> getProCategoryList() async {
+  Future<Either<Failure, CategoryModel>> getProCategoryList(
+      {required String stallid}) async {
     try {
       dynamic response = await _apiServices.getApi(
-      CategoryUrl.proCategoryListApi,
+        '${CategoryUrl.proCategoryListApi}?stall_id=$stallid',
       );
 
       if (response != null && response["status"] == true) {
@@ -31,12 +30,14 @@ class ProCategoryRepository {
   }
 
   //add
-  Future<Either<Failure, ApiModel>> addProCategory(
-    String name,
-  ) async {
-    try {
+  Future<Either<Failure, ApiModel>> addProCategory({
+    required String name,
+    required String stallid
+  }) async {
+    try { 
       var body = json.encode({
         "name": name,
+        "stall_id" :stallid
       });
       dynamic response = await _apiServices
           .postApi(body, CategoryUrl.proCategoryAddApi, isJson: true);

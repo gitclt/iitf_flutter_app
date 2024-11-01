@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:iitf_flutter_tab/app/constants/strings.dart';
 import 'package:iitf_flutter_tab/app/data/model/product_category/category_model.dart';
 import 'package:iitf_flutter_tab/app/domain/entity/status.dart';
 import 'package:iitf_flutter_tab/app/domain/repositories/product_category/category_response.dart';
@@ -26,7 +27,8 @@ class CategoryController extends GetxController {
   void get() async {
     setRxRequestStatus(Status.loading);
     data.clear();
-    final res = await _repo.getProCategoryList();
+    final res =
+        await _repo.getProCategoryList(stallid: LocalStorageKey.stallId);
     res.fold((failure) {
       setRxRequestStatus(Status.completed);
       setError(error.toString());
@@ -42,7 +44,8 @@ class CategoryController extends GetxController {
 
   void add() async {
     isLoading(true);
-    final res = await _repo.addProCategory(nameController.text);
+    final res = await _repo.addProCategory(
+        name: nameController.text, stallid: LocalStorageKey.stallId);
     res.fold(
       (failure) {
         isLoading(false);
