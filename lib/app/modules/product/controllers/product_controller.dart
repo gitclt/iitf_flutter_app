@@ -9,6 +9,7 @@ import 'package:iitf_flutter_tab/app/domain/entity/status.dart';
 import 'package:iitf_flutter_tab/app/domain/repositories/product/product_repository.dart';
 import 'package:iitf_flutter_tab/app/domain/repositories/product_category/category_response.dart';
 import 'package:iitf_flutter_tab/app/routes/app_pages.dart';
+import 'package:iitf_flutter_tab/app/utils/format/date_format.dart';
 import 'package:iitf_flutter_tab/app/utils/utils.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -34,9 +35,11 @@ class ProductController extends GetxController {
   TextEditingController priceController = TextEditingController();
   TextEditingController offerController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
+  TextEditingController logoController = TextEditingController();
   RxBool isLoading = false.obs;
   String editId = '';
-  var pickedFilePath1 = ''.obs;
+  String editImage = '';
+
   @override
   void onInit() {
     get();
@@ -90,7 +93,7 @@ class ProductController extends GetxController {
           Utils.snackBar('Sucess', resData.message ?? '', type: 'success');
 
           get();
-
+          clear();
           // clrValue();
         }
       },
@@ -117,14 +120,41 @@ class ProductController extends GetxController {
 
   //edit
   void editClick(Product data) async {
-    nameController = TextEditingController(text: data.category);
+    nameController = TextEditingController(text: data.name ?? '');
+    codeController = TextEditingController(text: data.code ?? '');
     editId = data.id.toString();
+    sdCat = DropDownModel(id: data.catId!, name: data.category ?? '');
+    logoController = TextEditingController(text: data.image ?? '');
+    priceController = TextEditingController(text: data.price ?? '');
+    isVisible(data.visibility == '0' ? false : true);
+    offerController = TextEditingController(text: data.offerPrice ?? '');
+    descriptionController = TextEditingController(text: data.description ?? '');
+    editImage = data.image ?? '';
+    imageName.value = data.image ?? '';
     Get.rootDelegate.toNamed(Routes.productAdd);
   }
 
   edit() async {
     isLoading(true);
-    final res = await _repo.editProduct(id: editId, name: nameController.text);
+    final res = await _repo.editProduct(
+      id: editId,
+      name: nameController.text,
+      cadId: int.tryParse(sdCat.id!),
+      code: codeController.text,
+      image: imageName.value,
+      imagedata: encodedData,
+      oldImg: editImage,
+      price: priceController.text,
+      stallid: LocalStorageKey.stallId,
+      offerPrice: offerController.text,
+      description: descriptionController.text,
+      visible: isVisible.value ? '1' : '0',
+      isImgChed: editImage.isEmpty
+          ? 'no'
+          : logoController.value.text.trim() == editImage
+              ? 'no'
+              : 'yes',
+    );
     res.fold(
       (failure) {
         isLoading(false);
@@ -134,7 +164,7 @@ class ProductController extends GetxController {
       (resData) {
         if (resData.status!) {
           isLoading(false);
-          Get.rootDelegate.toNamed(Routes.category);
+          Get.rootDelegate.toNamed(Routes.product);
           Utils.snackBar('Sucess', resData.message ?? '', type: 'success');
 
           get();
@@ -150,14 +180,18 @@ class ProductController extends GetxController {
   String? encodedData; // For Base64 encoded data
 
   // Function to pick an image and set the name
-  Future<void> pickImage() async {
+  Future<void> pickImage(ImageSource type) async {
     final ImagePicker picker = ImagePicker();
 // Pick an image.
-    final XFile? image = await picker.pickImage(source: ImageSource.gallery);
+    final XFile? image = await picker.pickImage(source: type);
 
     if (image != null) {
       // Set the image name and encode data to Base64
-      imageName.value = image.name;
+
+      String dateFormat = DlDateFormat().getFormattedTimestamp();
+      imageName.value = "$dateFormat.${image.name.split('.').last}";
+      logoController.value = TextEditingValue(text: imageName.value);
+
       pickedFileBytes = await image.readAsBytes();
       encodedData = base64Encode(pickedFileBytes!);
     } else {
@@ -173,7 +207,7 @@ class ProductController extends GetxController {
       Utils.snackBar('Category Error', failure.message);
       setError(error.toString());
     }, (resData) {
-      Get.rootDelegate.toNamed(Routes.category);
+      Get.rootDelegate.toNamed(Routes.product);
       Utils.snackBar('Category', resData.message!);
       get();
     });
@@ -183,6 +217,14 @@ class ProductController extends GetxController {
     editId = '';
     nameController.clear();
     imageName.value = ''; // Observable for the file name
+    sdCat = DropDownModel();
+    codeController.clear();
+    logoController.clear();
+    priceController.clear();
+    offerController.clear();
+    isVisible.value = true;
+    descriptionController.clear();
+    editImage = '';
     pickedFileBytes = null; // For file bytes
     encodedData = null; // For Base64 encoded data
   }

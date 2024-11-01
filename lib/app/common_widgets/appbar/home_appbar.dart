@@ -26,29 +26,34 @@ class HomeAppbar extends StatelessWidget implements PreferredSizeWidget {
         ],
       ),
       child: AppBar(
-        leading: IconButton(
-          icon: svgWidget('assets/svg/Profile.svg'),
-          onPressed: ontap,
-        ),
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        title: Row(
           children: [
-            // SizedBox(
-            //   height: size.height * 0.035,
-            // ),
-            const Text(
-              "Welcome",
-              style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
-                  color: Colors.black),
+            IconButton(
+              icon: svgWidget('assets/svg/Profile.svg'),
+              onPressed: ontap,
             ),
-            Text(
-              LocalStorageKey.stallName,
-              style: const TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.black),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // SizedBox(
+                //   height: size.height * 0.035,
+                // ),
+
+                const Text(
+                  "Welcome",
+                  style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.black),
+                ),
+                Text(
+                  LocalStorageKey.stallName,
+                  style: const TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.black),
+                ),
+              ],
             ),
           ],
         ),
