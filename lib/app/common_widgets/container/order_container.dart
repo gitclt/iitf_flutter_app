@@ -37,6 +37,7 @@ class OrderContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
     const height = SizedBox(
       height: 8,
     );
@@ -50,7 +51,35 @@ class OrderContainer extends StatelessWidget {
           border: Border.all(color: AppColor.dividerColor)),
       child: Row(
         children: [
-          svgWidget(imageurl),
+          Image.network(
+            height: size.height * 0.1,
+            width: size.width * 0.15,
+            imageurl,
+            errorBuilder: (context, error, stackTrace) => SizedBox(
+              height: size.height * 0.1,
+              width: size.width * 0.15,
+              child: Column(
+                children: [
+                  Center(
+                    child: Icon(
+                      Icons.error,
+                      color: AppColor.primary,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  const Text(
+                    'Image not found',
+                    style: TextStyle(fontSize: 10),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          SizedBox(
+            width: size.width * 0.02,
+          ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -125,7 +154,7 @@ class OrderContainer extends StatelessWidget {
                     width,
                     ApproveButton(
                       ontap: () {
-                           approveClick!();
+                        approveClick!();
                       },
                       label: 'REJECT',
                     )
