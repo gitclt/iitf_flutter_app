@@ -12,7 +12,7 @@ class UserPreference {
   ) async {
     LocalStorageKey.userName = userData.name ?? '';
     LocalStorageKey.stallId = userData.stallId.toString();
-    LocalStorageKey.stallName = userData.stallId.toString();
+    LocalStorageKey.stallName = userData.name.toString();
     LocalStorageKey.address = userData.address ?? '';
     LocalStorageKey.phone = userData.mobile ?? '';
     LocalStorageKey.websiteAddress = userData.address ?? '';
