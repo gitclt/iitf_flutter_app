@@ -57,8 +57,9 @@ class HomeView extends GetView<HomeController> {
                     height: size.height * 0.035,
                   ),
                   HomeCard(
-                    ontap: () {
-                      Get.rootDelegate.toNamed(Routes.preorder);
+                    ontap: () async {
+                      await Get.rootDelegate.toNamed(Routes.preorder);
+                      controller.get();
                     },
                     imagepath: SvgAssets.preorderIcon,
                     tittle: 'Pre orders',
@@ -74,8 +75,9 @@ class HomeView extends GetView<HomeController> {
                     height: size.height * 0.035,
                   ),
                   HomeCard(
-                    ontap: () {
-                      Get.rootDelegate.toNamed(Routes.product);
+                    ontap: () async {
+                      await Get.rootDelegate.toNamed(Routes.product);
+                      controller.get();
                     },
                     imagepath: SvgAssets.productIcon,
                     tittle: 'Products',
@@ -91,8 +93,9 @@ class HomeView extends GetView<HomeController> {
                     height: size.height * 0.035,
                   ),
                   HomeCard(
-                    ontap: () {
-                      Get.rootDelegate.toNamed(Routes.category);
+                    ontap: () async {
+                      await Get.rootDelegate.toNamed(Routes.category);
+                      controller.get();
                     },
                     imagepath: SvgAssets.categoryIcon,
                     tittle: 'Category',
@@ -108,8 +111,10 @@ class HomeView extends GetView<HomeController> {
                     height: size.height * 0.035,
                   ),
                   HomeCard(
-                    ontap: () {
-                      Get.rootDelegate.toNamed(Routes.rating);
+                    ontap: () async {
+                      await Get.rootDelegate.toNamed(Routes.rating);
+
+                      controller.get();
                     },
                     imagepath: SvgAssets.ratingIcon,
                     tittle: 'Rating',

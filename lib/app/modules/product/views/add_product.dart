@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/appbar/common_appbar.dart';
+import 'package:iitf_flutter_tab/app/common_widgets/bottomsheet/pic_image_bottomsheet.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/button/add_button.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/drop_down/drop_down3_widget.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/text/text_widget.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/textfeild/add_new_widget.dart';
 import 'package:iitf_flutter_tab/app/constants/colors.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../controllers/product_controller.dart';
 
@@ -81,16 +83,30 @@ class ProductAdd extends GetView<ProductController> {
                 },
               ),
               Obx(() => AddTextFieldWidget(
+                    textController: controller.logoController,
                     suffixIcon: const Icon(Icons.upload),
                     onTap: () {
-                      controller.pickImage();
+                      Get.bottomSheet(
+                        PicImageBottomsheet(pickImage: (ImageSource? value) {
+                          if (value != null) {
+                            controller.pickImage(value);
+
+                            Get.back();
+                          }
+                        }),
+                        elevation: 20.0,
+                        enableDrag: false,
+                        isDismissible: true,
+                        backgroundColor: Colors.white,
+                        shape: bootomSheetShape(),
+                      );
                     },
                     readonly: true,
                     hintText: controller.imageName.value.isNotEmpty
                         ? controller.imageName.value
-                        : 'Image',
+                        : 'Select Image',
                     width: width,
-                    label: 'Image',
+                    label: 'Select Image',
                     visible: true,
                   )),
               AddTextFieldWidget(
@@ -167,15 +183,47 @@ class ProductAdd extends GetView<ProductController> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  AddButton(
-                    width: size.width * 0.3,
-                    label: "ADD PRODUCT",
-                    onClick: () {
-                      if (controller.formkey.currentState!.validate()) {
-                        controller.add();
-                      }
-                    },
-                  )
+                  if (controller.editId == '')
+                    AddButton(
+                      width: size.width * 0.3,
+                      label: "ADD PRODUCT",
+                      onClick: () {
+                        if (controller.formkey.currentState!.validate()) {
+                          FocusScope.of(context).requestFocus(FocusNode());
+                          controller.add();
+                        }
+                      },
+                    ),
+                  if (controller.editId != '')
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        AddButton(
+                          bgColor: AppColor.green,
+                          onClick: () {
+                            if (controller.formkey.currentState!.validate()) {
+                              FocusScope.of(context).requestFocus(FocusNode());
+                              controller.edit();
+                            }
+                          },
+                          label: 'Edit Category',
+                          width: size.width * 0.2,
+                        ),
+                        SizedBox(
+                          width: size.width * 0.1,
+                        ),
+                        AddButton(
+                          bgColor: AppColor.red,
+                          onClick: () {
+                            if (controller.formkey.currentState!.validate()) {
+                              controller.delete();
+                            }
+                          },
+                          label: 'Delete Category',
+                          width: size.width * 0.2,
+                        ),
+                      ],
+                    ),
                 ],
               )
             ],
@@ -184,4 +232,14 @@ class ProductAdd extends GetView<ProductController> {
       ),
     );
   }
+}
+
+// shapes
+RoundedRectangleBorder bootomSheetShape() {
+  return const RoundedRectangleBorder(
+    borderRadius: BorderRadius.only(
+      topLeft: Radius.circular(30.0),
+      topRight: Radius.circular(30.0),
+    ),
+  );
 }

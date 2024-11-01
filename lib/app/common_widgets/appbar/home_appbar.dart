@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/svg_icons/svg_widget.dart';
+import 'package:iitf_flutter_tab/app/constants/colors.dart';
 import 'package:iitf_flutter_tab/app/constants/strings.dart';
 
 class HomeAppbar extends StatelessWidget implements PreferredSizeWidget {
@@ -26,29 +28,51 @@ class HomeAppbar extends StatelessWidget implements PreferredSizeWidget {
         ],
       ),
       child: AppBar(
-        leading: IconButton(
-          icon: svgWidget('assets/svg/Profile.svg'),
-          onPressed: ontap,
-        ),
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        title: Row(
           children: [
-            // SizedBox(
-            //   height: size.height * 0.035,
-            // ),
-            const Text(
-              "Welcome",
-              style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
-                  color: Colors.black),
+            IconButton(
+              icon: svgWidget('assets/svg/Profile.svg'),
+              onPressed: ontap,
             ),
-            Text(
-              LocalStorageKey.stallName,
-              style: const TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.black),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // SizedBox(
+                //   height: size.height * 0.035,
+                // ),
+
+                const Text(
+                  "Welcome",
+                  style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.black),
+                ),
+                Row(
+                  children: [
+                    Text(
+                      LocalStorageKey.stallName,
+                      style: const TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.black),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    RatingBarIndicator(
+                      rating: LocalStorageKey.rating,
+                      itemBuilder: (context, index) => Icon(
+                        Icons.star,
+                        color: AppColor.primary,
+                      ),
+                      itemCount: 5,
+                      itemSize: 20.0,
+                      direction: Axis.horizontal,
+                    ),
+                  ],
+                ),
+              ],
             ),
           ],
         ),

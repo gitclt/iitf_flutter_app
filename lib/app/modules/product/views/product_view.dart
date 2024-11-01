@@ -45,79 +45,96 @@ class ProductView extends GetView<ProductController> {
             ),
             Obx(
               () => Expanded(
-                child: GridView.builder(
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3, // Number of columns
-                      crossAxisSpacing: 8.0,
-                      mainAxisSpacing: 8.0,
-                      childAspectRatio:
-                          3 / 4, // Adjust the aspect ratio as needed
-                    ),
-                    itemCount: controller.data.length,
-                    itemBuilder: (context, index) {
-                      final iteam = controller.data[index];
-                      return ProductCard(
-                        image: Obx(() => Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  controller.data.isNotEmpty
-                                      ? Container(
-                                          padding: const EdgeInsets.all(10),
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(4),
-                                            border: Border.all(
-                                                color: AppColor.boxBorderColor),
-                                          ),
-                                          child: Image.network(
-                                            errorBuilder: (context, exception,
-                                                    stackTrack) =>
-                                                Column(
-                                              children: [
-                                                Center(
-                                                  child: Icon(
-                                                    Icons.error,
-                                                    color: AppColor.primary,
+                child: controller.data.isEmpty
+                    ? const Center(
+                        child: Text("No Data"),
+                      )
+                    : GridView.builder(
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 3, // Number of columns
+                          crossAxisSpacing: 8.0,
+                          mainAxisSpacing: 8.0,
+                          childAspectRatio:
+                              3 / 4, // Adjust the aspect ratio as needed
+                        ),
+                        itemCount: controller.data.length,
+                        itemBuilder: (context, index) {
+                          final iteam = controller.data[index];
+                          return InkWell(
+                            onTap: () {
+                              controller.editClick(iteam);
+                            },
+                            child: ProductCard(
+                              image: Obx(() => Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        controller.data.isNotEmpty
+                                            ? Container(
+                                                padding:
+                                                    const EdgeInsets.all(10),
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(4),
+                                                  border: Border.all(
+                                                      color: AppColor
+                                                          .boxBorderColor),
+                                                ),
+                                                child: Image.network(
+                                                  errorBuilder: (context,
+                                                          exception,
+                                                          stackTrack) =>
+                                                      Column(
+                                                    children: [
+                                                      Center(
+                                                        child: Icon(
+                                                          Icons.error,
+                                                          color:
+                                                              AppColor.primary,
+                                                        ),
+                                                      ),
+                                                      const SizedBox(
+                                                        height: 5,
+                                                      ),
+                                                      const Text(
+                                                        'Image not found',
+                                                        style: TextStyle(
+                                                            fontSize: 10),
+                                                      ),
+                                                    ],
                                                   ),
+                                                  iteam.imageurl ??
+                                                      '', // Load from network
+                                                  width: 100,
+                                                  height: 100,
+                                                  fit: BoxFit.cover,
                                                 ),
-                                                const SizedBox(
-                                                  height: 5,
+                                              )
+                                            : Container(
+                                                padding:
+                                                    const EdgeInsets.all(10),
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(4),
+                                                  border: Border.all(
+                                                      color: AppColor
+                                                          .boxBorderColor),
                                                 ),
-                                                const Text(
-                                                  'Image not found',
-                                                  style:
-                                                      TextStyle(fontSize: 10),
-                                                ),
-                                              ],
-                                            ),
-                                            iteam.imageurl ??
-                                                '', // Load from network
-                                            width: 100,
-                                            height: 100,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        )
-                                      : Container(
-                                          padding: const EdgeInsets.all(10),
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(4),
-                                            border: Border.all(
-                                                color: AppColor.boxBorderColor),
-                                          ),
-                                          child: svgWidget(
-                                              SvgAssets.productIcon,
-                                              size: 100), // Placeholder
-                                        ),
-                                ])),
-                        name: iteam.name ?? '',
-                        type: iteam.category ?? '',
-                        discription: iteam.description ?? '',
-                        price: iteam.price.toString(),
-                      );
-                    }),
+                                                child: svgWidget(
+                                                    SvgAssets.productIcon,
+                                                    size: 100), // Placeholder
+                                              ),
+                                      ])),
+                              name: iteam.name ?? '',
+                              type: iteam.category ?? '',
+                              discription: iteam.description ?? '',
+                              price: iteam.price.toString(),
+                            ),
+                          );
+                        }),
               ),
             )
           ],
@@ -126,6 +143,7 @@ class ProductView extends GetView<ProductController> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppColor.primary,
         onPressed: () {
+          controller.clear();
           Get.rootDelegate.toNamed(Routes.productAdd);
         },
         child: const Icon(Icons.add),

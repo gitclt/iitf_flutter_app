@@ -74,12 +74,34 @@ class ProductRepository {
 
   Future<Either<Failure, ApiModel>> editProduct({
     required String id,
-    required String name,
+    String? name,
+    int? cadId,
+    String? code,
+    String? image,
+    String? price,
+    String? offerPrice,
+    String? stallid,
+    String? description,
+    String? visible,
+    String? imagedata,
+    String? oldImg,
+    required String isImgChed,
   }) async {
     try {
       var body = json.encode({
         "id": id,
         "name": name,
+        "cat_id": cadId,
+        "code": code,
+        if (image != '') "image": image,
+        "price": price,
+        "offer_price": offerPrice,
+        "stall_id": stallid,
+        "description": description,
+        "visibility": visible,
+        "is_img_chged": isImgChed,
+        "img_oldname": oldImg ?? '',
+        if (imagedata != null) "image_data": imagedata
       });
       dynamic response = await _apiServices
           .putApi(body, ProductUrl.productEditApi, isJson: true);

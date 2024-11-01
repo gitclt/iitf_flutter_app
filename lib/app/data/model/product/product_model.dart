@@ -38,14 +38,14 @@ class ProductModel {
 }
 
 class Product {
-  int? id;
+  String? id;
   String? name;
   String? code;
-  int? catId;
-  int? price;
-  int? offerPrice;
-  int? stallId;
-  int? visibility;
+  String? catId;
+  String? price;
+  String? offerPrice;
+  String? stallId;
+  String? visibility;
   String? description;
   String? category;
   String? image;
@@ -67,14 +67,14 @@ class Product {
   });
 
   factory Product.fromJson(Map<String, dynamic> json) => Product(
-        id: json["id"],
-        name: json["name"],
+        id: json["id"].toString(),
+        name: json["name"].toString(),
         code: json["code"],
-        catId: json["cat_id"],
-        price: json["price"],
-        offerPrice: json["offer_price"],
-        stallId: json["stall_id"],
-        visibility: json["visibility"],
+        catId: json["cat_id"].toString(),
+        price: json["price"].toString(),
+        offerPrice: json["offer_price"].toString(),
+        stallId: json["stall_id"].toString(),
+        visibility: json["visibility"].toString(),
         description: json["description"],
         category: json["category"],
         image: json["image"],
