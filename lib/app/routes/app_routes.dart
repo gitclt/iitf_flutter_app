@@ -14,6 +14,7 @@ abstract class Routes {
   static const profile = _Paths.profile;
   static const category = _Paths.category;
   static const categoryAdd = _Paths.categoryAdd;
+  static const VERSION_CHECK = _Paths.VERSION_CHECK;
 }
 
 abstract class _Paths {
@@ -29,4 +30,5 @@ abstract class _Paths {
   static const profile = '/profile';
   static const category = '/category';
   static const categoryAdd = '/category-add';
+  static const VERSION_CHECK = '/version-check';
 }

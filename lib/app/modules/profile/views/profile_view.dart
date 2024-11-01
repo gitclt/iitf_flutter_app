@@ -44,13 +44,13 @@ class ProfileView extends GetView<ProfileController> {
                   padding: const EdgeInsets.all(20),
                   child: Row(
                     children: [
-                      svgWidget(SvgAssets.personIcon),
+                      svgWidget(SvgAssets.appbarIcon),
                       const SizedBox(
                         width: 15,
                       ),
                       colorText(LocalStorageKey.stallName, 20),
                       const Spacer(),
-                      const Icon(Icons.edit)
+                      // const Icon(Icons.edit)
                     ],
                   ),
                 ),

@@ -143,6 +143,7 @@ class ProductView extends GetView<ProductController> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppColor.primary,
         onPressed: () {
+          controller.clear();
           Get.rootDelegate.toNamed(Routes.productAdd);
         },
         child: const Icon(Icons.add),

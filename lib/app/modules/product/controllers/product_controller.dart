@@ -120,6 +120,7 @@ class ProductController extends GetxController {
 
   //edit
   void editClick(Product data) async {
+    clear();
     nameController = TextEditingController(text: data.name ?? '');
     codeController = TextEditingController(text: data.code ?? '');
     editId = data.id.toString();

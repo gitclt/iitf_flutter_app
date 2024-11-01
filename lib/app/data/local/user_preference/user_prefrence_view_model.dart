@@ -10,14 +10,14 @@ class UserPreference {
     // List<Branch> branch,
     // List<Privilage> privilages,
   ) async {
-    LocalStorageKey.userName = userData.name ?? 'Error';
+    LocalStorageKey.userName = userData.name ?? '';
     LocalStorageKey.stallId = userData.stallId.toString();
     LocalStorageKey.stallName = userData.stallId.toString();
-    LocalStorageKey.address = userData.address ?? 'Error';
-    LocalStorageKey.phone = userData.mobile ?? 'Error';
-    LocalStorageKey.websiteAddress = userData.address ?? 'Error';
-    LocalStorageKey.department = userData.department ?? 'Error';
-
+    LocalStorageKey.address = userData.address ?? '';
+    LocalStorageKey.phone = userData.mobile ?? '';
+    LocalStorageKey.websiteAddress = userData.address ?? '';
+    LocalStorageKey.department = userData.department ?? '';
+    LocalStorageKey.rating = userData.rating ?? 5.0;
     return true;
   }
 

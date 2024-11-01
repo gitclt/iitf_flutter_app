@@ -6,4 +6,5 @@ class AppAuthUrl {
   static String login = '$baseUrl/Stall/Login';
 
   static String profileApi = '$baseUrl/Stall/profile';
+  static String appVersion = '$baseUrl/appversionmodels/Getappversionmodel';
 }
