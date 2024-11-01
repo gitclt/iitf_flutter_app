@@ -84,7 +84,8 @@ class PreordersController extends GetxController
     }, (resData) {
      
       Utils.snackBar('Order', resData.message!);
-    //  get();
+     get(status: 'pending');
+     
     });
   }
 }

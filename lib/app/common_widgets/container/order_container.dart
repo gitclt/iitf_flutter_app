@@ -154,7 +154,7 @@ class OrderContainer extends StatelessWidget {
                     width,
                     ApproveButton(
                       ontap: () {
-                        approveClick!();
+                        rejectClick!();
                       },
                       label: 'REJECT',
                     )

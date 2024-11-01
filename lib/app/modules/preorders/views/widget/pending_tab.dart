@@ -38,13 +38,32 @@ class PendingTab extends StatelessWidget {
                     itemBuilder: (context, index) {
                       final item = controller.data[index];
                       return OrderContainer(
-                        approveClick: (){
-                          controller.updateStatus(
-                              id: item.id.toString(), status: 'approved');
+                        approveClick: () {
+                          // _showApproveDialog(context, item.id.toString());
+                          _showConfirmationDialog(
+                            context,
+                            title: 'Approve Order',
+                            content:
+                                'Are you sure you want to approve this order?',
+                            confirmAction: () {
+                              controller.updateStatus(
+                                  id: item.id.toString(), status: 'approved');
+                              Get.back(); // Close the dialog
+                            },
+                          );
                         },
                         rejectClick: () {
-                          controller.updateStatus(
-                              id: item.id.toString(), status: 'rejected');
+                          _showConfirmationDialog(
+                            context,
+                            title: 'Reject Order',
+                            content:
+                                'Are you sure you want to reject this order?',
+                            confirmAction: () {
+                              controller.updateStatus(
+                                  id: item.id.toString(), status: 'rejected');
+                              Get.back(); // Close the dialog
+                            },
+                          );
                         },
                         imageurl: 'assets/svg/dummy_image.svg',
                         type: 'pending',
@@ -60,5 +79,34 @@ class PendingTab extends StatelessWidget {
                     }))
           ],
         ));
+  }
+
+
+
+  void _showConfirmationDialog(BuildContext context,
+      {required String title,
+      required String content,
+      required VoidCallback confirmAction}) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(title),
+          content: Text(content),
+          actions: [
+            TextButton(
+              onPressed: confirmAction,
+              child: const Text('Confirm'),
+            ),
+            TextButton(
+              onPressed: () {
+                Get.back(); // Close the dialog on cancel
+              },
+              child: const Text('Cancel'),
+            ),
+          ],
+        );
+      },
+    );
   }
 }
