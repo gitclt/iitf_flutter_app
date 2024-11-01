@@ -49,6 +49,7 @@ class CategoryAdd extends GetView<CategoryController> {
                         AddButton(
                           onClick: () {
                             if (controller.formkey.currentState!.validate()) {
+                              FocusScope.of(context).requestFocus(FocusNode());
                               // if (controller.editId == '') {
                               controller.add();
                               // } else {
@@ -68,6 +69,7 @@ class CategoryAdd extends GetView<CategoryController> {
                           bgColor: AppColor.green,
                           onClick: () {
                             if (controller.formkey.currentState!.validate()) {
+                              FocusScope.of(context).requestFocus(FocusNode());
                               controller.edit();
                             }
                           },

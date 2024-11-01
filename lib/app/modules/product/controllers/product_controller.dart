@@ -66,16 +66,17 @@ class ProductController extends GetxController {
   void add() async {
     isLoading(true);
     final res = await _repo.addProduct(
-        cadId: int.tryParse(sdCat.id!),
-        name: nameController.text,
-        code: codeController.text,
-        image: imageName.value,
-        imagedata: encodedData,
-        price: priceController.text,
-        stallid: LocalStorageKey.stallId,
-        offerPrice: offerController.text,
-        description: descriptionController.text,
-        visible: '1');
+      cadId: int.tryParse(sdCat.id!),
+      name: nameController.text,
+      code: codeController.text,
+      image: imageName.value,
+      imagedata: encodedData,
+      price: priceController.text,
+      stallid: LocalStorageKey.stallId,
+      offerPrice: offerController.text,
+      description: descriptionController.text,
+      visible: isVisible.value ? '1' : '0',
+    );
     res.fold(
       (failure) {
         isLoading(false);

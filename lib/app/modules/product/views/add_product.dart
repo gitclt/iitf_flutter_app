@@ -97,6 +97,7 @@ class ProductAdd extends GetView<ProductController> {
                 textController: controller.priceController,
                 hintText: 'Enter Price',
                 width: width,
+                keyboard: TextInputType.number,
                 label: 'Price',
                 visible: true,
                 validator: (value) {
@@ -110,6 +111,7 @@ class ProductAdd extends GetView<ProductController> {
                 textController: controller.offerController,
                 hintText: "Enter Offer Price",
                 width: width,
+                keyboard: TextInputType.number,
                 label: 'Offer Price',
                 visible: true,
                 validator: (value) {
@@ -121,16 +123,17 @@ class ProductAdd extends GetView<ProductController> {
               ),
               SizedBox(
                 width: width,
-                height: size.height * 0.075,
                 child: Row(
                   children: [
-                    Checkbox(
-                      activeColor: AppColor.primary,
-                      value: controller.isVisible.value,
-                      onChanged: (value) {
-                        // controller.launchCheckbox();
-                      },
-                    ),
+                    Obx(() => Checkbox(
+                          activeColor: AppColor.primary,
+                          value: controller.isVisible.value,
+                          onChanged: (value) {
+                            controller.isVisible.value =
+                                !controller.isVisible.value;
+                            // controller.launchCheckbox();
+                          },
+                        )),
                     const SizedBox(
                       width: 5,
                     ),

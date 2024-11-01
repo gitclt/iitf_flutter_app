@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:iitf_flutter_tab/app/routes/app_pages.dart';
 
-
 void main() async {
   await Hive.initFlutter();
   await Hive.openBox('token');
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   runApp(
     GetMaterialApp.router(
       // translations: Languages(),
