@@ -6,7 +6,7 @@ class OrderUrl {
   //order
 
   static String orderListApi = '$baseUrl/Order/view_order';
-  // static String orderAddApi = '$baseUrl/Product/add_product';
+ static String orderupdateStatusApi = '$baseUrl/Order/update_status';
   // static String orderEditApi = '$baseUrl/Product/edit_product';
   // static String orderDeleteApi = '$baseUrl/Product/Delete_product';
 }

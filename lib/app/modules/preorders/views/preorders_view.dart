@@ -9,7 +9,6 @@ import 'package:iitf_flutter_tab/app/modules/preorders/views/widget/approve_tab.
 import 'package:iitf_flutter_tab/app/modules/preorders/views/widget/pending_tab.dart';
 import 'package:iitf_flutter_tab/app/modules/preorders/views/widget/reject_tab.dart';
 
-
 import '../controllers/preorders_controller.dart';
 
 class PreordersView extends GetView<PreordersController> {
@@ -51,6 +50,9 @@ class PreordersView extends GetView<PreordersController> {
                   Tab(text: "Approved Order"),
                   Tab(text: "Rejected Order"),
                 ],
+                onTap: (value) {
+                   controller.updateOrderListBasedOnTab(value);
+                },
                 indicatorColor: AppColor.primary,
                 isScrollable: true,
                 labelColor: Colors.black,
@@ -59,8 +61,19 @@ class PreordersView extends GetView<PreordersController> {
             ),
             Expanded(
               child: TabBarView(
+                physics: const NeverScrollableScrollPhysics(),
                 controller: controller.tabcontroller,
-                children: const [PendingTab(), ApproveTab(), RejectTab()],
+                children: [
+                  PendingTab(
+                    controller: controller,
+                  ),
+                  ApproveTab(
+                    controller: controller,
+                  ),
+                  RejectTab(
+                    controller: controller,
+                  )
+                ],
               ),
             ),
           ],

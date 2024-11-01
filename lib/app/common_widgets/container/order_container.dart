@@ -8,10 +8,31 @@ import 'package:iitf_flutter_tab/app/core/assets/image_assets.dart';
 
 class OrderContainer extends StatelessWidget {
   final String type;
-  final String itemname, qty, price, offerprice, date, name, phone,discription;
+  final String itemname,
+      qty,
+      price,
+      offerprice,
+      date,
+      name,
+      phone,
+      discription,
+      imageurl;
+  final VoidCallback? approveClick;
+  final VoidCallback? rejectClick;
   const OrderContainer({
     super.key,
-    required this.type, required this.itemname, required this.qty, required this.price, required this.offerprice, required this.date, required this.name, required this.phone, required this.discription,
+    required this.type,
+    required this.itemname,
+    required this.qty,
+    required this.price,
+    required this.offerprice,
+    required this.date,
+    required this.name,
+    required this.phone,
+    required this.discription,
+    required this.imageurl,
+    this.approveClick,
+    this.rejectClick,
   });
 
   @override
@@ -29,7 +50,7 @@ class OrderContainer extends StatelessWidget {
           border: Border.all(color: AppColor.dividerColor)),
       child: Row(
         children: [
-          svgWidget('assets/svg/rope.svg'),
+          svgWidget(imageurl),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -93,13 +114,19 @@ class OrderContainer extends StatelessWidget {
               height,
               Visibility(
                 visible: type == 'pending' ? true : false,
-                child: const Row(
+                child: Row(
                   children: [
                     ApproveButton(
+                      ontap: () {
+                        approveClick!();
+                      },
                       label: 'APPROVE',
                     ),
                     width,
                     ApproveButton(
+                      ontap: () {
+                           approveClick!();
+                      },
                       label: 'REJECT',
                     )
                   ],

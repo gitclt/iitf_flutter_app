@@ -1,45 +1,53 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/container/order_container.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/text/text_widget.dart';
 import 'package:iitf_flutter_tab/app/constants/colors.dart';
+import 'package:iitf_flutter_tab/app/core/globals/date_time_formating.dart';
+import 'package:iitf_flutter_tab/app/modules/preorders/controllers/preorders_controller.dart';
 
 class RejectTab extends StatelessWidget {
-  const RejectTab({super.key});
+  final PreordersController controller;
+  const RejectTab({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const SizedBox(
-          height: 15,
-        ),
-        Row(
+    return Obx(() => Column(
           children: [
-            colorText('No. of orders : 20', 18, color: AppColor.primary),
-            const VerticalDivider(),
-            colorText('Order Value : ₹1200.00', 18, color: AppColor.primary)
+            const SizedBox(
+              height: 15,
+            ),
+            Row(
+              children: [
+                colorText('No. of orders : ${controller.ordercount}', 18,
+                    color: AppColor.primary),
+                const VerticalDivider(),
+                colorText('Order Value :  ${controller.orderValue}', 18,
+                    color: AppColor.primary)
+              ],
+            ),
+            const SizedBox(
+              height: 15,
+            ),
+            Expanded(
+                child: ListView.builder(
+                    itemCount: controller.data.length,
+                    itemBuilder: (context, index) {
+                      final item = controller.data[index];
+                      return OrderContainer(
+                        imageurl: 'assets/svg/dummy_image.svg',
+                        type: 'reject',
+                        itemname: item.productName ?? '',
+                        discription: item.category ?? '',
+                        qty: item.quantity.toString(),
+                        price: item.price.toString(),
+                        offerprice: item.offerPrice.toString(),
+                        date: dateFormatString(item.date ?? ''),
+                        name: item.customer ?? '',
+                        phone: item.mobile ?? '',
+                      );
+                    }))
           ],
-        ),
-        const SizedBox(
-          height: 15,
-        ),
-        Expanded(
-            child: ListView.builder(
-                itemCount: 3,
-                itemBuilder: (context, index) {
-                  return const OrderContainer(
-                    type: 'reject',
-                                        itemname: "Rope",
-                    discription: "cultural",
-                    qty: '01',
-                    price: '220.00',
-                    offerprice: '180.00',
-                    date: '24/10/24',
-                    name: 'Rajesh',
-                    phone: '1234567890',
-                  );
-                }))
-      ],
-    );
+        ));
   }
 }
