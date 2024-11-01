@@ -73,7 +73,7 @@ class UserData {
   int? departmentId;
   String? department;
   String? description;
-  dynamic rating;
+  double? rating;
   dynamic companyName;
   dynamic websiteAddress;
 
@@ -98,7 +98,7 @@ class UserData {
         departmentId: json["department_id"],
         department: json["department"],
         description: json["description"],
-        rating: json["rating"],
+        rating: json["rating"].toDouble(),
         companyName: json["company_name"],
         websiteAddress: json["website_address"],
       );

@@ -3,6 +3,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/svg_icons/svg_widget.dart';
 import 'package:iitf_flutter_tab/app/constants/colors.dart';
 import 'package:iitf_flutter_tab/app/constants/strings.dart';
+import 'package:iitf_flutter_tab/app/core/assets/image_assets.dart';
 
 class HomeAppbar extends StatelessWidget implements PreferredSizeWidget {
   @override
@@ -31,7 +32,7 @@ class HomeAppbar extends StatelessWidget implements PreferredSizeWidget {
         title: Row(
           children: [
             IconButton(
-              icon: svgWidget('assets/svg/Profile.svg'),
+              icon: svgWidget(SvgAssets.appbarIcon),
               onPressed: ontap,
             ),
             Column(
