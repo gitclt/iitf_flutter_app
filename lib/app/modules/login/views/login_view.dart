@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/button/common_button.dart';
-import 'package:iitf_flutter_tab/app/common_widgets/svg_icons/svg_widget.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/textfeild/login_textfeild.dart';
 import 'package:iitf_flutter_tab/app/core/assets/image_assets.dart';
 
@@ -19,27 +18,14 @@ class LoginView extends GetView<LoginController> {
         physics: const ScrollPhysics(),
         child: Form(
           // key: controller.formkey1,
-          child: Stack(
-            children: [
-              Positioned(
-                  top: 0, // Adjust top position as needed
-                  left: 0, // Adjust left position as needed
-                  child: svgWidget(
-                    'assets/svg/login_icon.svg',
-                    size: size.height * 0.25,
-                  )),
+          child:
+          
               Column(
                 children: [
-                  Positioned(
-                    left: 20,
-                    right: 20,
-                    bottom: 20,
-                    top: 20,
-                    child: SizedBox(
-                      height: size.height * 0.4,
-                      child: Image.asset(
-                        ImageAssets.mainLogo,
-                      ),
+                  SizedBox(
+                    height: size.height * 0.4,
+                    child: Image.asset(
+                      ImageAssets.mainLogo,
                     ),
                   ),
                   Column(
@@ -76,21 +62,14 @@ class LoginView extends GetView<LoginController> {
                               controller.login();
                               // }
                             },
-                            label: 'login'.tr,
+                            
+                            label: 'login',
                           ))
                     ],
                   ).paddingSymmetric(horizontal: 30, vertical: 15),
                 ],
               ),
-              // Positioned(
-              //     bottom: 0, // Adjust bottom position as needed
-              //     right: 0, // Adjust right position as needed
-              //     child: svgWidget(
-              //       'assets/svg/login_icon1.svg',
-              //       size: size.height * 0.25,
-              //     )),
-            ],
-          ),
+             
         ),
       ),
     );
