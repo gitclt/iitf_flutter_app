@@ -65,8 +65,11 @@ class PendingTab extends StatelessWidget {
                             },
                           );
                         },
-                        imageurl: 'assets/svg/dummy_image.svg',
+                        imageurl: item.imageurl == null
+                            ? 'assets/svg/dummy_image.svg'
+                            : item.imageurl ?? '',
                         type: 'pending',
+                        id: item.id.toString(),
                         itemname: item.productName ?? '',
                         discription: item.category ?? '',
                         qty: item.quantity.toString(),
@@ -80,8 +83,6 @@ class PendingTab extends StatelessWidget {
           ],
         ));
   }
-
-
 
   void _showConfirmationDialog(BuildContext context,
       {required String title,

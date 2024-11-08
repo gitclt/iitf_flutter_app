@@ -39,6 +39,7 @@ class PreordersController extends GetxController
   void get({required String status}) async {
     setRxRequestStatus(Status.loading);
     data.clear();
+    data.refresh();
     final res = await _repo.getOrderList(
       stallid: LocalStorageKey.stallId,
       page: 1,
@@ -56,6 +57,7 @@ class PreordersController extends GetxController
         data.addAll(resData.data!);
       }
     });
+    data.refresh();
   }
 
   void updateOrderListBasedOnTab(int tabIndex) {
@@ -72,20 +74,15 @@ class PreordersController extends GetxController
     }
   }
 
-
-
-
   //update
-  void updateStatus({required String id,status}) async {
-    final res = await _repo.updateStatus(id:id ,status: status);
+  void updateStatus({required String id, status}) async {
+    final res = await _repo.updateStatus(id: id, status: status);
     res.fold((failure) {
       Utils.snackBar(' Error', failure.message);
       setError(error.toString());
     }, (resData) {
-     
       Utils.snackBar('Order', resData.message!);
-     get(status: 'pending');
-     
+      get(status: 'pending');
     });
   }
 }

@@ -34,9 +34,12 @@ class ApproveTab extends StatelessWidget {
                     itemBuilder: (context, index) {
                       final item = controller.data[index];
                       return OrderContainer(
-                        imageurl: item.imageurl == null ? 'assets/svg/dummy_image.svg': item.imageurl??'',
+                        imageurl: item.imageurl == null
+                            ? 'assets/svg/dummy_image.svg'
+                            : item.imageurl ?? '',
                         type: 'approve',
                         itemname: item.productName ?? '',
+                        id: item.id.toString(),
                         discription: item.category ?? '',
                         qty: item.quantity.toString(),
                         price: item.price.toString(),

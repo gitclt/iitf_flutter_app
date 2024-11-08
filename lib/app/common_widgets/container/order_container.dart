@@ -16,7 +16,8 @@ class OrderContainer extends StatelessWidget {
       name,
       phone,
       discription,
-      imageurl;
+      imageurl,
+      id;
   final VoidCallback? approveClick;
   final VoidCallback? rejectClick;
   const OrderContainer({
@@ -31,6 +32,7 @@ class OrderContainer extends StatelessWidget {
     required this.phone,
     required this.discription,
     required this.imageurl,
+    required this.id,
     this.approveClick,
     this.rejectClick,
   });
@@ -83,7 +85,9 @@ class OrderContainer extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              boldText(itemname, fontSize: 18),
+              boldText("#$id", fontSize: 18),
+              height,
+              boldText(itemname, fontSize: 16),
               height,
               colorText(discription, 14),
               height,
