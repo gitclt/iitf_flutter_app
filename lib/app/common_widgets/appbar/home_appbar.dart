@@ -42,13 +42,6 @@ class HomeAppbar extends StatelessWidget implements PreferredSizeWidget {
                 //   height: size.height * 0.035,
                 // ),
 
-                const Text(
-                  "Welcome",
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.black),
-                ),
                 Row(
                   children: [
                     SizedBox(
