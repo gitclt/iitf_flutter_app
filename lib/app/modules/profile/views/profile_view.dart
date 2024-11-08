@@ -20,9 +20,9 @@ class ProfileView extends GetView<ProfileController> {
     const height = SizedBox(
       height: 20,
     );
-    const width = SizedBox(
-      width: 200,
-    );
+    // const width = SizedBox(
+    //   width: 200,
+    // );
     return Scaffold(
         appBar: CommonAppBar(
           ontap: () {
@@ -48,7 +48,8 @@ class ProfileView extends GetView<ProfileController> {
                       const SizedBox(
                         width: 15,
                       ),
-                      colorText(LocalStorageKey.stallName, 20),
+                      colorText(LocalStorageKey.stallName, size.width * 0.025,
+                          color: AppColor.black, fontWeight: FontWeight.bold),
                       const Spacer(),
                       // const Icon(Icons.edit)
                     ],
@@ -58,7 +59,7 @@ class ProfileView extends GetView<ProfileController> {
               height,
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -77,7 +78,7 @@ class ProfileView extends GetView<ProfileController> {
                       ),
                     ],
                   ),
-                  width,
+                  // width,
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -131,7 +132,9 @@ class ProfileText extends StatelessWidget {
         const SizedBox(
           height: 8,
         ),
-        boldText(subtitle, fontSize: 18)
+        SizedBox(
+            width: MediaQuery.of(context).size.width * 0.4,
+            child: boldText(subtitle, fontSize: 18))
       ],
     ).paddingOnly(bottom: 20);
   }
