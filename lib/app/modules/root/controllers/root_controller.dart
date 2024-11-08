@@ -23,7 +23,7 @@ class RootController extends GetxController {
         if (value == true) {
           getLoginDetails();
         } else {
-          Get.rootDelegate.offNamed(Routes.VERSION_CHECK);
+          Get.rootDelegate.offNamed(Routes.versionCheck);
           // Get.offAllNamed(Routes.APP_VERSION);
         }
       },

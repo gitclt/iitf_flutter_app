@@ -6,7 +6,7 @@ import 'package:iitf_flutter_tab/app/constants/colors.dart';
 class HomeCard extends StatelessWidget {
   final String imagepath;
   final String tittle;
-  final String subtitle;
+  // final String subtitle;
   final String count;
   final Color color;
   final VoidCallback ontap;
@@ -14,7 +14,7 @@ class HomeCard extends StatelessWidget {
     super.key,
     required this.imagepath,
     required this.tittle,
-    required this.subtitle,
+    // required this.subtitle,
     required this.count,
     required this.color, required this.ontap,
   });
@@ -46,13 +46,13 @@ class HomeCard extends StatelessWidget {
                     style: const TextStyle(
                         fontWeight: FontWeight.w500, fontSize: 24),
                   ),
-                  Text(
-                    subtitle,
-                    style: const TextStyle(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 12,
-                        color: AppColor.greyColor),
-                  )
+                  // Text(
+                  //   subtitle,
+                  //   style: const TextStyle(
+                  //       fontWeight: FontWeight.w500,
+                  //       fontSize: 12,
+                  //       color: AppColor.greyColor),
+                  // )
                 ],
               ),
               const Spacer(),

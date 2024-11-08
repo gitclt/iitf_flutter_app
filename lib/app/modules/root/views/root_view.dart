@@ -39,6 +39,7 @@ class RootView extends GetView<RootController> {
           // height: 150,
           // width: 150,
           child: Image.asset(
+            
             ImageAssets.splashScreen,
           ),
         ),

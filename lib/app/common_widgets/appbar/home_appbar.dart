@@ -51,27 +51,30 @@ class HomeAppbar extends StatelessWidget implements PreferredSizeWidget {
                 ),
                 Row(
                   children: [
-                    Text(
-                      LocalStorageKey.stallName,
-                      style: const TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black),
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    RatingBarIndicator(
-                      rating: LocalStorageKey.rating,
-                      itemBuilder: (context, index) => Icon(
-                        Icons.star,
-                        color: AppColor.primary,
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.8,
+                      child: Text(
+                        LocalStorageKey.stallName,
+                        style: const TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.black),
                       ),
-                      itemCount: 5,
-                      itemSize: 20.0,
-                      direction: Axis.horizontal,
                     ),
+                    // const SizedBox(
+                    //   width: 10,
+                    // ),
                   ],
+                ),
+                RatingBarIndicator(
+                  rating: LocalStorageKey.rating,
+                  itemBuilder: (context, index) => Icon(
+                    Icons.star,
+                    color: AppColor.primary,
+                  ),
+                  itemCount: 5,
+                  itemSize: 20.0,
+                  direction: Axis.horizontal,
                 ),
               ],
             ),

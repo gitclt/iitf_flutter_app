@@ -64,7 +64,6 @@ class HomeView extends GetView<HomeController> {
                       },
                       imagepath: SvgAssets.preorderIcon,
                       tittle: 'Pre orders',
-                      subtitle: '+8% from yesterday',
                       count: controller.isLoading.value == true
                           ? ''
                           : controller.data.isNotEmpty
@@ -82,7 +81,6 @@ class HomeView extends GetView<HomeController> {
                       },
                       imagepath: SvgAssets.productIcon,
                       tittle: 'Products',
-                      subtitle: '+8% from yesterday',
                       count: controller.isLoading.value == true
                           ? ''
                           : controller.data.isNotEmpty
@@ -100,7 +98,6 @@ class HomeView extends GetView<HomeController> {
                       },
                       imagepath: SvgAssets.categoryIcon,
                       tittle: 'Category',
-                      subtitle: '+8% from yesterday',
                       count: controller.isLoading.value == true
                           ? ''
                           : controller.data.isNotEmpty
@@ -119,7 +116,6 @@ class HomeView extends GetView<HomeController> {
                       },
                       imagepath: SvgAssets.ratingIcon,
                       tittle: 'Rating',
-                      subtitle: '+8% from yesterday',
                       count: controller.isLoading.value == true
                           ? ''
                           : controller.data.isNotEmpty

@@ -38,7 +38,9 @@ class HomeContainer extends StatelessWidget {
           SizedBox(
             width: size.width * 0.02,
           ),
-          svgWidget(icon),
+          svgWidget(
+            icon,
+          ),
           SizedBox(
             width: size.width * 0.008,
           ),
