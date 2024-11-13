@@ -6,6 +6,7 @@ import 'package:iitf_flutter_tab/app/constants/strings.dart';
 import 'package:iitf_flutter_tab/app/domain/entity/dropdown_entity.dart';
 
 import 'package:iitf_flutter_tab/app/domain/repositories/rating/rating_repository.dart';
+import 'package:iitf_flutter_tab/app/modules/home/controllers/home_controller.dart';
 import 'package:iitf_flutter_tab/app/utils/utils.dart';
 
 class RatingController extends GetxController {
@@ -23,6 +24,7 @@ class RatingController extends GetxController {
   RxString rating2 = ''.obs;
   RxString error = ''.obs;
   void setError(String value) => error.value = value;
+  final HomeController homeController = Get.find();
 
   var states = <DropDownModel>[].obs;
   DropDownModel? selectedState;
