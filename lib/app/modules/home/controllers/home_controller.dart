@@ -33,6 +33,9 @@ class HomeController extends GetxController {
     if (status) {
       gethome();
       getcat();
+
+      getRatingLocalDb();
+      getEnqLocalDb();
     } else {
       getCatLocalDb();
       getRatingLocalDb();
@@ -99,7 +102,7 @@ class HomeController extends GetxController {
 
   saveRatingToLocal() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString("ratingData", jsonEncode(categories));
+    prefs.setString("ratingData", jsonEncode(ratingDataList));
   }
 
   getRatingLocalDb() async {
@@ -144,7 +147,7 @@ class HomeController extends GetxController {
 
   saveEnqToLocal() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString("enqData", jsonEncode(categories));
+    prefs.setString("enqData", jsonEncode(enqDataList));
   }
 
   getEnqLocalDb() async {
