@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:iitf_flutter_tab/app/constants/strings.dart';
+import 'package:iitf_flutter_tab/app/data/model/rating/rating_add_model.dart';
 import 'package:iitf_flutter_tab/app/domain/repositories/rating/rating_repository.dart';
 import 'package:iitf_flutter_tab/app/utils/utils.dart';
 
@@ -20,13 +21,11 @@ class RatingController extends GetxController {
   void add() async {
     isLoading(true);
     final res = await _repo.addRating(
-      name: nameController.text,
-      phone: phoneController.text,
-      ratingvalue: rating.value,
-      stallid: LocalStorageKey.stallId,
-      discription:descriptionController.text
-
-    );
+        name: nameController.text,
+        phone: phoneController.text,
+        ratingvalue: rating.value,
+        stallid: LocalStorageKey.stallId,
+        discription: descriptionController.text);
     res.fold(
       (failure) {
         isLoading(false);
@@ -49,6 +48,5 @@ class RatingController extends GetxController {
     phoneController.clear();
     descriptionController.clear();
     rating = ''.obs;
-     
   }
 }

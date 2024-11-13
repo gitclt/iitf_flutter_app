@@ -12,8 +12,8 @@ import 'package:iitf_flutter_tab/app/utils/utils.dart';
 class LoginController extends GetxController {
   final formkey1 = GlobalKey<FormState>();
   final _useapi = ProfileRepository();
-  final emailController = TextEditingController().obs;
-  final passwordController = TextEditingController().obs;
+  final emailController = TextEditingController(text: '0000000000').obs;
+  final passwordController = TextEditingController(text: 'admin@1234').obs;
   final _api = LoginRepository();
   final apiServices = NetworkApiServices();
   UserPreference userPreference = UserPreference();
