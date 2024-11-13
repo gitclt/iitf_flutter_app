@@ -6,6 +6,7 @@ import 'package:iitf_flutter_tab/app/common_widgets/appbar/home_appbar.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/card/home_card.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/container/home_container.dart';
 import 'package:iitf_flutter_tab/app/constants/colors.dart';
+import 'package:iitf_flutter_tab/app/constants/orientation_controller.dart';
 import 'package:iitf_flutter_tab/app/core/assets/image_assets.dart';
 import 'package:iitf_flutter_tab/app/routes/app_pages.dart';
 
@@ -109,8 +110,8 @@ class HomeView extends GetView<HomeController> {
                       height: size.height * 0.035,
                     ),
                     HomeCard(
-                      ontap: () async{
-                      
+                      ontap: () async {
+                       
                         await Get.rootDelegate.toNamed(Routes.rating);
 
                         controller.get();

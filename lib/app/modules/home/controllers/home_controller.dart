@@ -9,6 +9,7 @@ class HomeController extends GetxController {
      final _repo = HomeRepository();
   RxList<HomeResponse> data = <HomeResponse>[].obs;
   RxString error = ''.obs;
+  
     @override
   void onInit() {
     get();

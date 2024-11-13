@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:iitf_flutter_tab/app/constants/strings.dart';
@@ -65,19 +66,37 @@ class RatingController extends GetxController {
     update(); // Notify the UI
   }
 
+  void onInit() {
+    super.onInit();
+    // Set landscape orientation when this page is initialized
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.landscapeRight,
+    ]);
+  }
+
+  @override
+  void onClose() {
+    // Reset orientation to default when this page is closed
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.landscapeRight,
+    ]);
+    super.onClose();
+  }
 
   //add
 
   void add() async {
     isLoading(true);
     final res = await _repo.addRating(
-      name: nameController.text,
-      phone: phoneController.text,
-      ratingvalue: rating.value,
-      stallid: LocalStorageKey.stallId,
-      discription:descriptionController.text
-
-    );
+        name: nameController.text,
+        phone: phoneController.text,
+        ratingvalue: rating.value,
+        stallid: LocalStorageKey.stallId,
+        discription: descriptionController.text);
     res.fold(
       (failure) {
         isLoading(false);
@@ -100,6 +119,5 @@ class RatingController extends GetxController {
     phoneController.clear();
     descriptionController.clear();
     rating = ''.obs;
-     
   }
 }
