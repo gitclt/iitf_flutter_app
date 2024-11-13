@@ -13,10 +13,10 @@ class RatingView extends GetView<RatingController> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
-        appBar: CommonAppBar(
-          ontap: () {
-            Get.back();
-          },
+        appBar: CommonAppBar(ontap: () { 
+          
+         },
+          
         ),
         body: DefaultTabController(
             length: 2,

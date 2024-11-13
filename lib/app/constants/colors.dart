@@ -36,4 +36,5 @@ class AppColor {
   static const cardColor2 = Color(0xFF3CD856);
   static const cardColor3 = Color(0xFFD4C744);
   static const cardColor4 = Color(0xFFBF83FF);
+  static const Color ratingColor = Color(0xFFF8B545);
 }
