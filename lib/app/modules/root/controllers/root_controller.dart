@@ -55,7 +55,7 @@ class RootController extends GetxController {
     Future.delayed(const Duration(seconds: 0)).then((value) async {
       final user = await userPreference.isLoged();
 
-      if (user != null) {
+      if (user != null && user.isNotEmpty) {
         Get.rootDelegate.offNamed(Routes.home);
       } else {
         gotoLogin();
