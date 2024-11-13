@@ -4,6 +4,8 @@
 
 import 'dart:convert';
 
+import 'package:get/get.dart';
+
 
 CategoryModel categoryModelFromJson(String str) =>
     CategoryModel.fromJson(json.decode(str));
@@ -41,15 +43,18 @@ class CategoryModel {
 class Category {
   String? id;
   String? category;
+   RxBool? isSelect;
 
   Category({
     this.id,
     this.category,
+    this.isSelect
   });
 
   factory Category.fromJson(Map<String, dynamic> json) => Category(
         id: json["id"],
         category: json["category"],
+         isSelect: false.obs,
       );
 
   Map<String, dynamic> toJson() => {

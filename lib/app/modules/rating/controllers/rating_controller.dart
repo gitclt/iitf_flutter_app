@@ -15,9 +15,8 @@ class RatingController extends GetxController {
   TextEditingController descriptionController = TextEditingController();
   TextEditingController stateController = TextEditingController();
   final formkey = GlobalKey<FormState>();
-  // final productrepo = ProductRepository();
-  // RxList<Product> productData = <Product>[].obs;
-  // RxBool isProductLoading = false.obs;
+  final formkey1 = GlobalKey<FormState>();
+
   RxBool isLoading = false.obs;
   final _repo = RatingRepository();
   RxString rating1 = ''.obs;
@@ -72,7 +71,7 @@ class RatingController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-   
+
     loadStates();
     // Set landscape orientation when this page is initialized
     SystemChrome.setPreferredOrientations([
