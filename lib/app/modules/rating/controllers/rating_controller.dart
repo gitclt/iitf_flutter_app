@@ -13,7 +13,12 @@ class RatingController extends GetxController {
   TextEditingController nameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
-  TextEditingController stateController = TextEditingController();
+
+  TextEditingController enqNameController = TextEditingController();
+  TextEditingController enqPhoneController = TextEditingController();
+  TextEditingController enqEmailController = TextEditingController();
+  TextEditingController enquiryController = TextEditingController();
+
   final formkey = GlobalKey<FormState>();
   final formkey1 = GlobalKey<FormState>();
 
@@ -27,6 +32,7 @@ class RatingController extends GetxController {
 
   var states = <DropDownModel>[].obs;
   DropDownModel? selectedState;
+  DropDownModel? detailSelectedState;
   void loadStates() {
     states.value = [
       DropDownModel(id: 'AndhraPradesh', name: 'Andhra Pradesh'),
@@ -65,6 +71,7 @@ class RatingController extends GetxController {
   void onStateSelected(DropDownModel? state) {
     if (state == null) return;
     selectedState = state;
+    detailSelectedState = state;
     update(); // Notify the UI
   }
 
