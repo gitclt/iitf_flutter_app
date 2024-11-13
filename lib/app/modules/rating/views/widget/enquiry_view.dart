@@ -187,8 +187,25 @@ class EnquiryView extends GetView<RatingController> {
                               state: controller.selectedState!.id.toString(),
                               catIds: cat,
                               enquiry: controller.enquiryController.text));
-
-                          Get.back();
+                          controller.clrEnqValue();
+                       // Display a success dialog
+                          Get.dialog(
+                            AlertDialog(
+                              title: const Text("Success"),
+                              content: const Text(
+                                  "Your enquiry has been submitted successfully."),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    Get.back(); // Close the dialog
+                                  },
+                                  child: const Text("OK"),
+                                ),
+                              ],
+                            ),
+                            barrierDismissible: false,
+                          );
+                        
                         }
                       },
                       label: 'SUBMIT',

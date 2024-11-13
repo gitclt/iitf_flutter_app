@@ -2,11 +2,13 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:iitf_flutter_tab/app/constants/strings.dart';
+import 'package:iitf_flutter_tab/app/data/model/rating/rating_add_model.dart';
 
 import 'package:iitf_flutter_tab/app/domain/entity/dropdown_entity.dart';
 
 import 'package:iitf_flutter_tab/app/domain/repositories/rating/rating_repository.dart';
 import 'package:iitf_flutter_tab/app/modules/home/controllers/home_controller.dart';
+import 'package:iitf_flutter_tab/app/modules/rating/views/widget/success_popup.dart';
 import 'package:iitf_flutter_tab/app/utils/utils.dart';
 
 class RatingController extends GetxController {
@@ -117,11 +119,26 @@ class RatingController extends GetxController {
         if (resData.status!) {
           isLoading(false);
 
-          Utils.snackBar('Sucess', resData.message ?? '', type: 'success');
+          Utils.snackBar('Success', resData.message ?? '', type: 'success');
           clrValue();
         }
       },
     );
+  }
+
+  addFeedBack() async {
+    await homeController.addToRating(RatingAddModel(
+        stallId: int.parse(LocalStorageKey.stallId),
+        name: nameController.text,
+        mobile: phoneController.text,
+        description: descriptionController.text,
+        state: detailSelectedState.toString(),
+        overallExperience: rating1.value,
+        productOfferDisplay: rating2.value,
+        date: DateTime.now()));
+    clrValue();
+    Get.back();
+    Get.dialog(const SuccessPopup());
   }
 
   clrValue() {
@@ -129,5 +146,13 @@ class RatingController extends GetxController {
     phoneController.clear();
     descriptionController.clear();
     rating1 = ''.obs;
+    rating2 = ''.obs;
+  }
+   clrEnqValue() {
+    enqNameController.clear();
+    enqPhoneController.clear();
+    enqEmailController.clear();
+    enquiryController.clear();
+    selectedState = DropDownModel(id: '', name: '');
   }
 }
