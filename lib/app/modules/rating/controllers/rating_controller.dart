@@ -11,10 +11,12 @@ class RatingController extends GetxController {
   TextEditingController nameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
+  TextEditingController stateController = TextEditingController();
   final formkey = GlobalKey<FormState>();
   RxBool isLoading = false.obs;
   final _repo = RatingRepository();
-  RxString rating = ''.obs;
+  RxString rating1 = ''.obs;
+  RxString rating2 = ''.obs;
   RxString error = ''.obs;
   void setError(String value) => error.value = value;
 
@@ -61,6 +63,7 @@ class RatingController extends GetxController {
     update(); // Notify the UI
   }
 
+  @override
   void onInit() {
     super.onInit();
     loadStates();
@@ -90,7 +93,7 @@ class RatingController extends GetxController {
     final res = await _repo.addRating(
         name: nameController.text,
         phone: phoneController.text,
-        ratingvalue: rating.value,
+        ratingvalue: rating1.value,
         stallid: LocalStorageKey.stallId,
         discription: descriptionController.text);
     res.fold(
@@ -114,6 +117,6 @@ class RatingController extends GetxController {
     nameController.clear();
     phoneController.clear();
     descriptionController.clear();
-    rating = ''.obs;
+    rating1 = ''.obs;
   }
 }
