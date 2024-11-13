@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:iitf_flutter_tab/app/common_widgets/text/text_widget.dart';
 
-class RatingAppbar extends StatelessWidget implements PreferredSizeWidget{
-   @override
-     final Size preferredSize;
-  const RatingAppbar({super.key}) : preferredSize = const Size.fromHeight(80.0);
+class RatingAppbar extends StatelessWidget implements PreferredSizeWidget {
+  @override
+  final Size preferredSize;
+  final String title;
+  final String subTitle;
+  const RatingAppbar({super.key, required this.title, required this.subTitle})
+      : preferredSize = const Size.fromHeight(80.0);
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-        leading: Image.asset('assets/images/rating_page_logo.png'),
-        title: const Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [],
-        ),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      );
+      leading: Image.asset('assets/images/rating_page_logo.png'),
+      title: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [boldText(title, fontSize: 16), colorText(subTitle, 14)],
+      ),
+      backgroundColor: Colors.transparent,
+      elevation: 1,
+    );
   }
-  
- 
 }

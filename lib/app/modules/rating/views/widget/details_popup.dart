@@ -4,8 +4,6 @@ import 'package:iitf_flutter_tab/app/common_widgets/button/add_button.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/drop_down/drop_down3_widget.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/text/text_widget.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/textfeild/add_new_widget.dart';
-import 'package:iitf_flutter_tab/app/constants/strings.dart';
-import 'package:iitf_flutter_tab/app/data/model/rating/rating_add_model.dart';
 import 'package:iitf_flutter_tab/app/modules/rating/controllers/rating_controller.dart';
 
 class RatingDetailsPopup extends GetView<RatingController> {
@@ -44,7 +42,7 @@ class RatingDetailsPopup extends GetView<RatingController> {
               ),
               Wrap(
                 spacing: 15,
-                runSpacing: 12,
+                runSpacing: 15,
                 children: [
                   AddTextFieldWidget(
                     label: 'Name',
@@ -85,16 +83,8 @@ class RatingDetailsPopup extends GetView<RatingController> {
               AddButton(
                   height: size.height * 0.08,
                   onClick: () {
-                    controller.homeController.addToRating(RatingAddModel(
-                        stallId: int.parse(LocalStorageKey.stallId),
-                        name: controller.nameController.text,
-                        mobile: controller.phoneController.text,
-                        description: controller.descriptionController.text,
-                        state: controller.detailSelectedState.toString(),
-                        overallExperience: controller.rating1.value,
-                        productOfferDisplay: controller.rating2.value,
-                        date: DateTime.now()));
-                    Get.back();
+                    controller.addFeedBack();
+                   
                   },
                   label: 'Submit')
             ],

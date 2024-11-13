@@ -24,10 +24,9 @@ class FeedbackView extends GetView<RatingController> {
               context,
               'How would you rate your overall experience at the Kerala Pavilion?',
               RatingBar.builder(
-                initialRating: double.tryParse(controller.rating1.value) ?? 0.0,
+                initialRating: double.tryParse(controller.rating1.value) ?? 0,
                 minRating: 1,
                 direction: Axis.horizontal,
-                allowHalfRating: true,
                 itemCount: 5,
                 itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
                 itemBuilder: (context, _) => const Icon(
@@ -49,7 +48,6 @@ class FeedbackView extends GetView<RatingController> {
                 initialRating: double.tryParse(controller.rating2.value) ?? 0.0,
                 minRating: 1,
                 direction: Axis.horizontal,
-                allowHalfRating: true,
                 itemCount: 5,
                 itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
                 itemBuilder: (context, _) => const Icon(
@@ -91,7 +89,7 @@ class FeedbackView extends GetView<RatingController> {
               height: size.height * 0.04,
             ),
             AddButton(
-              height: size.height * 0.1,
+              height: size.height * 0.08,
               onClick: () {
                 Get.dialog(const RatingDetailsPopup());
               },
