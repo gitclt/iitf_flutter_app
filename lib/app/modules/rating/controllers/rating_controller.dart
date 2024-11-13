@@ -26,8 +26,8 @@ class RatingController extends GetxController {
 
   RxBool isLoading = false.obs;
   final _repo = RatingRepository();
-  RxString rating1 = ''.obs;
-  RxString rating2 = ''.obs;
+  RxString rating1 = '5'.obs;
+  RxString rating2 = '5'.obs;
   RxString error = ''.obs;
   void setError(String value) => error.value = value;
   final HomeController homeController = Get.find();
@@ -145,8 +145,8 @@ class RatingController extends GetxController {
     nameController.clear();
     phoneController.clear();
     descriptionController.clear();
-    rating1 = ''.obs;
-    rating2 = ''.obs;
+    rating1 = '5'.obs;
+    rating2 = '5'.obs;
   }
 
   clrEnqValue() {
@@ -155,7 +155,7 @@ class RatingController extends GetxController {
     enqEmailController.clear();
     enquiryController.clear();
     selectedState = DropDownModel(id: '', name: '');
-     for (var category in homeController.categories) {
+    for (var category in homeController.categories) {
       category.isSelect?.value = false;
     }
   }

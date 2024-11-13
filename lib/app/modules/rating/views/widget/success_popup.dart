@@ -16,7 +16,7 @@ class SuccessPopup extends StatelessWidget {
       ),
       insetPadding: const EdgeInsets.all(20),
       child: SizedBox(
-        width: 200,
+        width: 300,
         child: Padding(
           padding: const EdgeInsets.all(15),
           child: Column(
