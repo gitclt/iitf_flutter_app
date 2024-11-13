@@ -46,10 +46,11 @@ Text colorText(String label, double fontSize,
   );
 }
 
-Text greyText(String label, 
-    {TextAlign? textAlign = TextAlign.center,
-    FontWeight? fontWeight = FontWeight.w400,
-    }) {
+Text greyText(
+  String label, {
+  TextAlign? textAlign = TextAlign.center,
+  FontWeight? fontWeight = FontWeight.w400,
+}) {
   return Text(
     label,
     textAlign: textAlign,
@@ -58,6 +59,6 @@ Text greyText(String label,
         fontWeight: fontWeight,
         fontFamily: 'Manrope',
         fontSize: 14,
-        color:  AppColor.grey1),
+        color: AppColor.grey1),
   );
 }

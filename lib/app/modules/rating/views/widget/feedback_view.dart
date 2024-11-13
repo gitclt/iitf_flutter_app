@@ -13,8 +13,9 @@ class FeedbackView extends GetView<RatingController> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
+    
     return Padding(
-      padding: const EdgeInsets.all(15.0),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 25),
       child: Column(
         children: [
           ratingContainer(
@@ -37,7 +38,7 @@ class FeedbackView extends GetView<RatingController> {
             ),
           ),
           const SizedBox(
-            height: 20,
+            height: 25,
           ),
           ratingContainer(
             context,
@@ -59,7 +60,7 @@ class FeedbackView extends GetView<RatingController> {
             ),
           ),
           const SizedBox(
-            height: 20,
+            height: 25,
           ),
           TextFormField(
             controller: controller.descriptionController,
@@ -103,7 +104,7 @@ Widget ratingContainer(
     BuildContext context, String rateQues, Widget ratingBar) {
   return Container(
     width: MediaQuery.of(context).size.width,
-    padding: const EdgeInsets.all(10),
+    padding: const EdgeInsets.all(20),
     decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
@@ -117,9 +118,9 @@ Widget ratingContainer(
         ]),
     child: Column(
       children: [
-        boldText(rateQues, fontWeight: FontWeight.w500),
+        boldText(rateQues, fontWeight: FontWeight.w500, fontSize: 24),
         const SizedBox(
-          height: 12,
+          height: 25,
         ),
         ratingBar
       ],

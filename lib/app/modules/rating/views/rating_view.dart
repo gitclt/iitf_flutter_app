@@ -1,17 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/appbar/common_appbar.dart';
-import 'package:iitf_flutter_tab/app/common_widgets/button/add_button.dart';
-import 'package:iitf_flutter_tab/app/common_widgets/container/home_container.dart';
-import 'package:iitf_flutter_tab/app/common_widgets/svg_icons/svg_widget.dart';
-import 'package:iitf_flutter_tab/app/common_widgets/textfeild/login_textfeild.dart';
-import 'package:iitf_flutter_tab/app/constants/colors.dart';
-import 'package:iitf_flutter_tab/app/constants/strings.dart';
-import 'package:iitf_flutter_tab/app/core/assets/image_assets.dart';
 import 'package:iitf_flutter_tab/app/modules/rating/views/widget/enquiry_view.dart';
 import 'package:iitf_flutter_tab/app/modules/rating/views/widget/feedback_view.dart';
-import 'package:iitf_flutter_tab/app/utils/utils.dart';
 
 import '../controllers/rating_controller.dart';
 
