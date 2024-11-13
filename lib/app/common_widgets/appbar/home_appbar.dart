@@ -11,13 +11,14 @@ class HomeAppbar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback ontap;
 
   const HomeAppbar({super.key, required this.ontap})
-      : preferredSize = const Size.fromHeight(90.0);
+      : preferredSize = const Size.fromHeight(70.0);
 
   @override
   Widget build(BuildContext context) {
     // var size = MediaQuery.of(context).size;
     return Container(
       // height: 120.0, // Set the container height to 120
+      padding: const EdgeInsets.all(5),
       decoration: const BoxDecoration(
         color: Colors.white,
         boxShadow: [

@@ -7,7 +7,7 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback ontap;
 
   const CommonAppBar({super.key, required this.ontap})
-      : preferredSize = const Size.fromHeight(90.0);
+      : preferredSize = const Size.fromHeight(70.0);
 
   @override
   Widget build(BuildContext context) {
