@@ -54,10 +54,11 @@ class HomeController extends GetxController {
 
       setError(error.toString());
     }, (resData) {
-      isLoading(false);
       if (resData.data != null) {
         data.addAll(resData.data!);
       }
+
+      isLoading(false);
     });
   }
 
@@ -118,22 +119,28 @@ class HomeController extends GetxController {
 
   RxBool isRatingSycing = false.obs;
   void syncRating() async {
-    if (ratingDataList.isEmpty) return;
-    isRatingSycing(true);
-    data.clear();
-    final res = await _syncRepo.syncRating(data: ratingDataList);
-    res.fold((failure) {
-      isRatingSycing(false);
-      Utils.snackBar('Error', failure.message);
-    }, (resData) {
-      isRatingSycing(false);
-      if (resData.status == true) {
-        ratingDataList.clear();
-        ratingDataList.refresh();
-        saveRatingToLocal();
-        Utils.snackBar('Sucess', resData.message ?? '', type: 'success');
-      }
-    });
+    final status = await isInternetAvailable();
+
+    if (status) {
+      if (ratingDataList.isEmpty) return;
+      isRatingSycing(true);
+      data.clear();
+      final res = await _syncRepo.syncRating(data: ratingDataList);
+      res.fold((failure) {
+        isRatingSycing(false);
+        Utils.snackBar('Error', failure.message);
+      }, (resData) {
+        isRatingSycing(false);
+        if (resData.status == true) {
+          ratingDataList.clear();
+          ratingDataList.refresh();
+          saveRatingToLocal();
+          Utils.snackBar('Sucess', resData.message ?? '', type: 'success');
+        }
+      });
+    } else {
+      Utils.snackBar('Error', "No Internet");
+    }
   }
 
   /// Enruiry
@@ -163,21 +170,27 @@ class HomeController extends GetxController {
 
   RxBool isEnqSycing = false.obs;
   void syncEnq() async {
-    if (enqDataList.isEmpty) return;
-    isEnqSycing(true);
-    data.clear();
-    final res = await _syncRepo.syncEnq(data: enqDataList);
-    res.fold((failure) {
-      isEnqSycing(false);
-      Utils.snackBar('Error', failure.message);
-    }, (resData) {
-      isEnqSycing(false);
-      if (resData.status == true) {
-        enqDataList.clear();
-        enqDataList.refresh;
-        saveEnqToLocal();
-        Utils.snackBar('Sucess', resData.message ?? '', type: 'success');
-      }
-    });
+    final status = await isInternetAvailable();
+
+    if (status) {
+      if (enqDataList.isEmpty) return;
+      isEnqSycing(true);
+      data.clear();
+      final res = await _syncRepo.syncEnq(data: enqDataList);
+      res.fold((failure) {
+        isEnqSycing(false);
+        Utils.snackBar('Error', failure.message);
+      }, (resData) {
+        isEnqSycing(false);
+        if (resData.status == true) {
+          enqDataList.clear();
+          enqDataList.refresh;
+          saveEnqToLocal();
+          Utils.snackBar('Sucess', resData.message ?? '', type: 'success');
+        }
+      });
+    } else {
+      Utils.snackBar('Error', "No Internet");
+    }
   }
 }
