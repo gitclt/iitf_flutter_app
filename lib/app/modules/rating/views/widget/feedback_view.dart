@@ -24,7 +24,7 @@ class FeedbackView extends GetView<RatingController> {
               context,
               'How would you rate your overall experience at the Kerala Pavilion?',
               RatingBar.builder(
-                initialRating: double.tryParse(controller.rating1.value) ?? 0,
+                initialRating: double.tryParse(controller.rating1.value) ?? 5,
                 minRating: 1,
                 direction: Axis.horizontal,
                 itemCount: 5,
@@ -34,7 +34,7 @@ class FeedbackView extends GetView<RatingController> {
                   color: AppColor.ratingColor,
                 ),
                 onRatingUpdate: (rating) {
-                  controller.rating1.value = rating.toString();
+                  controller.rating1.value = rating.toInt().toString();
                 },
               ),
             ),
@@ -45,7 +45,7 @@ class FeedbackView extends GetView<RatingController> {
               context,
               'How satisfied are you with the product offerings and displays at our stall?',
               RatingBar.builder(
-                initialRating: double.tryParse(controller.rating2.value) ?? 0.0,
+                initialRating: double.tryParse(controller.rating2.value) ?? 5,
                 minRating: 1,
                 direction: Axis.horizontal,
                 itemCount: 5,
@@ -55,7 +55,7 @@ class FeedbackView extends GetView<RatingController> {
                   color: AppColor.ratingColor,
                 ),
                 onRatingUpdate: (rating) {
-                  controller.rating2.value = rating.toString();
+                  controller.rating2.value = rating.toInt().toString();
                 },
               ),
             ),

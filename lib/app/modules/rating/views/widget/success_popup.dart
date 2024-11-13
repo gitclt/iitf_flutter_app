@@ -15,23 +15,34 @@ class SuccessPopup extends StatelessWidget {
         ),
       ),
       insetPadding: const EdgeInsets.all(20),
-      child: Padding(
-        padding: const EdgeInsets.all(15),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            IconButton(
-                onPressed: () {
-                  Get.back();
-                },
-                icon: const Icon(Icons.close)),
-            Image.asset('assets/images/Rating.png'),
-            const SizedBox(
-              height: 30,
-            ),
-            xtraBoldText('Thank You', 30, color: AppColor.primary),
-            boldText('Thank You for your Valuable Feedback')
-          ],
+      child: SizedBox(
+        width: 200,
+        child: Padding(
+          padding: const EdgeInsets.all(15),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  IconButton(
+                      onPressed: () {
+                        Get.back();
+                      },
+                      icon: const Icon(Icons.close)),
+                ],
+              ),
+              Image.asset('assets/images/Rating.png'),
+              const SizedBox(
+                height: 30,
+              ),
+              xtraBoldText('Thank You', 40, color: AppColor.primary),
+              const SizedBox(
+                height: 15,
+              ),
+              boldText('Thank You for your Valuable Feedback', fontSize: 15)
+            ],
+          ),
         ),
       ),
     );

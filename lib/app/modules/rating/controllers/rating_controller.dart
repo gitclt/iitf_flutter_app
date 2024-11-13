@@ -127,7 +127,7 @@ class RatingController extends GetxController {
   }
 
   addFeedBack() async {
-    await homeController.addToRating(RatingAddModel(
+    homeController.addToRating(RatingAddModel(
         stallId: int.parse(LocalStorageKey.stallId),
         name: nameController.text,
         mobile: phoneController.text,
@@ -138,7 +138,7 @@ class RatingController extends GetxController {
         date: DateTime.now()));
     clrValue();
     Get.back();
-    Get.dialog(const SuccessPopup());
+    await Get.dialog(const SuccessPopup());
   }
 
   clrValue() {

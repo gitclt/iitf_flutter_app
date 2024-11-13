@@ -34,12 +34,12 @@ class RatingAddModel {
 
   factory RatingAddModel.fromJson(Map<String, dynamic> json) => RatingAddModel(
         stallId: json["stall_id"],
-        name: json["name"],
-        mobile: json["mobile"],
-        description: json["description"],
-        state: json["state"],
-        overallExperience: json["overall_experience"],
-        productOfferDisplay: json["product_offer_display"],
+        name: json["name"] ?? '',
+        mobile: json["mobile"] ??'',
+        description: json["description"] ?? '',
+        state: json["state"] ?? '',
+        overallExperience: json["overall_experience"] ?? '',
+        productOfferDisplay: json["product_offer_display"] ?? '',
         date: json["date"] == null ? null : DateTime.parse(json["date"]),
       );
 

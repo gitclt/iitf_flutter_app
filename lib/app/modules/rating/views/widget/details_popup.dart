@@ -40,42 +40,47 @@ class RatingDetailsPopup extends GetView<RatingController> {
               const SizedBox(
                 height: 12,
               ),
-              Wrap(
-                spacing: 15,
-                runSpacing: 15,
-                children: [
-                  AddTextFieldWidget(
-                    label: 'Name',
-                    hintText: 'Enter your Name',
-                    width: size.width * 0.45,
-                    textController: controller.nameController,
-                  ),
-                  AddTextFieldWidget(
-                    label: 'Phone',
-                    hintText: 'Enter Phone Number',
-                    width: size.width * 0.45,
-                    textController: controller.phoneController,
-                  ),
-                  DropDown3Widget(
-                    //  width: width,
-                    label: 'Select State',
-                    hint: '--Select State--',
-                    selectedItem: controller.detailSelectedState,
+              Form(
+                key: controller.formkey,
+                child: Wrap(
+                  spacing: 15,
+                  runSpacing: 15,
+                  children: [
+                    AddTextFieldWidget(
+                      label: 'Name',
+                      hintText: 'Enter your Name',
+                      width: size.width * 0.45,
+                      textController: controller.nameController,
+                    ),
+                    AddTextFieldWidget(
+                      label: 'Phone',
+                      hintText: 'Enter Phone Number',
+                      width: size.width * 0.45,
+                      inputFormat: true,
+                      maxLengthLimit: 10,
+                      textController: controller.phoneController,
+                      validator: (value) {
+                        if (value.isNotEmpty && value.length < 10) {
+                          return 'Please provide a valid Phone number';
+                        }
+                        return null;
+                      },
+                    ),
+                    DropDown3Widget(
+                      //  width: width,
+                      label: 'Select State',
+                      hint: '--Select State--',
+                      selectedItem: controller.detailSelectedState,
 
-                    items: controller.states,
-                    // onChanged: (data) async {
-                    //   if (data == null) return;
-                    //   controller.sdCat = data;
-                    // },
-                    onChanged: (data) => controller.onStateSelected(data),
-                    validator: (value) {
-                      if (value == null) {
-                        return 'Select state';
-                      }
-                      return null;
-                    },
-                  ),
-                ],
+                      items: controller.states,
+                      // onChanged: (data) async {
+                      //   if (data == null) return;
+                      //   controller.sdCat = data;
+                      // },
+                      onChanged: (data) => controller.onStateSelected(data),
+                    ),
+                  ],
+                ),
               ),
               const SizedBox(
                 height: 20,
@@ -83,8 +88,9 @@ class RatingDetailsPopup extends GetView<RatingController> {
               AddButton(
                   height: size.height * 0.08,
                   onClick: () {
-                    controller.addFeedBack();
-                   
+                    if (controller.formkey.currentState!.validate()) {
+                      controller.addFeedBack();
+                    }
                   },
                   label: 'Submit')
             ],

@@ -7,7 +7,7 @@ class RatingAppbar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final String subTitle;
   const RatingAppbar({super.key, required this.title, required this.subTitle})
-      : preferredSize = const Size.fromHeight(80.0);
+      : preferredSize = const Size.fromHeight(70.0);
 
   @override
   Widget build(BuildContext context) {
@@ -15,10 +15,16 @@ class RatingAppbar extends StatelessWidget implements PreferredSizeWidget {
       leading: Image.asset('assets/images/rating_page_logo.png'),
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [boldText(title, fontSize: 16), colorText(subTitle, 14)],
+        children: [
+          boldText(title, fontSize: 18),
+          const SizedBox(
+            height: 6,
+          ),
+          colorText(subTitle, 16)
+        ],
       ),
-      backgroundColor: Colors.transparent,
-      elevation: 1,
+      backgroundColor: Colors.white,
+      elevation: 5,
     );
   }
 }

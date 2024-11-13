@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/appbar/common_appbar.dart';
+import 'package:iitf_flutter_tab/app/common_widgets/appbar/rating_appbar.dart';
 import 'package:iitf_flutter_tab/app/modules/rating/views/widget/enquiry_view.dart';
 import 'package:iitf_flutter_tab/app/modules/rating/views/widget/feedback_view.dart';
 
@@ -13,11 +14,10 @@ class RatingView extends GetView<RatingController> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
-        appBar: CommonAppBar(
-          ontap: () {
-            Get.back();
-          },
-        ),
+        appBar: const RatingAppbar(
+            title: "KERALAGRO",
+            subTitle:
+                'Department of Agri Culture Development and Farmers Welfare'),
         body: DefaultTabController(
             length: 2,
             child: Column(
