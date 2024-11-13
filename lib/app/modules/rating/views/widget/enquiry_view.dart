@@ -51,10 +51,12 @@ class EnquiryView extends GetView<RatingController> {
                       hintText: 'Phone',
                       width: width,
                       label: 'Phone',
+                      inputFormat: true,
+                      maxLengthLimit: 10,
                       visible: true,
                       validator: (value) {
                         if (value!.isEmpty) {
-                          return 'Enter phone';
+                          return 'Enter phone Number';
                         }
                         return null;
                       },
@@ -70,27 +72,24 @@ class EnquiryView extends GetView<RatingController> {
                     AddTextFieldWidget(
                       textController: controller.enqEmailController,
                       hintText: 'Enter Email',
+
                       width: width,
                       label: 'Email',
-                      visible: true,
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return 'Enter Email';
-                        }
-                        return null;
-                      },
+                      visible: false,
+                      // validator: (value) {
+                      //   if (value!.isEmpty) {
+                      //     return 'Enter Email';
+                      //   }
+                      //   return null;
+                      // },
                     ),
                     DropDown3Widget(
                       width: width,
                       label: 'Select State',
                       hint: '--Select State--',
                       selectedItem: controller.selectedState,
-
+                      visible: true,
                       items: controller.states,
-                      // onChanged: (data) async {
-                      //   if (data == null) return;
-                      //   controller.sdCat = data;
-                      // },
                       onChanged: (data) => controller.onStateSelected(data),
                       validator: (value) {
                         if (value == null) {
@@ -171,6 +170,7 @@ class EnquiryView extends GetView<RatingController> {
                       width: size.width * 0.96,
                       height: size.height * 0.08,
                       onClick: () {
+                        FocusScope.of(context).requestFocus(FocusNode());
                         if (controller.formkey1.currentState!.validate()) {
                           final cat = controller.homeController.categories
                               .where((e) => e.isSelect!.value == true)
@@ -188,7 +188,7 @@ class EnquiryView extends GetView<RatingController> {
                               catIds: cat,
                               enquiry: controller.enquiryController.text));
                           controller.clrEnqValue();
-                       // Display a success dialog
+                          // Display a success dialog
                           Get.dialog(
                             AlertDialog(
                               title: const Text("Success"),
@@ -205,7 +205,6 @@ class EnquiryView extends GetView<RatingController> {
                             ),
                             barrierDismissible: false,
                           );
-                        
                         }
                       },
                       label: 'SUBMIT',

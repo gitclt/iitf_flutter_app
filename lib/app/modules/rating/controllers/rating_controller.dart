@@ -148,11 +148,15 @@ class RatingController extends GetxController {
     rating1 = ''.obs;
     rating2 = ''.obs;
   }
-   clrEnqValue() {
+
+  clrEnqValue() {
     enqNameController.clear();
     enqPhoneController.clear();
     enqEmailController.clear();
     enquiryController.clear();
     selectedState = DropDownModel(id: '', name: '');
+     for (var category in homeController.categories) {
+      category.isSelect?.value = false;
+    }
   }
 }
