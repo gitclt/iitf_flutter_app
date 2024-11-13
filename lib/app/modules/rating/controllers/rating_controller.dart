@@ -2,7 +2,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:iitf_flutter_tab/app/constants/strings.dart';
-import 'package:iitf_flutter_tab/app/data/model/rating/rating_add_model.dart';
 import 'package:iitf_flutter_tab/app/domain/entity/dropdown_entity.dart';
 import 'package:iitf_flutter_tab/app/domain/repositories/rating/rating_repository.dart';
 import 'package:iitf_flutter_tab/app/utils/utils.dart';

@@ -5,6 +5,7 @@ import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/appbar/home_appbar.dart';
 
 import 'package:iitf_flutter_tab/app/common_widgets/card/home_card.dart';
+import 'package:iitf_flutter_tab/app/common_widgets/card/sync_card.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/container/home_container.dart';
 import 'package:iitf_flutter_tab/app/constants/colors.dart';
 import 'package:iitf_flutter_tab/app/constants/orientation_controller.dart';
@@ -109,7 +110,6 @@ class HomeView extends GetView<HomeController> {
                     ),
                     HomeCard(
                       ontap: () async {
-                       
                         await Get.rootDelegate.toNamed(Routes.rating);
 
                         controller.checkHome();
@@ -123,6 +123,32 @@ class HomeView extends GetView<HomeController> {
                               : '0',
                       color: AppColor.cardColor4,
                     ),
+                    SizedBox(
+                      height: size.height * 0.035,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Obx(
+                          () => SyncCard(
+                            act: () {
+                              controller.syncRating();
+                            },
+                            title: "Rating",
+                            count: controller.ratingDataList.length.toString(),
+                          ),
+                        ),
+                        Obx(
+                          () => SyncCard(
+                            act: () {
+                              controller.syncEnq();
+                            },
+                            title: "Enquiry",
+                            count: controller.enqDataList.length.toString(),
+                          ),
+                        ),
+                      ],
+                    )
                   ],
                 ),
               ),

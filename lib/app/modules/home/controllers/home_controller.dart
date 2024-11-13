@@ -8,12 +8,15 @@ import 'package:iitf_flutter_tab/app/data/model/rating/rating_add_model.dart';
 import 'package:iitf_flutter_tab/app/data/network/check_internet.dart';
 import 'package:iitf_flutter_tab/app/domain/repositories/home/home_repository.dart';
 import 'package:iitf_flutter_tab/app/domain/repositories/product_category/category_response.dart';
+import 'package:iitf_flutter_tab/app/domain/repositories/rating/rating_repository.dart';
+import 'package:iitf_flutter_tab/app/utils/utils.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeController extends GetxController {
   RxBool isLoading = false.obs;
   final _catrepo = ProCategoryRepository();
   final _repo = HomeRepository();
+  final _syncRepo = RatingRepository();
   RxList<HomeResponse> data = <HomeResponse>[].obs;
   RxString error = ''.obs;
   RxList<Category> categories = <Category>[].obs;
@@ -110,13 +113,32 @@ class HomeController extends GetxController {
     }
   }
 
+  RxBool isRatingSycing = false.obs;
+  void syncRating() async {
+    isRatingSycing(true);
+    data.clear();
+    final res = await _syncRepo.syncRating(data: ratingDataList);
+    res.fold((failure) {
+      isRatingSycing(false);
+      Utils.snackBar('Error', failure.message);
+    }, (resData) {
+      isRatingSycing(false);
+      if (resData.status == true) {
+        ratingDataList.clear();
+        ratingDataList.refresh();
+        saveRatingToLocal();
+        Utils.snackBar('Sucess', resData.message ?? '', type: 'success');
+      }
+    });
+  }
+
   /// Enruiry
   ///
   RxList<EnqAddModel> enqDataList = <EnqAddModel>[].obs;
 
   addToEnq(EnqAddModel add) {
     enqDataList.add(add);
-    saveRatingToLocal();
+    saveEnqToLocal();
   }
 
   saveEnqToLocal() async {
@@ -133,5 +155,24 @@ class HomeController extends GetxController {
           .map((x) => EnqAddModel.fromJson(x))
           .toList();
     }
+  }
+
+  RxBool isEnqSycing = false.obs;
+  void syncEnq() async {
+    isEnqSycing(true);
+    data.clear();
+    final res = await _syncRepo.syncEnq(data: enqDataList);
+    res.fold((failure) {
+      isEnqSycing(false);
+      Utils.snackBar('Error', failure.message);
+    }, (resData) {
+      isEnqSycing(false);
+      if (resData.status == true) {
+        enqDataList.clear();
+        enqDataList.refresh;
+        saveEnqToLocal();
+        Utils.snackBar('Sucess', resData.message ?? '', type: 'success');
+      }
+    });
   }
 }
