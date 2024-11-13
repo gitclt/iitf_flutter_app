@@ -13,96 +13,99 @@ class FeedbackView extends GetView<RatingController> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    return Column(
-      children: [
-        ratingContainer(
-          'How would you rate your overall experience at the Kerala Pavilion?',
-          RatingBar.builder(
-            initialRating: double.tryParse(controller.rating1.value) ?? 0.0,
-            minRating: 1,
-            direction: Axis.horizontal,
-            allowHalfRating: true,
-            itemCount: 5,
-            itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
-            itemBuilder: (context, _) => Icon(
-              Icons.star,
-              color: AppColor.primary,
-            ),
-            onRatingUpdate: (rating) {
-              controller.rating1.value = rating.toString();
-            },
-          ),
-        ),
-        const SizedBox(
-          height: 12,
-        ),
-        ratingContainer(
-          'How satisfied are you with the product offerings and displays at our stall?',
-          RatingBar.builder(
-            initialRating: double.tryParse(controller.rating2.value) ?? 0.0,
-            minRating: 1,
-            direction: Axis.horizontal,
-            allowHalfRating: true,
-            itemCount: 5,
-            itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
-            itemBuilder: (context, _) => Icon(
-              Icons.star,
-              color: AppColor.primary,
-            ),
-            onRatingUpdate: (rating) {
-              controller.rating2.value = rating.toString();
-            },
-          ),
-        ),
-        const SizedBox(
-          height: 12,
-        ),
-        TextFormField(
-          controller: controller.descriptionController,
-
-          decoration: InputDecoration(
-            hintText: 'Any Suggestions',
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(4),
-              borderSide: const BorderSide(
-                color: Color(0xFFDDDDDD),
-                width: 1,
+    return Padding(
+      padding: const EdgeInsets.all(15.0),
+      child: Column(
+        children: [
+          ratingContainer(
+            context,
+            'How would you rate your overall experience at the Kerala Pavilion?',
+            RatingBar.builder(
+              initialRating: double.tryParse(controller.rating1.value) ?? 0.0,
+              minRating: 1,
+              direction: Axis.horizontal,
+              allowHalfRating: true,
+              itemCount: 5,
+              itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
+              itemBuilder: (context, _) => Icon(
+                Icons.star,
+                color: AppColor.primary,
               ),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(4),
-              borderSide: const BorderSide(
-                color: Color(0xFFDDDDDD),
-                width: 1,
-              ),
-            ),
-          ),
-          maxLines: 5, // Sets the maximum number of lines
-          minLines: 5,
-        ),
-        SizedBox(
-          height: size.height * 0.02,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            AddButton(
-              onClick: () {
-                Get.dialog(const RatingDetailsPopup());
+              onRatingUpdate: (rating) {
+                controller.rating1.value = rating.toString();
               },
-              label: 'SUBMIT',
             ),
-          ],
-        )
-      ],
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          ratingContainer(
+            context,
+            'How satisfied are you with the product offerings and displays at our stall?',
+            RatingBar.builder(
+              initialRating: double.tryParse(controller.rating2.value) ?? 0.0,
+              minRating: 1,
+              direction: Axis.horizontal,
+              allowHalfRating: true,
+              itemCount: 5,
+              itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
+              itemBuilder: (context, _) => Icon(
+                Icons.star,
+                color: AppColor.primary,
+              ),
+              onRatingUpdate: (rating) {
+                controller.rating2.value = rating.toString();
+              },
+            ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          TextFormField(
+            controller: controller.descriptionController,
+
+            decoration: InputDecoration(
+              hintText: 'Any Suggestions',
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(4),
+                borderSide: const BorderSide(
+                  color: Color(0xFFDDDDDD),
+                  width: 1,
+                ),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(4),
+                borderSide: const BorderSide(
+                  color: Color(0xFFDDDDDD),
+                  width: 1,
+                ),
+              ),
+            ),
+            maxLines: 5, // Sets the maximum number of lines
+            minLines: 5,
+          ),
+          SizedBox(
+            height: size.height * 0.04,
+          ),
+          AddButton(
+            onClick: () {
+              Get.dialog(const RatingDetailsPopup());
+            },
+            label: 'SUBMIT',
+          )
+        ],
+      ),
     );
   }
 }
 
-Widget ratingContainer(String rateQues, Widget ratingBar) {
+Widget ratingContainer(
+    BuildContext context, String rateQues, Widget ratingBar) {
   return Container(
+    width: MediaQuery.of(context).size.width,
     padding: const EdgeInsets.all(10),
     decoration: BoxDecoration(
+        color: Colors.white,
         borderRadius: BorderRadius.circular(10),
         boxShadow: const [
           BoxShadow(
