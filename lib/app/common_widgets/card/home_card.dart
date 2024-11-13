@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/svg_icons/svg_widget.dart';
-import 'package:iitf_flutter_tab/app/constants/colors.dart';
+
 
 class HomeCard extends StatelessWidget {
   final String imagepath;

@@ -109,7 +109,8 @@ class HomeView extends GetView<HomeController> {
                       height: size.height * 0.035,
                     ),
                     HomeCard(
-                      ontap: () async {
+                      ontap: () async{
+                      
                         await Get.rootDelegate.toNamed(Routes.rating);
 
                         controller.get();
