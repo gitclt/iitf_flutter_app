@@ -18,6 +18,7 @@ class HomeController extends GetxController {
   RxString error = ''.obs;
   RxList<Category> categories = <Category>[].obs;
   @override
+  @override
   void onInit() {
     checkHome();
     super.onInit();
