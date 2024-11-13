@@ -171,12 +171,19 @@ class EnquiryView extends GetView<RatingController> {
                       height: size.height * 0.1,
                       onClick: () {
                         if (controller.formkey1.currentState!.validate()) {
+                          final cat = controller.homeController.categories
+                              .where((e) => e.isSelect!.value == true)
+                              .toList()
+                              .map((v) => v.id)
+                              .toList()
+                              .join(',');
+
                           controller.homeController.addToEnq(EnqAddModel(
                               name: controller.enqNameController.text,
                               email: controller.enquiryController.text,
                               mobile: controller.enqPhoneController.text,
                               state: controller.selectedState!.id.toString(),
-                              catIds: '1',
+                              catIds: cat,
                               enquiry: controller.enquiryController.text));
                         }
                       },
