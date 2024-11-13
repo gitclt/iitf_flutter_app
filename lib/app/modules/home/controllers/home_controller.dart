@@ -59,7 +59,7 @@ class HomeController extends GetxController {
   }
 
   void getcat() async {
-    data.clear();
+    categories.clear();
     final res =
         await _catrepo.getProCategoryList(stallid: LocalStorageKey.stallId);
     res.fold((failure) {
