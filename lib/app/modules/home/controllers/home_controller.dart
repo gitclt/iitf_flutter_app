@@ -136,6 +136,8 @@ class HomeController extends GetxController {
           ratingDataList.refresh();
           saveRatingToLocal();
           Utils.snackBar('Sucess', resData.message ?? '', type: 'success');
+          gethome();
+          getcat();
         }
       });
     } else {
@@ -187,6 +189,8 @@ class HomeController extends GetxController {
           enqDataList.refresh;
           saveEnqToLocal();
           Utils.snackBar('Sucess', resData.message ?? '', type: 'success');
+          gethome();
+          getcat();
         }
       });
     } else {
