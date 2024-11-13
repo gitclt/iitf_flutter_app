@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/button/add_button.dart';
-import 'package:iitf_flutter_tab/app/common_widgets/textfeild/login_textfeild.dart';
+import 'package:iitf_flutter_tab/app/common_widgets/drop_down/drop_down3_widget.dart';
+import 'package:iitf_flutter_tab/app/common_widgets/textfeild/add_new_widget.dart';
 
-class EnquiryView extends StatelessWidget {
+
+import '../../controllers/rating_controller.dart';
+
+class EnquiryView extends GetView<RatingController> {
   const EnquiryView({super.key});
 
   @override
   Widget build(BuildContext context) {
       var size = MediaQuery.of(context).size;
+       final width = size.width * 0.46;
     return Form(child:
     Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -19,18 +25,31 @@ class EnquiryView extends StatelessWidget {
           Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            LoginTextFeild(
-            //   textController: controller.nameController,
-              width: size.width * 0.45,
+             AddTextFieldWidget(
+              // textController: controller.nameController,
+              hintText: 'Enter Name',
+              width: width,
               label: 'Name',
+              visible: true,
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return 'Enter Name';
+                }
+                return null;
+              },
             ),
-            LoginTextFeild(
-            //   textController: controller.phoneController,
-              width: size.width * 0.45,
+            AddTextFieldWidget(
+              // textController: controller.nameController,
+              hintText: 'Phone',
+              width: width,
               label: 'Phone',
-              keyboard: TextInputType.number,
-              inputFormat: true,
-              maxLengthLimit: 10,
+              visible: true,
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return 'Enter phone';
+                }
+                return null;
+              },
             ),
           ],
         ),
@@ -40,18 +59,37 @@ class EnquiryView extends StatelessWidget {
           Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            LoginTextFeild(
-            //   textController: controller.nameController,
-              width: size.width * 0.45,
-              label: 'Location',
+            AddTextFieldWidget(
+              // textController: controller.nameController,
+              hintText: 'Enter Email',
+              width: width,
+              label: 'Email',
+              visible: true,
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return 'Enter Email';
+                }
+                return null;
+              },
             ),
-            LoginTextFeild(
-            //   textController: controller.phoneController,
-              width: size.width * 0.45,
-              label: 'Product category',
-              keyboard: TextInputType.number,
-              inputFormat: true,
-              maxLengthLimit: 10,
+               DropDown3Widget(
+              width: width,
+              label: 'Select State',
+              hint: '--Select State--',
+              selectedItem:
+                  controller.selectedState == null ? null :  controller.selectedState,
+              items: controller.states, 
+              // onChanged: (data) async {
+              //   if (data == null) return;
+              //   controller.sdCat = data;
+              // },
+               onChanged: (data) => controller.onStateSelected(data),
+              validator: (value) {
+                if (value == null) {
+                  return 'Select state';
+                }
+                return null;
+              },
             ),
           ],
         ),
@@ -63,7 +101,7 @@ class EnquiryView extends StatelessWidget {
             //   controller: controller.descriptionController,
 
               decoration: InputDecoration(
-                hintText: 'Remark',
+                hintText: 'Enquiry',
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(4),
                   borderSide: const BorderSide(
