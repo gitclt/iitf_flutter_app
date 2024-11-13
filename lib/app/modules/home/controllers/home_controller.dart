@@ -115,6 +115,7 @@ class HomeController extends GetxController {
 
   RxBool isRatingSycing = false.obs;
   void syncRating() async {
+    if (ratingDataList.isEmpty) return;
     isRatingSycing(true);
     data.clear();
     final res = await _syncRepo.syncRating(data: ratingDataList);
@@ -159,6 +160,7 @@ class HomeController extends GetxController {
 
   RxBool isEnqSycing = false.obs;
   void syncEnq() async {
+    if (enqDataList.isEmpty) return;
     isEnqSycing(true);
     data.clear();
     final res = await _syncRepo.syncEnq(data: enqDataList);

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:iitf_flutter_tab/app/constants/colors.dart';
 
 class SyncCard extends StatelessWidget {
@@ -12,7 +12,7 @@ class SyncCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 25),
-      width: MediaQuery.of(context).size.width * .45,
+      width: MediaQuery.of(context).size.width * .47,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         color: AppColor.primary.withOpacity(.2),
@@ -42,13 +42,24 @@ class SyncCard extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20),
                     color: AppColor.primary,
                   ),
-                  child: Text(
-                    "Sync Now",
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: AppColor.white,
-                      fontWeight: FontWeight.bold,
-                    ),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.refresh,
+                        color: AppColor.white,
+                      ),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      Text(
+                        "Sync Now",
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: AppColor.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               )
