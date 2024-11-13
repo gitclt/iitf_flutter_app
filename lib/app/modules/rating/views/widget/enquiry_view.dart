@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/button/add_button.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/drop_down/drop_down3_widget.dart';
+import 'package:iitf_flutter_tab/app/common_widgets/text/text_widget.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/textfeild/add_new_widget.dart';
 import 'package:iitf_flutter_tab/app/constants/colors.dart';
 
@@ -97,6 +98,39 @@ class EnquiryView extends GetView<RatingController> {
                 ),
               ],
             ),
+            SizedBox(
+              height: size.height * 0.02,
+            ),
+            boldText('Product Category', fontSize: 18),
+            Wrap(
+              spacing: 10.0, // Horizontal spacing between checkboxes
+              runSpacing: 10.0, // Vertical spacing between lines
+              children: controller.productData.map((product) {
+                return Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Obx(() {
+                      return Checkbox(
+                        value: product.isSelect.value,
+                        onChanged: (bool? value) {
+                          product.isSelect.value = value ?? false;
+                        },
+                        activeColor: Colors.blue,
+                      );
+                    }),
+                    Text(
+                      product.category ?? '',
+                      style: TextStyle(fontSize: 14),
+                    ),
+                  ],
+                );
+              }).toList(),
+            ),
+            // Row(
+            //   children: [
+
+            //   ],
+            // ),
             SizedBox(
               height: size.height * 0.02,
             ),

@@ -2,7 +2,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:iitf_flutter_tab/app/constants/strings.dart';
+import 'package:iitf_flutter_tab/app/data/model/product/product_model.dart';
 import 'package:iitf_flutter_tab/app/domain/entity/dropdown_entity.dart';
+import 'package:iitf_flutter_tab/app/domain/repositories/product/product_repository.dart';
 import 'package:iitf_flutter_tab/app/domain/repositories/rating/rating_repository.dart';
 import 'package:iitf_flutter_tab/app/utils/utils.dart';
 
@@ -10,10 +12,15 @@ class RatingController extends GetxController {
   TextEditingController nameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
+  TextEditingController stateController = TextEditingController();
   final formkey = GlobalKey<FormState>();
+  final productrepo = ProductRepository();
+  RxList<Product> productData = <Product>[].obs;
+  RxBool isProductLoading = false.obs;
   RxBool isLoading = false.obs;
   final _repo = RatingRepository();
-  RxString rating = ''.obs;
+  RxString rating1 = ''.obs;
+  RxString rating2 = ''.obs;
   RxString error = ''.obs;
   void setError(String value) => error.value = value;
 
@@ -60,8 +67,10 @@ class RatingController extends GetxController {
     update(); // Notify the UI
   }
 
+  @override
   void onInit() {
     super.onInit();
+    getProCategoryList();
     loadStates();
     // Set landscape orientation when this page is initialized
     SystemChrome.setPreferredOrientations([
@@ -82,6 +91,21 @@ class RatingController extends GetxController {
     super.onClose();
   }
 
+  void getProCategoryList() async {
+    productData.clear();
+    isProductLoading(true);
+    final res =
+        await productrepo.getProductList(stallid: LocalStorageKey.stallId);
+    res.fold((failure) {
+      isProductLoading(false);
+      setError(error.toString());
+    }, (resData) {
+      if (resData.data != null) {
+        isProductLoading(false);
+        productData.addAll(resData.data!);
+      }
+    });
+  }
   //add
 
   void add() async {
@@ -89,7 +113,7 @@ class RatingController extends GetxController {
     final res = await _repo.addRating(
         name: nameController.text,
         phone: phoneController.text,
-        ratingvalue: rating.value,
+        ratingvalue: rating1.value,
         stallid: LocalStorageKey.stallId,
         discription: descriptionController.text);
     res.fold(
@@ -113,6 +137,6 @@ class RatingController extends GetxController {
     nameController.clear();
     phoneController.clear();
     descriptionController.clear();
-    rating = ''.obs;
+    rating1 = ''.obs;
   }
 }

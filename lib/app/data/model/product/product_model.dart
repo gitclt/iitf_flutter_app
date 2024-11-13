@@ -4,6 +4,8 @@
 
 import 'dart:convert';
 
+import 'package:get/get.dart';
+
 ProductModel productModelFromJson(String str) =>
     ProductModel.fromJson(json.decode(str));
 
@@ -50,6 +52,7 @@ class Product {
   String? category;
   String? image;
   String? imageurl;
+  RxBool isSelect;
 
   Product({
     this.id,
@@ -64,6 +67,7 @@ class Product {
     this.category,
     this.image,
     this.imageurl,
+    required this.isSelect,
   });
 
   factory Product.fromJson(Map<String, dynamic> json) => Product(
@@ -79,6 +83,7 @@ class Product {
         category: json["category"],
         image: json["image"],
         imageurl: json["imageurl"],
+        isSelect: false.obs,
       );
 
   Map<String, dynamic> toJson() => {
