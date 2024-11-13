@@ -126,6 +126,14 @@ class RatingController extends GetxController {
     );
   }
 
+  clrEnqValue() {
+    enqNameController.clear();
+    enqPhoneController.clear();
+    enqEmailController.clear();
+    enquiryController.clear();
+    selectedState = DropDownModel(id: '', name: '');
+  }
+
   clrValue() {
     nameController.clear();
     phoneController.clear();

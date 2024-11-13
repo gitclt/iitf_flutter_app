@@ -187,8 +187,8 @@ class EnquiryView extends GetView<RatingController> {
                               state: controller.selectedState!.id.toString(),
                               catIds: cat,
                               enquiry: controller.enquiryController.text));
-
-                          Get.back();
+                          controller.clrEnqValue();
+                          // Get.back();
                         }
                       },
                       label: 'SUBMIT',
