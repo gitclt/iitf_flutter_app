@@ -6,6 +6,7 @@ import 'package:iitf_flutter_tab/app/common_widgets/text/text_widget.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/textfeild/add_new_widget.dart';
 import 'package:iitf_flutter_tab/app/constants/colors.dart';
 
+import '../../../../data/model/enquiry/add_enquiry_model.dart';
 import '../../controllers/rating_controller.dart';
 
 class EnquiryView extends GetView<RatingController> {
@@ -32,7 +33,7 @@ class EnquiryView extends GetView<RatingController> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     AddTextFieldWidget(
-                      // textController: controller.nameController,
+                      textController: controller.enqNameController,
                       hintText: 'Enter Name',
                       width: width,
                       label: 'Name',
@@ -45,7 +46,7 @@ class EnquiryView extends GetView<RatingController> {
                       },
                     ),
                     AddTextFieldWidget(
-                      // textController: controller.nameController,
+                      textController: controller.enqPhoneController,
                       hintText: 'Phone',
                       width: width,
                       label: 'Phone',
@@ -66,7 +67,7 @@ class EnquiryView extends GetView<RatingController> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     AddTextFieldWidget(
-                      // textController: controller.nameController,
+                      textController: controller.enqEmailController,
                       hintText: 'Enter Email',
                       width: width,
                       label: 'Email',
@@ -121,17 +122,12 @@ class EnquiryView extends GetView<RatingController> {
                         }),
                         Text(
                           product.category ?? '',
-                          style: TextStyle(fontSize: 14),
+                          style: const TextStyle(fontSize: 14),
                         ),
                       ],
                     );
                   }).toList(),
                 ),
-                // Row(
-                //   children: [
-
-                //   ],
-                // ),
                 SizedBox(
                   height: size.height * 0.02,
                 ),
@@ -140,7 +136,7 @@ class EnquiryView extends GetView<RatingController> {
                     SizedBox(
                       width: size.width * 0.96,
                       child: TextFormField(
-                        //   controller: controller.descriptionController,
+                        controller: controller.enquiryController,
 
                         decoration: InputDecoration(
                           hintText: 'Enquiry',
@@ -173,7 +169,17 @@ class EnquiryView extends GetView<RatingController> {
                       //   isLoading: controller.isLoading.value,
                       width: size.width * 0.96,
                       height: size.height * 0.1,
-                      onClick: () {},
+                      onClick: () {
+                        if (controller.formkey1.currentState!.validate()) {
+                          controller.homeController.addToEnq(EnqAddModel(
+                              name: controller.enqNameController.text,
+                              email: controller.enquiryController.text,
+                              mobile: controller.enqPhoneController.text,
+                              state: controller.selectedState!.id.toString(),
+                              catIds: '1',
+                              enquiry: controller.enquiryController.text));
+                        }
+                      },
                       label: 'SUBMIT',
                     ),
                   ],
