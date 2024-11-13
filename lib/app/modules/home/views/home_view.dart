@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/appbar/home_appbar.dart';
 
 import 'package:iitf_flutter_tab/app/common_widgets/card/home_card.dart';
@@ -18,6 +19,7 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
+        primary: true,
         appBar: HomeAppbar(
           ontap: () {
             Get.rootDelegate.toNamed(Routes.profile);
@@ -61,7 +63,7 @@ class HomeView extends GetView<HomeController> {
                     HomeCard(
                       ontap: () async {
                         await Get.rootDelegate.toNamed(Routes.preorder);
-                        controller.get();
+                        controller.checkHome();
                       },
                       imagepath: SvgAssets.preorderIcon,
                       tittle: 'Pre orders',
@@ -78,7 +80,7 @@ class HomeView extends GetView<HomeController> {
                     HomeCard(
                       ontap: () async {
                         await Get.rootDelegate.toNamed(Routes.product);
-                        controller.get();
+                        controller.checkHome();
                       },
                       imagepath: SvgAssets.productIcon,
                       tittle: 'Products',
@@ -92,20 +94,16 @@ class HomeView extends GetView<HomeController> {
                     SizedBox(
                       height: size.height * 0.035,
                     ),
-                    HomeCard(
-                      ontap: () async {
-                        await Get.rootDelegate.toNamed(Routes.category);
-                        controller.get();
-                      },
-                      imagepath: SvgAssets.categoryIcon,
-                      tittle: 'Category',
-                      count: controller.isLoading.value == true
-                          ? ''
-                          : controller.data.isNotEmpty
-                              ? controller.data.first.categoryCount.toString()
-                              : '0',
-                      color: AppColor.cardColor3,
-                    ),
+                    Obx(() => HomeCard(
+                          ontap: () async {
+                            await Get.rootDelegate.toNamed(Routes.category);
+                            controller.checkHome();
+                          },
+                          imagepath: SvgAssets.categoryIcon,
+                          tittle: 'Category',
+                          count: controller.categories.length.toString(),
+                          color: AppColor.cardColor3,
+                        )),
                     SizedBox(
                       height: size.height * 0.035,
                     ),
@@ -114,7 +112,7 @@ class HomeView extends GetView<HomeController> {
                        
                         await Get.rootDelegate.toNamed(Routes.rating);
 
-                        controller.get();
+                        controller.checkHome();
                       },
                       imagepath: SvgAssets.ratingIcon,
                       tittle: 'Rating',

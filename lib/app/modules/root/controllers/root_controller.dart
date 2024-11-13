@@ -18,17 +18,17 @@ class RootController extends GetxController {
   UserPreference userPreference = UserPreference();
   @override
   void onInit() {
-    checkAppVersion().then(
-      (value) {
-        if (value == true) {
-          getLoginDetails();
-        } else {
-          Get.rootDelegate.offNamed(Routes.versionCheck);
-          // Get.offAllNamed(Routes.APP_VERSION);
-        }
-      },
-    );
-
+    // checkAppVersion().then(
+    //   (value) {
+    //     if (value == true) {
+    //       getLoginDetails();
+    //     } else {
+    //       Get.rootDelegate.offNamed(Routes.versionCheck);
+    //       // Get.offAllNamed(Routes.APP_VERSION);
+    //     }
+    //   },
+    // );
+    getLoginDetails();
     super.onInit();
   }
 
@@ -53,43 +53,48 @@ class RootController extends GetxController {
 
     _isLoading.value = true;
     Future.delayed(const Duration(seconds: 0)).then((value) async {
-      final token = await userPreference.getUser();
+      final user = await userPreference.isLoged();
 
-      if (token != null) {
-        final response = await _api.getProfileView(token);
-
-        response.fold(
-          (failure) {
-            isLoading(false);
-            Utils.snackBar('Profile', failure.message);
-            gotoLogin();
-          },
-          (res) {
-            if (res.data != null) {
-              if (res.data != null) {
-                userPreference
-                    .saveUser(
-                  res.data!,
-                )
-                    .then(
-                  (s) {
-                    if (LocalStorageKey.stallId.isNotEmpty) {
-                      Get.rootDelegate.offNamed(Routes.home);
-                    } else {
-                      gotoLogin();
-                      Utils.snackBar('User', "Permission denied ....");
-                    }
-                  },
-                );
-              }
-            }
-          },
-        );
+      if (user != null) {
+        Get.rootDelegate.offNamed(Routes.home);
       } else {
         gotoLogin();
       }
 
-      if (value != null) {}
+      // if (token != null) {
+      //   final response = await _api.getProfileView(token);
+
+      //   response.fold(
+      //     (failure) {
+      //       isLoading(false);
+      //       Utils.snackBar('Profile', failure.message);
+      //       gotoLogin();
+      //     },
+      //     (res) {
+      //       if (res.data != null) {
+      //         if (res.data != null) {
+      //           userPreference
+      //               .saveUser(
+      //             res.data!,
+      //           )
+      //               .then(
+      //             (s) {
+      //               if (LocalStorageKey.stallId.isNotEmpty) {
+      //                 Get.rootDelegate.offNamed(Routes.home);
+      //               } else {
+      //                 gotoLogin();
+      //                 Utils.snackBar('User', "Permission denied ....");
+      //               }
+      //             },
+      //           );
+      //         }
+      //       }
+      //     },
+      //   );
+
+      // } else {
+      //   gotoLogin();
+      // }
     }).whenComplete(() => _isLoading.value = false);
   }
 

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/svg_icons/svg_widget.dart';
 
-
 class HomeCard extends StatelessWidget {
   final String imagepath;
   final String tittle;
@@ -16,7 +15,8 @@ class HomeCard extends StatelessWidget {
     required this.tittle,
     // required this.subtitle,
     required this.count,
-    required this.color, required this.ontap,
+    required this.color,
+    required this.ontap,
   });
 
   @override

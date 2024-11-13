@@ -103,7 +103,8 @@ class ProductController extends GetxController {
   void getCat() async {
     isCatLoading(true);
     categoryDropList.clear();
-    final res = await catrepo.getProCategoryList(stallid: LocalStorageKey.stallId);
+    final res =
+        await catrepo.getProCategoryList(stallid: LocalStorageKey.stallId);
     res.fold((failure) {
       isCatLoading(false);
       Utils.snackBar('Error', failure.message);
