@@ -30,9 +30,9 @@ class FeedbackView extends GetView<RatingController> {
                 allowHalfRating: true,
                 itemCount: 5,
                 itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
-                itemBuilder: (context, _) => Icon(
+                itemBuilder: (context, _) => const Icon(
                   Icons.star,
-                  color: AppColor.primary,
+                  color: AppColor.ratingColor,
                 ),
                 onRatingUpdate: (rating) {
                   controller.rating1.value = rating.toString();
@@ -52,9 +52,9 @@ class FeedbackView extends GetView<RatingController> {
                 allowHalfRating: true,
                 itemCount: 5,
                 itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
-                itemBuilder: (context, _) => Icon(
+                itemBuilder: (context, _) => const Icon(
                   Icons.star,
-                  color: AppColor.primary,
+                  color: AppColor.ratingColor,
                 ),
                 onRatingUpdate: (rating) {
                   controller.rating2.value = rating.toString();
@@ -91,6 +91,7 @@ class FeedbackView extends GetView<RatingController> {
               height: size.height * 0.04,
             ),
             AddButton(
+              height: size.height * 0.1,
               onClick: () {
                 Get.dialog(const RatingDetailsPopup());
               },
