@@ -13,10 +13,10 @@ class RatingView extends GetView<RatingController> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
-        appBar: CommonAppBar(ontap: () { 
-          
-         },
-          
+        appBar: CommonAppBar(
+          ontap: () {
+            Get.back();
+          },
         ),
         body: DefaultTabController(
             length: 2,
@@ -47,7 +47,6 @@ class RatingView extends GetView<RatingController> {
                       ]),
                 ),
                 const Expanded(
-                  
                     child:
                         TabBarView(children: [FeedbackView(), EnquiryView()]))
               ],
