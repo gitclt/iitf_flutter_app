@@ -17,49 +17,43 @@ class RatingController extends GetxController {
   RxString error = ''.obs;
   void setError(String value) => error.value = value;
 
-   var states = <DropDownModel>[].obs;
+  var states = <DropDownModel>[].obs;
   DropDownModel? selectedState;
-   void loadStates() {
+  void loadStates() {
     states.value = [
-      DropDownModel(id: '1', name: 'Andhra Pradesh'),
-      DropDownModel(id: '2', name: 'Arunachal Pradesh'),
-      DropDownModel(id: '3', name: 'Assam'),
-      DropDownModel(id: '4', name: 'Bihar'),
-      DropDownModel(id: '5', name: 'Chhattisgarh'),
-      DropDownModel(id: '6', name: 'Goa'),
-      DropDownModel(id: '7', name: 'Gujarat'),
-      DropDownModel(id: '8', name: 'Haryana'),
-      DropDownModel(id: '9', name: 'Himachal Pradesh'),
-      DropDownModel(id: '10', name: 'Jharkhand'),
-      DropDownModel(id: '11', name: 'Karnataka'),
-      DropDownModel(id: '12', name: 'Kerala'),
-      DropDownModel(id: '13', name: 'Madhya Pradesh'),
-      DropDownModel(id: '14', name: 'Maharashtra'),
-      DropDownModel(id: '15', name: 'Manipur'),
-      DropDownModel(id: '16', name: 'Meghalaya'),
-      DropDownModel(id: '17', name: 'Mizoram'),
-      DropDownModel(id: '18', name: 'Nagaland'),
-      DropDownModel(id: '19', name: 'Odisha'),
-      DropDownModel(id: '20', name: 'Punjab'),
-      DropDownModel(id: '21', name: 'Rajasthan'),
-      DropDownModel(id: '22', name: 'Sikkim'),
-      DropDownModel(id: '23', name: 'Tamil Nadu'),
-      DropDownModel(id: '24', name: 'Telangana'),
-      DropDownModel(id: '25', name: 'Tripura'),
-      DropDownModel(id: '26', name: 'Uttar Pradesh'),
-      DropDownModel(id: '27', name: 'Uttarakhand'),
-      DropDownModel(id: '28', name: 'West Bengal'),
-      DropDownModel(id: '29', name: 'Andaman and Nicobar Islands'),
-      DropDownModel(id: '30', name: 'Chandigarh'),
-      DropDownModel(id: '31', name: 'Dadra and Nagar Haveli and Daman and Diu'),
-      DropDownModel(id: '32', name: 'Lakshadweep'),
-      DropDownModel(id: '33', name: 'Delhi'),
-      DropDownModel(id: '34', name: 'Puducherry'),
-      DropDownModel(id: '35', name: 'Ladakh'),
-      DropDownModel(id: '36', name: 'Jammu and Kashmir'),
+      DropDownModel(id: 'AndhraPradesh', name: 'Andhra Pradesh'),
+      DropDownModel(id: 'ArunachalPradesh', name: 'Arunachal Pradesh'),
+      DropDownModel(id: 'Assam', name: 'Assam'),
+      DropDownModel(id: 'Bihar', name: 'Bihar'),
+      DropDownModel(id: 'Chhattisgarh', name: 'Chhattisgarh'),
+      DropDownModel(id: 'Goa', name: 'Goa'),
+      DropDownModel(id: 'Gujarat', name: 'Gujarat'),
+      DropDownModel(id: 'Haryana', name: 'Haryana'),
+      DropDownModel(id: 'HimachalPradesh', name: 'Himachal Pradesh'),
+      DropDownModel(id: 'Jharkhand', name: 'Jharkhand'),
+      DropDownModel(id: 'Karnataka', name: 'Karnataka'),
+      DropDownModel(id: 'Kerala', name: 'Kerala'),
+      DropDownModel(id: 'MadhyaPradesh', name: 'Madhya Pradesh'),
+      DropDownModel(id: 'Maharashtra', name: 'Maharashtra'),
+      DropDownModel(id: 'Manipur', name: 'Manipur'),
+      DropDownModel(id: 'Meghalaya', name: 'Meghalaya'),
+      DropDownModel(id: 'Mizoram', name: 'Mizoram'),
+      DropDownModel(id: 'Nagaland', name: 'Nagaland'),
+      DropDownModel(id: 'Odisha', name: 'Odisha'),
+      DropDownModel(id: 'Punjab', name: 'Punjab'),
+      DropDownModel(id: 'Rajasthan', name: 'Rajasthan'),
+      DropDownModel(id: 'Sikkim', name: 'Sikkim'),
+      DropDownModel(id: 'TamilNadu', name: 'Tamil Nadu'),
+      DropDownModel(id: 'Telangana', name: 'Telangana'),
+      DropDownModel(id: 'Tripura', name: 'Tripura'),
+      DropDownModel(id: 'Uttarakhand', name: 'Uttarakhand'),
+      DropDownModel(id: 'UttarPradesh', name: 'Uttar Pradesh'),
+      DropDownModel(id: 'WestBengal', name: 'West Bengal'),
+      DropDownModel(id: 'Other', name: 'Other'),
     ];
   }
-    // Method to handle state selection
+
+  // Method to handle state selection
   void onStateSelected(DropDownModel? state) {
     if (state == null) return;
     selectedState = state;
@@ -68,6 +62,7 @@ class RatingController extends GetxController {
 
   void onInit() {
     super.onInit();
+    loadStates();
     // Set landscape orientation when this page is initialized
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.landscapeLeft,
