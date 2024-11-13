@@ -102,11 +102,35 @@ class EnquiryView extends GetView<RatingController> {
               height: size.height * 0.02,
             ),
             boldText('Product Category', fontSize: 18),
-            Row(
-              children: [
-               
-              ],
+            Wrap(
+              spacing: 10.0, // Horizontal spacing between checkboxes
+              runSpacing: 10.0, // Vertical spacing between lines
+              children: controller.productData.map((product) {
+                return Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Obx(() {
+                      return Checkbox(
+                        value: product.isSelect.value,
+                        onChanged: (bool? value) {
+                          product.isSelect.value = value ?? false;
+                        },
+                        activeColor: Colors.blue,
+                      );
+                    }),
+                    Text(
+                      product.category ?? '',
+                      style: TextStyle(fontSize: 14),
+                    ),
+                  ],
+                );
+              }).toList(),
             ),
+            // Row(
+            //   children: [
+
+            //   ],
+            // ),
             SizedBox(
               height: size.height * 0.02,
             ),
