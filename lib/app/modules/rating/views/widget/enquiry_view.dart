@@ -5,6 +5,7 @@ import 'package:iitf_flutter_tab/app/common_widgets/drop_down/drop_down3_widget.
 import 'package:iitf_flutter_tab/app/common_widgets/text/text_widget.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/textfeild/add_new_widget.dart';
 import 'package:iitf_flutter_tab/app/constants/colors.dart';
+import 'package:iitf_flutter_tab/app/constants/strings.dart';
 
 import '../../../../data/model/enquiry/add_enquiry_model.dart';
 import '../../controllers/rating_controller.dart';
@@ -168,7 +169,7 @@ class EnquiryView extends GetView<RatingController> {
                     AddButton(
                       //   isLoading: controller.isLoading.value,
                       width: size.width * 0.96,
-                      height: size.height * 0.1,
+                      height: size.height * 0.08,
                       onClick: () {
                         if (controller.formkey1.currentState!.validate()) {
                           final cat = controller.homeController.categories
@@ -179,12 +180,15 @@ class EnquiryView extends GetView<RatingController> {
                               .join(',');
 
                           controller.homeController.addToEnq(EnqAddModel(
+                              stallId: int.parse(LocalStorageKey.stallId),
                               name: controller.enqNameController.text,
                               email: controller.enquiryController.text,
                               mobile: controller.enqPhoneController.text,
                               state: controller.selectedState!.id.toString(),
                               catIds: cat,
                               enquiry: controller.enquiryController.text));
+
+                          Get.back();
                         }
                       },
                       label: 'SUBMIT',
