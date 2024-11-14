@@ -35,6 +35,7 @@ class RatingView extends GetView<RatingController> {
                     ],
                   ),
                   child: TabBar(
+                      physics: const NeverScrollableScrollPhysics(),
                       indicator: BoxDecoration(
                         color: Colors.blue,
                         borderRadius: BorderRadius.circular(8),
@@ -47,8 +48,9 @@ class RatingView extends GetView<RatingController> {
                       ]),
                 ),
                 const Expanded(
-                    child:
-                        TabBarView(children: [FeedbackView(), EnquiryView()]))
+                    child: TabBarView(
+                        physics: const NeverScrollableScrollPhysics(),
+                        children: [FeedbackView(), EnquiryView()]))
               ],
             ))
         // Padding(

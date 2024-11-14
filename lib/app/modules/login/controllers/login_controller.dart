@@ -14,6 +14,9 @@ class LoginController extends GetxController {
   final _useapi = ProfileRepository();
   final emailController = TextEditingController(text: '0000000013').obs;
   final passwordController = TextEditingController(text: 'admin@123').obs;
+
+  // final emailController = TextEditingController(text: '').obs;
+  // final passwordController = TextEditingController(text: '').obs;
   final _api = LoginRepository();
   final apiServices = NetworkApiServices();
   UserPreference userPreference = UserPreference();
