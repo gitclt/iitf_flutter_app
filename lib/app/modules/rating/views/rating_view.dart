@@ -49,7 +49,7 @@ class RatingView extends GetView<RatingController> {
                 ),
                 const Expanded(
                     child: TabBarView(
-                        physics: const NeverScrollableScrollPhysics(),
+                        physics: NeverScrollableScrollPhysics(),
                         children: [FeedbackView(), EnquiryView()]))
               ],
             ))

@@ -57,6 +57,8 @@ class EnquiryView extends GetView<RatingController> {
                       validator: (value) {
                         if (value!.isEmpty) {
                           return 'Enter phone Number';
+                        } else if (value.isNotEmpty && value.length < 10) {
+                          return 'Mobile number should contain 10-digit number only';
                         }
                         return null;
                       },
