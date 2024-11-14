@@ -51,7 +51,7 @@ class CategoryView extends GetView<CategoryController> {
                     mainAxisSpacing: 1,
 
                     childAspectRatio:
-                        10 / 4, // Adjust the aspect ratio as needed
+                        9 / 4, // Adjust the aspect ratio as needed
                   ),
                   itemCount: controller.data.length,
                   itemBuilder: (context, index) {
@@ -99,7 +99,12 @@ class CategoryCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
             border: Border.all(color: AppColor.boxBorderColor, width: 2),
           ),
-          child: boldText(name, fontSize: 18),
+          child: Center(
+            child: boldText(
+              name,
+              fontSize: 17,
+            ),
+          ),
         ),
       ),
     );
