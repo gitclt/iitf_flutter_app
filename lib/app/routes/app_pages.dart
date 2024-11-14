@@ -16,6 +16,8 @@ import '../modules/profile/bindings/profile_binding.dart';
 import '../modules/profile/views/profile_view.dart';
 import '../modules/rating/bindings/rating_binding.dart';
 import '../modules/rating/views/rating_view.dart';
+import '../modules/reports/bindings/reports_binding.dart';
+import '../modules/reports/views/reports_view.dart';
 import '../modules/root/bindings/root_binding.dart';
 import '../modules/root/views/root_view.dart';
 import '../modules/version_check/bindings/version_check_binding.dart';
@@ -98,5 +100,10 @@ class AppPages {
             binding: VersionCheckBinding(),
           ),
         ]),
+    GetPage(
+      name: _Paths.REPORTS,
+      page: () => const ReportsView(),
+      binding: ReportsBinding(),
+    ),
   ];
 }

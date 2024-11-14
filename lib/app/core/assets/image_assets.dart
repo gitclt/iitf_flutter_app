@@ -26,4 +26,5 @@ class SvgAssets {
   static const String offerIcon = 'assets/svg/offer_price.svg';
   static const String personIcon = 'assets/svg/person.svg';
   static const String callIcon = 'assets/svg/phone.svg';
+  static const String reportIcon = 'assets/svg/report_box.svg';
 }

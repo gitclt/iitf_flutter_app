@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/appbar/home_appbar.dart';
 
 import 'package:iitf_flutter_tab/app/common_widgets/card/home_card.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/card/sync_card.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/container/home_container.dart';
 import 'package:iitf_flutter_tab/app/constants/colors.dart';
-import 'package:iitf_flutter_tab/app/constants/orientation_controller.dart';
 import 'package:iitf_flutter_tab/app/core/assets/image_assets.dart';
 import 'package:iitf_flutter_tab/app/routes/app_pages.dart';
 
@@ -126,6 +124,18 @@ class HomeView extends GetView<HomeController> {
                     SizedBox(
                       height: size.height * 0.035,
                     ),
+                    HomeCard(
+                      ontap: () async {
+                        await Get.rootDelegate.toNamed(Routes.REPORTS);
+                      },
+                      imagepath: SvgAssets.reportIcon,
+                      tittle: 'Reports',
+                      count: '',
+                      color: Colors.black,
+                    ),
+                    SizedBox(
+                      height: size.height * 0.035,
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -134,7 +144,7 @@ class HomeView extends GetView<HomeController> {
                             act: () {
                               controller.syncRating();
                             },
-                            title: "Rating",
+                            title: "Feedback",
                             count: controller.ratingDataList.length.toString(),
                           ),
                         ),

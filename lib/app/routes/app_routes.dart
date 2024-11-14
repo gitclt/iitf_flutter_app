@@ -8,13 +8,14 @@ abstract class Routes {
   static const home = _Paths.home;
   static const login = _Paths.login;
   static const preorder = _Paths.preorder;
-  static const product =  _Paths.product;
-  static const productAdd =  _Paths.product + _Paths.productAdd;
-  static const rating =  _Paths.rating;
+  static const product = _Paths.product;
+  static const productAdd = _Paths.product + _Paths.productAdd;
+  static const rating = _Paths.rating;
   static const profile = _Paths.profile;
-  static const category =  _Paths.category;
-  static const categoryAdd =  _Paths.category + _Paths.categoryAdd;
+  static const category = _Paths.category;
+  static const categoryAdd = _Paths.category + _Paths.categoryAdd;
   static const versionCheck = _Paths.versionCheck;
+  static const REPORTS = _Paths.REPORTS;
 }
 
 abstract class _Paths {
@@ -31,4 +32,5 @@ abstract class _Paths {
   static const category = '/category';
   static const categoryAdd = '/category-add';
   static const versionCheck = '/version-check';
+  static const REPORTS = '/reports';
 }
