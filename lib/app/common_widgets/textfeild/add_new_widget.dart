@@ -23,7 +23,7 @@ class AddTextFieldWidget extends StatelessWidget {
   final bool? readonly;
   final bool obscureText;
   final double? width;
-
+  final FocusNode? focusNode;
   final int? minLines;
 
   const AddTextFieldWidget({
@@ -48,6 +48,7 @@ class AddTextFieldWidget extends StatelessWidget {
     this.width,
     this.minLines,
     this.obscureText = false,
+    this.focusNode,
     // this.initialValue,
   });
 
@@ -76,6 +77,7 @@ class AddTextFieldWidget extends StatelessWidget {
           //height: height ?? size.height * 0.075,
           child: TextFormField(
             //  initialValue: initialValue,
+            focusNode: focusNode,
             controller: textController,
             validator: validator,
             readOnly: readonly!,

@@ -58,6 +58,7 @@ class RatingDetailsPopup extends GetView<RatingController> {
                       width: size.width * 0.45,
                       inputFormat: true,
                       maxLengthLimit: 10,
+                      keyboard: TextInputType.number,
                       textController: controller.phoneController,
                       validator: (value) {
                         if (value.isNotEmpty && value.length < 10) {

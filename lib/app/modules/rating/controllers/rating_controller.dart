@@ -20,6 +20,7 @@ class RatingController extends GetxController {
   TextEditingController enqPhoneController = TextEditingController();
   TextEditingController enqEmailController = TextEditingController();
   TextEditingController enquiryController = TextEditingController();
+  final focusRstNo = FocusNode();
 
   final formkey = GlobalKey<FormState>();
   final formkey1 = GlobalKey<FormState>();

@@ -35,6 +35,7 @@ class EnquiryView extends GetView<RatingController> {
                   children: [
                     AddTextFieldWidget(
                       textController: controller.enqNameController,
+                      focusNode: controller.focusRstNo,
                       hintText: 'Enter Name',
                       width: width,
                       label: 'Name',
@@ -53,6 +54,7 @@ class EnquiryView extends GetView<RatingController> {
                       label: 'Phone',
                       inputFormat: true,
                       maxLengthLimit: 10,
+                      keyboard: TextInputType.number,
                       visible: true,
                       validator: (value) {
                         if (value!.isEmpty) {
@@ -76,6 +78,7 @@ class EnquiryView extends GetView<RatingController> {
                       hintText: 'Enter Email',
 
                       width: width,
+                      keyboard: TextInputType.emailAddress,
                       label: 'Email',
                       visible: false,
                       // validator: (value) {
@@ -190,6 +193,7 @@ class EnquiryView extends GetView<RatingController> {
                               catIds: cat,
                               enquiry: controller.enquiryController.text));
                           controller.clrEnqValue();
+
                           // Display a success dialog
                           Get.dialog(
                             AlertDialog(
@@ -207,6 +211,9 @@ class EnquiryView extends GetView<RatingController> {
                             ),
                             barrierDismissible: false,
                           );
+
+                          FocusScope.of(context)
+                              .requestFocus(controller.focusRstNo);
                         }
                       },
                       label: 'SUBMIT',
