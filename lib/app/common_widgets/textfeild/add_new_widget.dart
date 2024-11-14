@@ -73,7 +73,7 @@ class AddTextFieldWidget extends StatelessWidget {
       ),
       SizedBox(
           width: width ?? size.width * 0.9,
-          height: height ?? size.height * 0.075,
+          //height: height ?? size.height * 0.075,
           child: TextFormField(
             //  initialValue: initialValue,
             controller: textController,
