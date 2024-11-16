@@ -51,6 +51,7 @@ class LoginController extends GetxController {
 
           if (sucess.data != null) {
             final res = await _useapi.getProfileView(sucess.data!.toString());
+            
 
             res.fold(
               (failure) {

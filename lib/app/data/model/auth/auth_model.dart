@@ -76,6 +76,8 @@ class UserData {
   double? rating;
   dynamic companyName;
   dynamic websiteAddress;
+  dynamic logo;
+  dynamic image;
 
   UserData({
     this.stallId,
@@ -88,6 +90,8 @@ class UserData {
     this.rating,
     this.companyName,
     this.websiteAddress,
+    this.logo,
+    this.image,
   });
 
   factory UserData.fromJson(Map<String, dynamic> json) => UserData(
@@ -101,6 +105,8 @@ class UserData {
         rating: json["rating"].toDouble(),
         companyName: json["company_name"],
         websiteAddress: json["website_address"],
+        logo: json["logo"],
+        image: json["image"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -114,5 +120,7 @@ class UserData {
         "rating": rating,
         "company_name": companyName,
         "website_address": websiteAddress,
+        "logo": logo,
+        "image": image,
       };
 }

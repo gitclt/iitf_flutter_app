@@ -97,10 +97,11 @@ class RatingRepository {
     }
   }
 
-  Future<Either<Failure, EnquiryModel>> getEnquiry(String stallId) async {
+  Future<Either<Failure, EnquiryModel>> getEnquiry(String stallId,
+      {String? state, String? catId}) async {
     try {
-      dynamic response = await _apiServices
-          .getApi("${RatingUrl.enquiryListApi}?stall_id=$stallId");
+      dynamic response = await _apiServices.getApi(
+          "${RatingUrl.enquiryListApi}?stall_id=$stallId${state != null ? '&state=$state' : ''}${catId != null ? '&cat_ids=$catId' : ''}");
 
       if (response != null && response["status"] == true) {
         EnquiryModel res = EnquiryModel.fromJson(response);

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:iitf_flutter_tab/app/common_widgets/button/common_button.dart';
+import 'package:iitf_flutter_tab/app/common_widgets/drop_down/drop_down3_widget.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/svg_icons/svg_widget.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/text/text_widget.dart';
 import 'package:iitf_flutter_tab/app/constants/colors.dart';
@@ -10,20 +12,77 @@ class EnquiryTabView extends GetView<ReportsController> {
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
+    final width = size.width * 0.32;
     return Obx(
       () => Padding(
         padding: const EdgeInsets.all(15),
-        child: ListView.builder(
-            itemCount: controller.enqData.length,
-            itemBuilder: (context, index) {
-              final item = controller.enqData[index];
-              return EnquiryListCard(
-                      name: item.name ?? '',
-                      mob: item.mobile ?? '',
-                      place: item.state ?? '',
-                      description: item.enquiry.toString())
-                  .paddingOnly(bottom: 8);
-            }),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Wrap(
+              spacing: 15,
+              runSpacing: 12,
+              crossAxisAlignment: WrapCrossAlignment.end,
+              children: [
+                DropDown3Widget(
+                  width: width,
+                  label: 'State',
+                  hint: '--Select State--',
+                  selectedItem:
+                      controller.sdState.id == null ? null : controller.sdState,
+                  items: controller.stateDropList,
+                  onChanged: (data) async {
+                    if (data == null) return;
+                    controller.sdState = data;
+                  },
+                ).paddingOnly(left: 5),
+                const SizedBox(
+                  width: 8,
+                ),
+                DropDown3Widget(
+                  width: width,
+                  label: 'Category',
+                  hint: '--Select Category--',
+                  selectedItem: controller.sdCategory.id == null
+                      ? null
+                      : controller.sdCategory,
+                  items: controller.catDropList,
+                  onChanged: (data) async {
+                    if (data == null) return;
+                    controller.sdCategory = data;
+                  },
+                ).paddingOnly(right: 5),
+                SizedBox(
+                    width: size.width * 0.22,
+                    height: size.height * 0.04,
+                    child: CommonButton(
+                        onClick: () {
+                          controller.getEnquiry();
+                        },
+                        label: 'search'))
+              ],
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.75,
+              child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: controller.enqData.length,
+                  itemBuilder: (context, index) {
+                    final item = controller.enqData[index];
+                    return EnquiryListCard(
+                            name: item.name ?? '',
+                            mob: item.mobile ?? '',
+                            place: item.state ?? '',
+                            description: item.enquiry.toString())
+                        .paddingOnly(bottom: 8);
+                  }),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -61,7 +120,7 @@ class EnquiryListCard extends StatelessWidget {
             ],
           ),
           const SizedBox(
-            height: 10,
+            height: 8,
           ),
           Row(
             children: [

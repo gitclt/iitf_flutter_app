@@ -18,6 +18,7 @@ class LocalStorageKey {
   static String phone = "PHONE";
   static String department = "DEPARTMENT";
   static String websiteAddress = "WEBSITE";
+  static String image = "IMAGE";
 }
 
 class AppSettings {

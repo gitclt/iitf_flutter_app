@@ -34,6 +34,7 @@ class UserPreference {
     LocalStorageKey.websiteAddress = sp.getString('websiteAddress') ?? '';
     LocalStorageKey.department = sp.getString('department') ?? '';
     LocalStorageKey.rating = sp.getDouble('rating') ?? 5.0;
+    LocalStorageKey.image = sp.getString('image') ?? '';
   }
 
   Future addUserDataToLocalStorage(
@@ -48,6 +49,7 @@ class UserPreference {
     await sp.setString('websiteAddress', userData.websiteAddress ?? '');
     await sp.setString('department', userData.department ?? '');
     await sp.setDouble('rating', userData.rating ?? 5.0);
+    await sp.setString('image', userData.image ?? '');
   }
 
   Future<dynamic> getUser() async {
