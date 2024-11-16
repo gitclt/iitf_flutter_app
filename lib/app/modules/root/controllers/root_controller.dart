@@ -4,7 +4,6 @@ import 'package:iitf_flutter_tab/app/data/local/user_preference/user_prefrence_v
 import 'package:iitf_flutter_tab/app/domain/repositories/appversion/appversion_repository.dart';
 import 'package:iitf_flutter_tab/app/domain/repositories/profile/profile_repository.dart';
 import 'package:iitf_flutter_tab/app/routes/app_pages.dart';
-import 'package:iitf_flutter_tab/app/utils/utils.dart';
 
 class RootController extends GetxController {
   final RxBool _isLoading = false.obs;

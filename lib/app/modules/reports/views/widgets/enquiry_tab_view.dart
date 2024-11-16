@@ -67,7 +67,7 @@ class EnquiryTabView extends GetView<ReportsController> {
               height: 20,
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.75,
+              height: MediaQuery.of(context).size.height * 0.58,
               child: ListView.builder(
                   shrinkWrap: true,
                   itemCount: controller.enqData.length,

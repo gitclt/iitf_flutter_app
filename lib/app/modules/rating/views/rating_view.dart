@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iitf_flutter_tab/app/common_widgets/appbar/common_appbar.dart';
 import 'package:iitf_flutter_tab/app/common_widgets/appbar/rating_appbar.dart';
 import 'package:iitf_flutter_tab/app/constants/strings.dart';
 import 'package:iitf_flutter_tab/app/modules/rating/views/widget/enquiry_view.dart';
